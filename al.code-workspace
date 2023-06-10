@@ -5,6 +5,9 @@
     },
     {
       "path": "SWVO"
+    },
+    {
+      "path": "SWVO.Test"
     }
   ],
   "settings": {}
