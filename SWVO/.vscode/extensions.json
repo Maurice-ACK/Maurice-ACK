@@ -1,0 +1,22 @@
+{
+    "recommendations": [
+        "ms-dynamics-smb.al",
+        "waldo.al-extension-pack",
+        "ms-vscode.powershell",
+        "rvanbekkum.xliff-sync",
+        "aar.xlf-editor",
+        "waldo.crs-al-language-extension",
+        "vscode-icons-team.vscode-icons",
+        "andrzejzwierzchowski.al-code-outline",
+        "vjeko.vjeko-al-objid",
+        "davidfeldhoff.al-codeactions",
+        "clipdynamics.al-language-tools",
+        "martonsagi.al-object-designer",
+        "bartpermentier.al-toolbox",
+        "rasmus.al-var-helper",
+        "365businessdevelopment.bdev-al-xml-doc",
+        "tfenster.alrunner",
+        "stefanmaron.businesscentral-lintercop",
+        "nabsolutions.nab-al-tools"
+    ]
+}

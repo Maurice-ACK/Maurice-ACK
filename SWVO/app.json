@@ -1,31 +1,36 @@
 {
-  "id": "bbe7f909-d7e8-4276-974b-9d84f233597a",
+  "id": "38b9bfb5-e282-431c-b25b-2c85c7970c47",
   "name": "SWVO",
   "publisher": "Acknowledge Software Solutions",
-  "version": "1.0.0.0",
-  "brief": "",
-  "description": "",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
-  "url": "",
-  "logo": "",
+  "version": "1.0.1.4",
+  "brief": "SWVO extension",
+  "description": "SWVO extension",
+  "privacyStatement": "https://swvo.nl/privacy",
+  "EULA": "https://swvo.nl/eula",
+  "help": "https://swvo.nl/help",
+  "url": "https://swvo.nl/",
+  "contextSensitiveHelpUrl": "https://swvo.nl",
+  "logo": "./assets/SWVO.png",
   "dependencies": [],
   "screenshots": [],
-  "platform": "1.0.0.0",
-  "application": "22.0.0.0",
+  "platform": "20.0.0.0",
+  "application": "21.3.0.0",
+  "runtime": "10.0",
   "idRanges": [
     {
       "from": 50000,
       "to": 50199
     }
   ],
-  "features": [
-    "NoImplicitWith"
-  ],
   "resourceExposurePolicy": {
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true,
     "allowDebugging": true,
-    "allowDownloadingSource": false,
-    "includeSourceInSymbolFile": false
-  }
+    "applyToDevExtension": false
+
+  },
+  "features": [ "TranslationFile", "GenerateCaptions", "NoImplicitWith" ],
+  "target":  "Cloud"
+
+  
 }
