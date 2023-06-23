@@ -94,14 +94,26 @@ table 50010 ACKClient
         ACKClientAddress.DeleteAll(true);
     end;
 
-    trigger OnInsert()
+    local procedure GetNextNo(): Code[20]
+    var
+        Client: Record ACKClient;
+        NewNo: Code[20];
+        IsFound: Boolean;
     begin
         ACKSWVOGeneralSetup.Get();
+        ACKSWVOGeneralSetup.TestField(ClientNos);
+        repeat
+            NewNo := NoSeriesMgt.DoGetNextNo(ACKSWVOGeneralSetup.ClientNos, Today(), true, false);
+            IsFound := Client.Get(NewNo);
+            if not IsFound then
+                exit(NewNo);
+        until not IsFound;
+    end;
 
-        if ClientNo = '' then begin
-            ACKSWVOGeneralSetup.TestField(ClientNos);
-            NoSeriesMgt.InitSeries(ACKSWVOGeneralSetup.ClientNos, xRec.NoSeries, 0D, ClientNo, NoSeries);
-        end;
+    trigger OnInsert()
+    begin
+        if Rec.ClientNo = '' then
+            Rec.ClientNo := GetNextNo();
     end;
 
     local procedure TestDeceasedDate(): Boolean

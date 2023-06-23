@@ -40,9 +40,6 @@ page 50066 ACKResourceList
                 field(Gender; Rec.Gender)
                 {
                 }
-                field(ProcessStatus; Rec.ProcessStatus)
-                {
-                }
                 field("type"; Rec."type")
                 {
                 }

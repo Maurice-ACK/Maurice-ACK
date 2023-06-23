@@ -20,101 +20,71 @@ page 50065 ACKResourceCard
     {
         area(content)
         {
-            group(Gegevens)
+            group(Resource)
             {
-                field(Id; Rec.Id)
+                Caption = 'Hulpmiddel', Locked = true;
+
+                field(ImportDate; Rec.ImportDate)
                 {
-                    Editable = true;
                 }
                 field("Type"; Rec."Type")
                 {
-                    Editable = true;
                 }
-                field(ClientNo; Rec.ClientNo)
+                field(HealthcareproviderNo; Rec.HealthcareproviderNo)
                 {
-                    Editable = true;
                 }
-                field(Gender; Rec.Gender)
+                field(HealthcareProviderName; Rec.HealthcareProviderName)
                 {
-                    Editable = true;
-                }
-                field(Birthdate; Rec.Birthdate)
-                {
-                    Editable = true;
-                }
-                field(PostCode; Rec.PostCode)
-                {
-                    Editable = true;
-                }
-                field("Place of residence"; Rec."Place of residence")
-                {
-                    Editable = true;
-                }
-                field(Street; Rec.Street)
-                {
-                    Editable = true;
-                }
-                field(HouseNumber; Rec.HouseNumber)
-                {
-                    Editable = true;
-                }
-                field(Letter; Rec.Letter)
-                {
-                    Editable = true;
-                }
-                field(MunicipalityNo; Rec.MunicipalityNo)
-                {
-                    Editable = true;
                 }
                 field(ProductCode; Rec.ProductCode)
                 {
-                    Editable = true;
                 }
-                field(EndDate; Rec.EndDate)
+                field(ProductDesc; Rec.ProductDesc)
                 {
-                    Editable = true;
-                }
-                field(ReasonEnd; Rec.ReasonEnd)
-                {
-                    Editable = true;
                 }
                 field(Insured; Rec.Insured)
                 {
-                    Editable = true;
-                }
-                field(LogField; Rec.LogField)
-                {
-                    Editable = true;
-                }
-                field(ProcessStatus; Rec.ProcessStatus)
-                {
-                    Editable = true;
                 }
                 field(StartDate; Rec.StartDate)
                 {
-                    Editable = true;
+                }
+                field(EndDate; Rec.EndDate)
+                {
+                }
+                field(ReasonEnd; Rec.ReasonEnd)
+                {
+                }
+                field(LogField; Rec.LogField)
+                {
+                }
+            }
+            group(Personal)
+            {
+                Caption = 'Persoonsgegevens', Locked = true;
+
+                field(ClientNo; Rec.ClientNo)
+                {
+                    Editable = false;
                 }
                 field(SSN; Rec.SSN)
                 {
-                    Editable = true;
                 }
                 field("First Name"; Rec."First Name")
                 {
-                    Editable = true;
                 }
                 field("Middle Name"; Rec."Middle Name")
                 {
-                    Editable = true;
                 }
                 field(Surname; Rec.Surname)
                 {
-                    Editable = true;
                 }
                 field(Initials; Rec.Initials)
                 {
-                    Editable = true;
                 }
-                field(ProductDesc; Rec.ProductDesc)
+                field(Gender; Rec.Gender)
+                {
+                }
+                field(Birthdate; Rec.Birthdate)
                 {
                     Editable = true;
                 }
@@ -122,17 +92,32 @@ page 50065 ACKResourceCard
                 {
                     Editable = true;
                 }
-                field(ImportDate; Rec.ImportDate)
+
+                group(Address)
                 {
-                    Editable = true;
-                }
-                field(HealthcareproviderNo; Rec.HealthcareproviderNo)
-                {
-                    Editable = true;
-                }
-                field(HealthcareProviderName; Rec.HealthcareProviderName)
-                {
-                    Editable = true;
+                    Caption = 'Adres', Locked = true;
+
+                    field(PostCode; Rec.PostCode)
+                    {
+                    }
+                    field(HouseNumber; Rec.HouseNumber)
+                    {
+                    }
+                    field(Letter; Rec.Letter)
+                    {
+                    }
+                    field(Street; Rec.Street)
+                    {
+                    }
+                    field("Place of residence"; Rec."Place of residence")
+                    {
+                    }
+                    field(MunicipalityNo; Rec.MunicipalityNo)
+                    {
+                    }
+                    field(MunicipalityName; Rec.MunicipalityName)
+                    {
+                    }
                 }
             }
         }

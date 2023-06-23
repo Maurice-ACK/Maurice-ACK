@@ -11,7 +11,7 @@ table 50034 ACKResource
 
     fields
     {
-        field(10; ID; Integer)
+        field(10; ID; BigInteger)
         {
             Caption = 'ID', Locked = true;
             AutoIncrement = true;
@@ -79,10 +79,6 @@ table 50034 ACKResource
         {
             Caption = 'Commentaar', Locked = true;
         }
-        field(200; ProcessStatus; Text[50])
-        {
-            Caption = 'Status', Locked = true;
-        }
         field(220; StartDate; Date)
         {
             Caption = 'Startdatum', Locked = true;
@@ -108,7 +104,6 @@ table 50034 ACKResource
         {
             Caption = 'Achternaam', Locked = true;
         }
-
         field(270; Initials; Text[30])
         {
             Caption = 'Initialen', Locked = true;
@@ -182,25 +177,26 @@ table 50034 ACKResource
             ACKClient."First Name" := Rec."First Name";
             ACKClient."Middle Name" := Rec."Middle Name";
             ACKClient.Insert(true);
-        end;
 
-        if (Rec.PostCode <> '') then begin
-            ACKClientAddress.Init();
-            ACKClientAddress.ClientNo := ACKClient.ClientNo;
-            ACKClientAddress.Purpose := ACKWMOAdresSoort::BRP;
-            ACKClientAddress.PostCode := Rec.PostCode;
-            ACKClientAddress.MunicipalityNo := Rec.MunicipalityNo;
-            Evaluate(ACKClientAddress.HouseNumber, Rec.HouseNumber);
-            ACKClientAddress.Street := Rec.Street;
-            ACKClientAddress."Place of residence" := Rec."Place of residence";
+            if (Rec.PostCode <> '') then begin
+                ACKClientAddress.Init();
+                ACKClientAddress.ClientNo := ACKClient.ClientNo;
+                ACKClientAddress.Purpose := ACKWMOAdresSoort::BRP;
+                ACKClientAddress.PostCode := Rec.PostCode;
+                ACKClientAddress.MunicipalityNo := Rec.MunicipalityNo;
+                Evaluate(ACKClientAddress.HouseNumber, Rec.HouseNumber);
+                ACKClientAddress.Street := Rec.Street;
+                ACKClientAddress."Place of residence" := Rec."Place of residence";
+                ACKClientAddress.ValidFrom := Today();
 
-            //Check if Rec.letter is one char and if char is a letter
-            if (Regex.IsMatch(Rec.Letter, '^([a-z]|[A-Z])$')) then
-                ACKClientAddress.HouseLetter := CopyStr(Text.UpperCase(Rec.Letter), 1, 1)
-            else
-                ACKClientAddress.HouseNumberAddition := CopyStr(Rec.Letter, 1, 1);
+                //Check if Rec.letter is one char and if char is a letter
+                if (Regex.IsMatch(Rec.Letter, '^([a-z]|[A-Z])$')) then
+                    ACKClientAddress.HouseLetter := CopyStr(Text.UpperCase(Rec.Letter), 1, 1)
+                else
+                    ACKClientAddress.HouseNumberAddition := CopyStr(Rec.Letter, 1, 1);
 
-            ACKClientAddress.InsertOrUpdate();
+                ACKClientAddress.InsertOrUpdate();
+            end;
         end;
     end;
 

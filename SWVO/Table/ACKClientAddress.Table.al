@@ -277,8 +277,6 @@ table 50013 ACKClientAddress
         Dict.Add(Rec.FieldNo(Street), 'street');
     end;
 
-
-
     /// <summary>
     /// MandatoryFields.
     /// </summary>
@@ -294,7 +292,6 @@ table 50013 ACKClientAddress
         MandatoryFieldList.Add(Rec.FieldNo("Country/Region Code"));
     end;
 
-
     /// <summary>
     /// CheckOverlap
     /// Checks for a previous overlapping address and updates it when found.
@@ -306,6 +303,9 @@ table 50013 ACKClientAddress
         ACKClientAddressOverlap: Record ACKClientAddress;
         IsDifferent: Boolean;
     begin
+        if Rec.ValidFrom = 0D then
+            Rec.ValidFrom := Today();
+
         ACKClientAddressOverlap.SetCurrentKey(ClientNo, Purpose, ValidFrom, ValidTo);
         ACKClientAddressOverlap.SetFilter(SystemId, '<>%1', Rec.SystemId);
         ACKClientAddressOverlap.SetRange(ClientNo, Rec.ClientNo);
