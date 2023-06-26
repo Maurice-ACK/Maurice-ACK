@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMODeclarationStatus (ID 50034).
+/// Enum ACKWMODeclarationStatus
 /// </summary>
 enum 50033 ACKWMODeclarationStatus
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOMessagePageDoc (ID 50057).
+/// Page ACKWMOMessagePageDoc
 /// </summary>
 page 50057 ACKWMOMessagePageDoc
 {

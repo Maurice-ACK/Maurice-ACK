@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKStudentTransportIndication (ID 50022).
+/// Table ACKStudentTransportIndication
 /// </summary>
 table 50022 ACKStudentTransportIndication
 {

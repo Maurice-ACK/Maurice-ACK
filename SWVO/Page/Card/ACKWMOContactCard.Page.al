@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOContactCard (ID 50022).
+/// Page ACKWMOContactCard
 /// </summary>
 page 50022 ACKWMOContactCard
 {

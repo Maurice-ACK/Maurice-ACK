@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOAntwoordCardPart (ID 50148).
+/// Page ACKWMOAntwoordCardPart
 /// </summary>
 page 50117 ACKWMOAntwoordCardPart
 {

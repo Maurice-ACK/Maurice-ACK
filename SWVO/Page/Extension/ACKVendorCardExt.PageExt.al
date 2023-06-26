@@ -1,5 +1,5 @@
 /// <summary>
-/// PageExtension ACKVendorCardExt (ID 50000) extends Record Vendor Card.
+/// PageExtension ACKVendorCardExtextends Record Vendor Card.
 /// </summary>
 pageextension 50000 ACKVendorCardExt extends "Vendor Card"
 {

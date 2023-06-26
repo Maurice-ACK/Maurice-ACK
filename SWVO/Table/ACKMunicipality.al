@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKMunicipality (ID 50067).
+/// Table ACKMunicipality
 /// </summary>
 table 50062 ACKMunicipality
 {

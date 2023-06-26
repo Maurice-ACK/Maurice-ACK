@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKStartStopProductQuery (ID 50020).
+/// Query ACKStartStopProductQuery
 /// </summary>
 query 50020 ACKStartStopProductQ
 {

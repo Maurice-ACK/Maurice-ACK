@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKTransportRequestType (ID 50030).
+/// Enum ACKTransportRequestType
 /// </summary>
 enum 50029 ACKTransportRequestType
 {

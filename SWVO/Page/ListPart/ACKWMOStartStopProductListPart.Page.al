@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOStartStopProductListPart (ID 50027).
+/// Page ACKWMOStartStopProductListPart
 /// </summary>
 page 50027 ACKWMOStartStopProductListPart
 {

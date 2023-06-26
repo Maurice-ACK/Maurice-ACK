@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOToegewezenProductCard (ID 50018).
+/// Page ACKWMOToegewezenProductCard
 /// </summary>
 page 50018 ACKWMOToegewezenProductCard
 {

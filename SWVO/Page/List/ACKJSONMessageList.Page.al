@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKJSONMessageList (ID 50101).
+/// Page ACKJSONMessageList
 /// </summary>
 page 50100 ACKJSONMessageList
 {

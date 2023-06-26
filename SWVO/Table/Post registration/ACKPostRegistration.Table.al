@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKPostRegistration (ID 50036).
+/// Table ACKPostRegistration
 /// </summary>
 table 50036 ACKPostRegistration
 {

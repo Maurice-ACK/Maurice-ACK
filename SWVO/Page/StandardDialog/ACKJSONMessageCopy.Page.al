@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKJSONMessageCopy (ID 50117).
+/// Page ACKJSONMessageCopy
 /// </summary>
 page 50106 ACKJSONMessageCopy
 {

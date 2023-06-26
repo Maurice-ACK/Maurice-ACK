@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKStudentTransportInsertError (ID 50050).
+/// Table ACKStudentTransportInsertError
 /// </summary>
 table 50050 "ACKStudentTransportInsertError"
 {

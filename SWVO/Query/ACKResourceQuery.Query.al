@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKResourceQuery (ID 50018).
+/// Query ACKResourceQuery
 /// </summary>
 query 50018 ACKResourceQuery
 {

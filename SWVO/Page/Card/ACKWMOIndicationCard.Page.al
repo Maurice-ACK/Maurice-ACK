@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOIndicationCard (ID 50072).
+/// Page ACKWMOIndicationCard
 /// </summary>
 page 50072 ACKWMOIndicationCard
 {

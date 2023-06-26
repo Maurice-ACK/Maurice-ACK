@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKStudenTransportUserLookup (ID 50047).
+/// Table ACKStudenTransportUserLookup
 /// </summary>
 table 50047 ACKStudenTransportUserLookup
 {

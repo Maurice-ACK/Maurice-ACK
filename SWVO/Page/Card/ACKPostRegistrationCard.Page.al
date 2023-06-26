@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKPostRegistrationCard (ID 50069).
+/// Page ACKPostRegistrationCard
 /// </summary>
 page 50069 ACKPostRegistrationCard
 {

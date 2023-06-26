@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKClientData (ID 50092).
+/// Page ACKClientData
 /// </summary>
 page 50092 ACKClientData
 {

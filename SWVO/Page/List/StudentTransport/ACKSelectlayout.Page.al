@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKSelectLayout (ID 50086).
+/// Page ACKSelectLayout
 /// </summary>
 page 50086 "ACKSelectLayout"
 {

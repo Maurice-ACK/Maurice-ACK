@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKNewChangedUnchangedProductL (ID 50030).
+/// Page ACKNewChangedUnchangedProductL
 /// </summary>
 page 50050 ACKNewChangedUnchangedProductL
 {

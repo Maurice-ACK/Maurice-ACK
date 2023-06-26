@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMODeclarationLineList (ID 50141).
+/// Page ACKWMODeclarationLineList
 /// </summary>
 page 50112 ACKWMODeclarationLineList
 {

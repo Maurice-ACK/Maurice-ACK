@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKHCProductCodeList (ID 50030).
+/// Page ACKHCProductCodeList
 /// </summary>
 page 50030 ACKHCProductCodeList
 {

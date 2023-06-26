@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOFrequentie (ID 50043).
+/// Enum ACKWMOFrequentie
 /// </summary>
 enum 50039 ACKWMOFrequentie
 {

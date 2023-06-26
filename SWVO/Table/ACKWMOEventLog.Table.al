@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKEventLog (ID 50054).
+/// Table ACKEventLog
 /// </summary>
 table 50054 ACKEventLog
 {

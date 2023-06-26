@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKHealthcareMonthPCRateQuery (ID 50003).
+/// Query ACKHealthcareMonthPCRateQuery
 /// </summary>
 query 50003 ACKHealthcareMonthPCRateQuery
 {

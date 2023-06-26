@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKHCProductCode (ID 50029).
+/// Table ACKHCProductCode
 /// </summary>
 table 50029 ACKHCProductCode
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKSubcontractor (ID 50003).
+/// Table ACKSubcontractor
 /// </summary>
 table 50027 ACKSubcontractor
 {

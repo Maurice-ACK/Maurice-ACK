@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOClientListPart (ID 50049).
+/// Page ACKWMOClientListPart
 /// </summary>
 page 50049 ACKWMOClientListPart
 {

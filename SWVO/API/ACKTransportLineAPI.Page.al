@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKTransportLineAPI (ID 50055).
+/// Page ACKTransportLineAPI
 /// </summary>
 page 50055 ACKTransportLineAPI
 {

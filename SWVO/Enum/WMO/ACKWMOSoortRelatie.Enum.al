@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOSoortRelatie (ID 50016).
+/// Enum ACKWMOSoortRelatie
 /// </summary>
 enum 50015 ACKWMOSoortRelatie
 {

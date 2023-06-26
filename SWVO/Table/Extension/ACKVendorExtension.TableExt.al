@@ -1,5 +1,5 @@
 /// <summary>
-/// TableExtension ACKVendorExtension (ID 50000) extends Record Vendor.
+/// TableExtension ACKVendorExtensionextends Record Vendor.
 /// </summary>
 tableextension 50001 ACKVendorExtension extends Vendor
 {

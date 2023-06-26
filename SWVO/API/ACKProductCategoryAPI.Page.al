@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKProductCategoryAPI (ID 50046).
+/// Page ACKProductCategoryAPI
 /// </summary>
 page 50046 ACKProductCategoryAPI
 {

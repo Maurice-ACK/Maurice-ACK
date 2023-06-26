@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKStudentTransportNode (ID 50040).
+/// Page ACKStudentTransportNode
 /// </summary>
 page 50040 ACKStudentTransportNode
 {

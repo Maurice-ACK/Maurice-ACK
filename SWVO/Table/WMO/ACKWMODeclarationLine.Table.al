@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMODeclarationLine (ID 50077).
+/// Table ACKWMODeclarationLine
 /// </summary>
 table 50065 ACKWMODeclarationLine
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKResource (ID 50034).
+/// Table ACKResource
 /// </summary>
 table 50034 ACKResource
 {

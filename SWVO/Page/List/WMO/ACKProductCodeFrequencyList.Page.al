@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKProductCodeFrequencyList (ID 50085).
+/// Page ACKProductCodeFrequencyList
 /// </summary>
 page 50085 ACKProductCodeFrequencyList
 {

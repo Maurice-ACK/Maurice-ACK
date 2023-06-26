@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOCommunicatie (ID 50013).
+/// Enum ACKWMOCommunicatie
 /// </summary>
 enum 50012 ACKWMOCommunicatievorm
 {

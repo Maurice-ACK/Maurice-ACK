@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKTransportMutationList (ID 50042).
+/// Page ACKTransportMutationList
 /// </summary>
 page 50042 ACKTransportMutationList
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOReturnStatus (ID 50041).
+/// Enum ACKWMOReturnStatus
 /// </summary>
 enum 50038 ACKWMOReturnStatus
 {

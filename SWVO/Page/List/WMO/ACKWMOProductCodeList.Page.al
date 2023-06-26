@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOProductCodeList (ID 50000).
+/// Page ACKWMOProductCodeList
 /// </summary>
 page 50001 ACKWMOProductCodeList
 {

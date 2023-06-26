@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKWMORetourCodeQuery (ID 50004).
+/// Query ACKWMORetourCodeQuery
 /// </summary>
 query 50004 ACKWMORetourCodeQuery
 {

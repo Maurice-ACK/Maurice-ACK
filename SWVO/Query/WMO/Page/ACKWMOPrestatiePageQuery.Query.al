@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKWMOPrestatiePageQuery (ID 50012).
+/// Query ACKWMOPrestatiePageQuery
 /// </summary>
 query 50012 ACKWMOPrestatiePageQuery
 {

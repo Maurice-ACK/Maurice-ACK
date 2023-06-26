@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMODatumGebruik (ID 50017).
+/// Enum ACKWMODatumGebruik
 /// Codering om aan te geven welk deel van een datum onbekend is. 
 /// </summary>
 enum 50016 ACKWMODatumGebruik

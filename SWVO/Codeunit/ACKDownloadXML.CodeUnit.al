@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKDownloadWMOFile (ID 50087).
+/// Codeunit ACKDownloadWMOFile
 /// </summary>
 codeunit 50041 ACKDownloadWMOFile
 {

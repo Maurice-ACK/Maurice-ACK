@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKSubcontractorList (ID 50032).
+/// Page ACKSubcontractorList
 /// </summary>
 page 50032 ACKSubcontractorList
 {

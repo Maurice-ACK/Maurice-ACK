@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKAssignedProductQTable (ID 50057).
+/// Table ACKAssignedProductQTable
 /// </summary>
 table 50057 ACKAssignedProductQTable
 {

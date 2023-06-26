@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOAPI (ID 50102).
+/// Page ACKWMOAPI
 /// </summary>
 page 50101 ACKWMOAPI
 {

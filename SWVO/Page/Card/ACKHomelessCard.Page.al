@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKHomelessCard (ID 50006).
+/// Page ACKHomelessCard
 /// </summary>
 page 50006 ACKHomelessCard
 {

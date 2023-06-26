@@ -1,5 +1,5 @@
 /// <summary>
-/// Page AckStudentTranportAdressList (ID 50056).
+/// Page AckStudentTranportAdressList
 /// </summary>
 page 50056 AckStudentTranportAdressList
 {

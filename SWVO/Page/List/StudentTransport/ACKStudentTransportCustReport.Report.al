@@ -1,5 +1,5 @@
 /// <summary>
-/// Report ACKStudentTransportCustReport (ID 50001).
+/// Report ACKStudentTransportCustReport
 /// </summary>
 report 50000 ACKStudentTransportCustReport
 {

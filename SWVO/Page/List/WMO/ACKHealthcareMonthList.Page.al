@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKHealthcareMonthList (ID 50014).
+/// Page ACKHealthcareMonthList
 /// </summary>
 page 50014 ACKHealthcareMonthList
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMORuleList (ID 50149).
+/// Page ACKWMORuleList
 /// </summary>
 page 50118 ACKWMORuleList
 {

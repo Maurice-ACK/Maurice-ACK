@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMODeclaratieCardPart (ID 50035).
+/// Page ACKWMODeclaratieCardPart
 /// </summary>
 page 50035 ACKWMODeclaratieCardPart
 {

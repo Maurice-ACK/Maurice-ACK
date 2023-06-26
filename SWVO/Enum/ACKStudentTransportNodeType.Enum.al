@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKStudentTransportNodeType (ID 50022).
+/// Enum ACKStudentTransportNodeType
 /// </summary>
 enum 50021 ACKStudentTransportNodeType
 {

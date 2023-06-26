@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKStudentTransportCustIndic (ID 50041).
+/// Page ACKStudentTransportCustIndic
 /// </summary>
 page 50041 ACKStudentTransportCustIndic
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMORedenVerzoek (ID 50004).
+/// Enum ACKWMORedenVerzoek
 /// </summary>
 enum 50004 ACKWMORedenVerzoek
 {

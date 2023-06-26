@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMODeclarationHeader (ID 50076).
+/// Table ACKWMODeclarationHeader
 /// </summary>
 table 50064 ACKWMODeclarationHeader
 {

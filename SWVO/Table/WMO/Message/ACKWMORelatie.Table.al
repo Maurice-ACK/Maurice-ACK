@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMORelatie (ID 50057).
+/// Table ACKWMORelatie
 /// </summary>
 table 50025 ACKWMORelatie
 {

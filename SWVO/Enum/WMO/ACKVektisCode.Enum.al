@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKVektisCode (ID 50000).
+/// Enum ACKVektisCode
 /// </summary>
 enum 50000 ACKVektisCode implements ACKWMOIProcessor
 {

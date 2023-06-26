@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKStUFBerichtCode (ID 50018).
+/// Enum ACKStUFBerichtCode
 /// </summary>
 enum 50017 ACKStUFBerichtCode
 {

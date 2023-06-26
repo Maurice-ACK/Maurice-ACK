@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKEventLogList (ID 50080).
+/// Page ACKEventLogList
 /// </summary>
 page 50097 ACKEventLogList
 {

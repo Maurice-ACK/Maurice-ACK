@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOEenheid (ID 50088).
+/// Enum ACKWMOEenheid
 /// </summary>
 enum 50043 ACKWMOEenheid
 {

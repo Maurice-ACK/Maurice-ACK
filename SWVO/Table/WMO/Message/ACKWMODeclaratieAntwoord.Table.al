@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMODeclaratie (ID 50068).
+/// Table ACKWMODeclaratie
 /// </summary>
 table 50063 ACKWMODeclaratieAntwoord
 {

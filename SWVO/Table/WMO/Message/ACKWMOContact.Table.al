@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMOContact (ID 50050).
+/// Table ACKWMOContact
 /// </summary>
 table 50024 ACKWMOContact
 {

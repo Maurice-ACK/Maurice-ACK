@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKHomelessProcessing (ID 50007).
+/// Codeunit ACKHomelessProcessing
 /// </summary>
 codeunit 50016 ACKResourceProcessing
 {

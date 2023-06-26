@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit DocumentAttachment (ID 50006).
+/// Codeunit DocumentAttachment
 /// </summary>
 codeunit 50007 DocumentAttachment
 {

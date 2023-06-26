@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKHeadlinePart (ID 50061).
+/// Page ACKHeadlinePart
 /// </summary>
 page 50061 ACKHeadlinePart
 {

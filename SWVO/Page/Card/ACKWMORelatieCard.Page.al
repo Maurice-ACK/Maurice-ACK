@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMORelatieCard (ID 50024).
+/// Page ACKWMORelatieCard
 /// </summary>
 page 50025 ACKWMORelatieCard
 {

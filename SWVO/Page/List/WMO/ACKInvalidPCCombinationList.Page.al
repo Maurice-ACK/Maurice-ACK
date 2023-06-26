@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKInvalidPCCombinationList (ID 50075).
+/// Page ACKInvalidPCCombinationList
 /// </summary>
 page 50075 ACKInvalidPCCombinationList
 {

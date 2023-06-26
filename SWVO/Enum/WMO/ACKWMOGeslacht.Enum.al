@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKHomelessEnum (ID 50026).
+/// Enum ACKHomelessEnum
 /// </summary>
 enum 50025 ACKWMOGeslacht
 {

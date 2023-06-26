@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKStudentTransportCardStatusId (ID 50011).
+/// Enum ACKStudentTransportCardStatusId
 /// </summary>
 enum 50010 ACKStudentTransportCardStaId
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKResourceAPI (ID 50033).
+/// Page ACKResourceAPI
 /// </summary>
 page 50033 ACKResourceAPI
 {

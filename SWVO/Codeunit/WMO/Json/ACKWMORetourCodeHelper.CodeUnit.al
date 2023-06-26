@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKWMORetourCodeHelper (ID 50005).
+/// Codeunit ACKWMORetourCodeHelper
 /// </summary>
 codeunit 50006 ACKWMORetourCodeHelper
 {

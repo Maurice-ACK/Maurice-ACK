@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMOStartStopProduct (ID 50001).
+/// Table ACKWMOStartStopProduct
 /// </summary>
 table 50001 ACKWMOStartStopProduct
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKNewChangedUnchangedProductQ (ID 50029).
+/// Query ACKNewChangedUnchangedProductQ
 /// </summary>
 query 50023 ACKNewChangedUnchangedProductQ
 {

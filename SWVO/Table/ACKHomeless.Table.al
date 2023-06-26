@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKHomeless (ID 50003).
+/// Table ACKHomeless
 /// </summary>
 table 50003 ACKHomeless
 {

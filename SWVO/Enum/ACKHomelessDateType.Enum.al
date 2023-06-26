@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKHomelessDateType (ID 50021).
+/// Enum ACKHomelessDateType
 /// </summary>
 enum 50020 ACKHomelessDateType
 {

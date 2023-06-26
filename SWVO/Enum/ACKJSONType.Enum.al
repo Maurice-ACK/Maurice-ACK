@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKJSONType (ID 50033).
+/// Enum ACKJSONType
 /// </summary>
 enum 50032 ACKJSONType
 {

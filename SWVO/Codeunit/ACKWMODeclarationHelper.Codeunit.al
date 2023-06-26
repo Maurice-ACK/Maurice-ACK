@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKWMODeclarationHelper (ID 50044).
+/// Codeunit ACKWMODeclarationHelper
 /// </summary>
 codeunit 50039 ACKWMODeclarationHelper
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKProductCodeType (ID 50027).
+/// Enum ACKProductCodeType
 /// </summary>
 enum 50026 ACKProductCodeType
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum AKCResourcesType (ID 50025).
+/// Enum AKCResourcesType
 /// </summary>
 enum 50024 ACKResourceType
 {

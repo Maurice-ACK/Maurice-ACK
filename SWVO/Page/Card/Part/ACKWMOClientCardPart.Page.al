@@ -1,5 +1,5 @@
 /// <summary>
-/// Page WMOClientCardPart (ID 50016).
+/// Page WMOClientCardPart
 /// </summary>
 page 50016 ACKWMOClientCardPart
 {

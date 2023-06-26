@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKAssignedProductQ (ID 50019).
+/// Query ACKAssignedProductQ
 /// </summary>
 query 50019 ACKAssignedProductQ
 {

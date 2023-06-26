@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKTransportLine (ID 50039).
+/// Table ACKTransportLine
 /// </summary>
 table 50039 ACKTransportLine
 {

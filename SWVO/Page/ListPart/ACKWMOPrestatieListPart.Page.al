@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOPrestatieListPart (ID 50037).
+/// Page ACKWMOPrestatieListPart
 /// </summary>
 page 50037 ACKWMOPrestatieListPart
 {

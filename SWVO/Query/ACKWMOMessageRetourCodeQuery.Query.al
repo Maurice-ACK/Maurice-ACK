@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKWMOMessageRetourCodeQuery (ID 50000).
+/// Query ACKWMOMessageRetourCodeQuery
 /// </summary>
 query 50000 ACKWMOMessageRetourCodeQuery
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKProductCategoryGLAccount (ID 50041).
+/// Table ACKProductCategoryGLAccount
 /// </summary>
 table 50041 ACKProductCategoryGLAccount
 {

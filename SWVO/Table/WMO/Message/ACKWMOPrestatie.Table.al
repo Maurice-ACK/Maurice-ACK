@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMOPrestatie (ID 50032).
+/// Table ACKWMOPrestatie
 /// </summary>
 table 50032 ACKWMOPrestatie
 {

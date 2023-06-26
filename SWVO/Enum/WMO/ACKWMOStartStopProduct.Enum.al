@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOStartStopProduct (ID 50001).
+/// Enum ACKWMOStartStopProduct
 /// </summary>
 enum 50001 ACKWMOStartStopProduct
 {

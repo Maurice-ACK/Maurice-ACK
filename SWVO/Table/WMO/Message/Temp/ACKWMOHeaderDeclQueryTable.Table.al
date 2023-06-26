@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMOPrestatieQueryTable (ID 50043).
+/// Table ACKWMOPrestatieQueryTable
 /// </summary>
 table 50051 ACKWMOPrestatieQueryTable
 {

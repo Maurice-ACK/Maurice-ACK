@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKSearchAPIIndications (ID 50124).
+/// Page ACKSearchAPIIndications
 /// </summary>
 page 50107 ACKSearchAPIIndications
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKHealthcareProviderAPI (ID 50077).
+/// Page ACKHealthcareProviderAPI
 /// </summary>
 page 50077 ACKHealthcareProviderAPI
 {

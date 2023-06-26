@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKJSONMessage (ID 50061).
+/// Table ACKJSONMessage
 /// </summary>
 table 50061 ACKJSONMessage
 {

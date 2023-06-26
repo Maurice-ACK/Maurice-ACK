@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum PostRegINOUT (ID 50024).
+/// Enum PostRegINOUT
 /// </summary>
 enum 50023 PostRegINOUT
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKTransportLineList (ID 50094).
+/// Page ACKTransportLineList
 /// </summary>
 page 50094 ACKTransportLineList
 {

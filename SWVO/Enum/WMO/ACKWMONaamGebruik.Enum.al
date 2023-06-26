@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMONaamGebruik (ID 50012).
+/// Enum ACKWMONaamGebruik
 /// </summary>
 enum 50011 ACKWMONaamGebruik
 {

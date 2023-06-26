@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOPrestatieCard (ID 50043).
+/// Page ACKWMOPrestatieCard
 /// </summary>
 page 50043 ACKWMOPrestatieCard
 {

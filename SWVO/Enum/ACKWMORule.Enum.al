@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMORule (ID 50035).
+/// Enum ACKWMORule
 /// </summary>
 enum 50034 ACKWMORule
 {

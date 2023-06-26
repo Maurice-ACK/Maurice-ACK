@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKJobStatus (ID 50006).
+/// Enum ACKJobStatus
 /// </summary>
 enum 50006 ACKJobStatus
 {

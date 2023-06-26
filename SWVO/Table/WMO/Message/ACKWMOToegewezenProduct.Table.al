@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMOToegewezenProduct (ID 50044).
+/// Table ACKWMOToegewezenProduct
 /// </summary>
 table 50023 ACKWMOToegewezenProduct
 {

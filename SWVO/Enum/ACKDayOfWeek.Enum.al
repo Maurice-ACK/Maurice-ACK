@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKDayOfWeek (ID 50007).
+/// Enum ACKDayOfWeek
 /// </summary>
 enum 50007 ACKDayOfWeek
 {

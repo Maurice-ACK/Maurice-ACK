@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKQuickActionsCardPart (ID 50059).
+/// Page ACKQuickActionsCardPart
 /// </summary>
 page 50093 ACKQuickActionsCardPart
 {

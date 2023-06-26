@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKProductCodeFrequency (ID 50033).
+/// Table ACKProductCodeFrequency
 /// </summary>
 table 50033 ACKProductCodeFrequency
 {

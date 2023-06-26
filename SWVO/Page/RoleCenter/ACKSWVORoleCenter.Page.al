@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKSWVORoleCenter (ID 50045).
+/// Page ACKSWVORoleCenter
 /// </summary>
 page 50045 ACKSWVORoleCenter
 {

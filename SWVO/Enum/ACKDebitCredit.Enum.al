@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKDebitCredit (ID 50020).
+/// Enum ACKDebitCredit
 /// </summary>
 enum 50019 ACKDebitCredit
 {

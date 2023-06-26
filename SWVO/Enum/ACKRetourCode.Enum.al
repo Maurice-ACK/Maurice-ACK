@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKRetourCode (ID 50029).
+/// Enum ACKRetourCode
 /// </summary>
 enum 50028 ACKRetourCode
 {

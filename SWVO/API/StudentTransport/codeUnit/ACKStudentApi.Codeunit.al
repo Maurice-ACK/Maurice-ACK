@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKStudentApi (ID 50004).
+/// Codeunit ACKStudentApi
 /// </summary>
 codeunit 50005 ACKStudentApi
 {

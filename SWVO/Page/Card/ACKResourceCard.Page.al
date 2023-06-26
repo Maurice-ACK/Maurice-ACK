@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKResourceCard (ID 50065).
+/// Page ACKResourceCard
 /// </summary>
 page 50065 ACKResourceCard
 {

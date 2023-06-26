@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOContactListPart (ID 50021).
+/// Page ACKWMOContactListPart
 /// </summary>
 page 50021 ACKWMOContactListPart
 {

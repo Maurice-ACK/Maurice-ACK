@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKPostRegistrationList (ID 50071).
+/// Page ACKPostRegistrationList
 /// </summary>
 page 50071 ACKPostRegistrationList
 {

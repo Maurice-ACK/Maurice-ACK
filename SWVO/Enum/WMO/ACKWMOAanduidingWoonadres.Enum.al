@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOAanduidingWoonadres (ID 50051).
+/// Enum ACKWMOAanduidingWoonadres
 /// </summary>
 enum 50042 ACKWMOAanduidingWoonadres
 {

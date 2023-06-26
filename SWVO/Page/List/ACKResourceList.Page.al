@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKResourceList (ID 50066).
+/// Page ACKResourceList
 /// </summary>
 page 50066 ACKResourceList
 {

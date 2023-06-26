@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOJuridicalStatus (ID 50014).
+/// Enum ACKWMOJuridicalStatus
 /// </summary>
 enum 50013 ACKWMOJuridischeStatus
 {

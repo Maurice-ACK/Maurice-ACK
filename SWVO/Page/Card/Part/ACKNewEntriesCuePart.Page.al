@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKNewEntriesCuePart (ID 50059).
+/// Page ACKNewEntriesCuePart
 /// </summary>
 page 50063 ACKNewEntriesCuePart
 {

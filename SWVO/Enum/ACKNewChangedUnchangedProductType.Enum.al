@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKNewChangedUnchangedProductType (ID 50005).
+/// Enum ACKNewChangedUnchangedProductType
 /// </summary>
 enum 50005 ACKNewChangedUnchangedProductType
 {

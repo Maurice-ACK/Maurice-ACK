@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMORule (ID 50079).
+/// Table ACKWMORule
 /// </summary>
 table 50066 ACKWMORule
 {

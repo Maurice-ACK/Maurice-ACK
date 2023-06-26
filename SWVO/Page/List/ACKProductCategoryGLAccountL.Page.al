@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKProductCategoryGLAccountL (ID 50084).
+/// Page ACKProductCategoryGLAccountL
 /// </summary>
 page 50084 ACKProductCategoryGLAccountL
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKWMOGenerateRetour (ID 50022).
+/// Codeunit ACKWMOGenerateRetour
 /// </summary>
 codeunit 50023 ACKWMOGenerateRetour
 {

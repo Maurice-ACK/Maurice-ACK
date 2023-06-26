@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKProductCodeRateListPart (ID 50012).
+/// Page ACKProductCodeRateListPart
 /// </summary>
 page 50012 ACKProductCodeRateListPart
 {

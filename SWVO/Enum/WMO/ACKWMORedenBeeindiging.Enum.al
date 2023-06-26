@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMORedenBeeindiging (ID 50003).
+/// Enum ACKWMORedenBeeindiging
 /// </summary>
 enum 50003 ACKWMORedenBeeindiging
 {

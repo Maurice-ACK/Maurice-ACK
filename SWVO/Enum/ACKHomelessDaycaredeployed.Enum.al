@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKHomelessDaycaredeployed (ID 50023).
+/// Enum ACKHomelessDaycaredeployed
 /// </summary>
 enum 50022 ACKHomelessDaycareDeployed
 {

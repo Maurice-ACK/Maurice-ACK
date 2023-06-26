@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKDVSImport (ID 50003).
+/// Codeunit ACKDVSImport
 /// </summary>
 codeunit 50004 ACKDVSImport
 {

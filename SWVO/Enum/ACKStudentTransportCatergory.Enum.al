@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKStudentTransportCatergory (ID 50019).
+/// Enum ACKStudentTransportCatergory
 /// </summary>
 enum 50018 ACKStudentTransportCatergory
 {

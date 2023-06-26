@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOStatusAanlevering (ID 50002).
+/// Enum ACKWMOStatusAanlevering
 /// </summary>
 enum 50002 ACKWMOStatusAanlevering
 {

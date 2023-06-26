@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKHelper (ID 50002).
+/// Codeunit ACKHelper
 /// </summary>
 codeunit 50003 ACKHelper
 {

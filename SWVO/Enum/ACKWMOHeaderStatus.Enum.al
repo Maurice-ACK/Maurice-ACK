@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOHeaderStatus (ID 50025).
+/// Enum ACKWMOHeaderStatus
 /// </summary>
 enum 50035 ACKWMOHeaderStatus
 {

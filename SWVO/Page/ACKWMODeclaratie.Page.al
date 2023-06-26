@@ -1,5 +1,5 @@
 /// <summary>
-/// Page WMODeclaratie (ID 50059).
+/// Page WMODeclaratie
 /// </summary>
 page 50059 WMODeclaratie
 {

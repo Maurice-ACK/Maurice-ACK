@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKNewChangedUnchangedProduct (ID 50005).
+/// Table ACKNewChangedUnchangedProduct
 /// </summary>
 table 50005 ACKNewChangedUnchangedProduct
 {

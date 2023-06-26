@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKJsonExport (ID 50020).
+/// Codeunit ACKJsonExport
 /// </summary>
 codeunit 50021 ACKJsonExport
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKJsonTools (ID 50021).
+/// Codeunit ACKJsonTools
 /// </summary>
 codeunit 50022 ACKJsonTools
 {

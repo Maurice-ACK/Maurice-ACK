@@ -1,5 +1,5 @@
 /// <summary>
-/// TableExtension ACKCustomerExtension (ID 50000) extends Record Customer.
+/// TableExtension ACKCustomerExtensionextends Record Customer.
 /// </summary>
 tableextension 50000 ACKCustomerExtension extends Customer
 {

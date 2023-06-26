@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKStUFCard (ID 50047).
+/// Page ACKStUFCard
 /// </summary>
 page 50047 ACKStUFCard
 {

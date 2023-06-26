@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKIndicationTempStop (ID 50052).
+/// Table ACKIndicationTempStop
 /// </summary>
 table 50052 ACKIndicationTempStop
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKStudentTransportSchedule (ID 50053).
+/// Page ACKStudentTransportSchedule
 /// </summary>
 page 50053 ACKStudentTransportSchedule
 {

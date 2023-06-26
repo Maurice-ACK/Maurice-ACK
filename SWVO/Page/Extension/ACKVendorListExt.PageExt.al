@@ -1,5 +1,5 @@
 /// <summary>
-/// PageExtension ACKVendorListExt (ID 50003) extends Record Vendor List.
+/// PageExtension ACKVendorListExtextends Record Vendor List.
 /// </summary>
 pageextension 50003 ACKVendorListExt extends "Vendor List"
 {

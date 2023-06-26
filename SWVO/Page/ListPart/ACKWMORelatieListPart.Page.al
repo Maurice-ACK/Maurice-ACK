@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMORelatieListPart (ID 50023).
+/// Page ACKWMORelatieListPart
 /// </summary>
 page 50023 ACKWMORelatieListPart
 {

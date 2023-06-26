@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKWMOHeaderClientQueryTable (ID 50035).
+/// Table ACKWMOHeaderClientQueryTable
 /// </summary>
 table 50035 ACKWMOHeaderClientQueryTable
 {

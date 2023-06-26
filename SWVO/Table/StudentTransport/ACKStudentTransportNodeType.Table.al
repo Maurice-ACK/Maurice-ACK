@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKStudentTransportNodeType (ID 50016).
+/// Table ACKStudentTransportNodeType
 /// </summary>
 table 50016 ACKStudentTransportNodeType
 {

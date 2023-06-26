@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKWMOProcessorDefault (ID 50006).
+/// Codeunit ACKWMOProcessorDefault
 /// </summary>
 codeunit 50010 ACKWMOProcessorDefault implements ACKWMOIProcessor
 {

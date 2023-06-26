@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKToegewezenProdIndicationQ (ID 50006).
+/// Query ACKToegewezenProdIndicationQ
 /// </summary>
 query 50006 ACKToegewezenProdIndicationQ
 {

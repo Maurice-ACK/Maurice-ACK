@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKWMOWettelijkeVertegenwoordiging (ID 50015).
+/// Enum ACKWMOWettelijkeVertegenwoordiging
 /// </summary>
 
 //https://experience.dynamics.com/ideas/categories/list/?category=4e96aa66-ad39-e911-a978-000d3a4f3343&forum=e288ef32-82ed-e611-8101-5065f38b21f1

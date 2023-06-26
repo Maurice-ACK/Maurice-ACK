@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOHeaderCardPart (ID 50015).
+/// Page ACKWMOHeaderCardPart
 /// </summary>
 page 50015 ACKWMOHeaderCardPart
 {

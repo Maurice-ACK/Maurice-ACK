@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKRetourCodeList (ID 50000).
+/// Page ACKRetourCodeList
 /// </summary>
 page 50000 ACKWMORetourCodeList
 {

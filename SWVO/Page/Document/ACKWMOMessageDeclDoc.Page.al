@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOMessageDeclDoc (ID 50079).
+/// Page ACKWMOMessageDeclDoc
 /// </summary>
 page 50079 ACKWMOMessageDeclDoc
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKCustomerStatus (ID 50009).
+/// Enum ACKCustomerStatus
 /// </summary>
 enum 50009 ACKCustomerStatus
 {

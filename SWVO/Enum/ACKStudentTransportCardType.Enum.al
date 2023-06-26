@@ -1,5 +1,5 @@
 /// <summary>
-/// Enum ACKStudentTransportCardType (ID 50050).
+/// Enum ACKStudentTransportCardType
 /// </summary>
 enum 50041 ACKStudentTransportCardType
 {

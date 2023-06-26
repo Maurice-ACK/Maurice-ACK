@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOMessageRetourCodeLPart (ID 50073).
+/// Page ACKWMOMessageRetourCodeLPart
 /// </summary>
 page 50074 ACKWMOMessageRetourCodeLPart
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKWMOClientAddressAPI (ID 50145).
+/// Page ACKWMOClientAddressAPI
 /// </summary>
 page 50115 ACKWMOClientAddressAPI
 {

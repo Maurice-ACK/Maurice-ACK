@@ -1,5 +1,5 @@
 /// <summary>
-/// Codeunit ACKDVSValidator (ID 50045).
+/// Codeunit ACKDVSValidator
 /// </summary>
 codeunit 50040 ACKDVSValidator
 {

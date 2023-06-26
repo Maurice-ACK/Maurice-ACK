@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKGeneralDateDialog (ID 50089).
+/// Page ACKGeneralDateDialog
 /// </summary>
 page 50089 ACKGeneralDateDialog
 {

@@ -1,5 +1,5 @@
 /// <summary>
-/// PageExtension ACKCustomerCardExt (ID 50001).
+/// PageExtension ACKCustomerCardExt
 /// </summary>
 pageextension 50001 ACKCustomerCardExt extends "Customer Card"
 {

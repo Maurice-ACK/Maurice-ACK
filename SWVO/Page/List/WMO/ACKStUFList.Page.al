@@ -1,5 +1,5 @@
 /// <summary>
-/// Page ACKStUF (ID 50020).
+/// Page ACKStUF
 /// </summary>
 page 50020 ACKStUFList
 {

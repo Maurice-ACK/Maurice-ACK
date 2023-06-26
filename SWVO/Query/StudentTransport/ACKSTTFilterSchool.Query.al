@@ -1,5 +1,5 @@
 /// <summary>
-/// Query ACKSTTFilterSchool (ID 50016).
+/// Query ACKSTTFilterSchool
 /// </summary>
 query 50016 ACKSTTFilterSchool
 {
