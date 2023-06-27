@@ -138,7 +138,6 @@ page 50003 ACKWMOHeaderList
                 var
                     ACKWMOIProcessor: Interface ACKWMOIProcessor;
                 begin
-                    ACKHelper.AddWmoEventLog(Rec, Severity::Critical, 'hoi');
                     ACKWMOIProcessor := Rec.BerichtCode;
                     ACKWMOIProcessor.Init(Rec);
                     ACKWMOIProcessor.Validate();
