@@ -63,7 +63,8 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
         WMOStartProduct.SetRange(ClientId, WMOClient.SystemId);
         if WMOStartProduct.FindSet() then
             repeat
-                ValidateStartProduct(WMOClient, WMOStartProduct);
+                if ValidateStartProduct(WMOClient, WMOStartProduct) then
+                    exit(false);
             until WMOStartProduct.Next() = 0;
 
         if WMOProcessor.ContainsInvalidRetourCodeFull(WMOHeader305) then
@@ -96,7 +97,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
     /// <param name="WMOClient">Record ACKWMOClient.</param>
     /// <param name="WMOStartProduct">Record ACKWMOStartStopProduct.</param>
     /// <returns>Return value of type Boolean.</returns>
-    procedure ValidateStartProduct(WMOClient: Record ACKWMOClient; WMOStartProduct: Record ACKWMOStartStopProduct)
+    procedure ValidateStartProduct(WMOClient: Record ACKWMOClient; WMOStartProduct: Record ACKWMOStartStopProduct): Boolean
     var
         WMOIndication: Record ACKWMOIndication;
         IndicationTempStop: Record ACKIndicationTempStop;
@@ -110,7 +111,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
 
         if not IndicationQuery.Read() then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::TR019);
-            exit;
+            exit(false);
         end;
 
         WMOIndication.Get(IndicationQuery.IndicationID);
@@ -124,7 +125,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
         //TR019
         if WMOStartProduct.ToewijzingNummer = 0 then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::TR019);
-            exit;
+            exit(false);
         end;
 
         //TR081
@@ -134,7 +135,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
             //ToewijzingsIngangsdatum moet gelijk zijn aan de Ingangsdatum van het toegewezen product in het Toewijzingbericht. 
             if WMOStartProduct.ToewijzingIngangsdatum <> WMOIndication.StartDate then begin
                 MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::SW021);
-                exit;
+                exit(false);
             end;
 
         WMOIndication.GetTempStop(IndicationTempStop, WMOStartProduct.Begindatum);
@@ -142,7 +143,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
         //Start product begindatum mag niet voor de ingangsdatum van de indicatie liggen.
         if WMOStartProduct.Begindatum < WMOIndication.StartDate then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::SW014);
-            exit;
+            exit(false);
         end;
 
         //Status aanlevering
@@ -161,7 +162,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
                     if IndicationTempStop.IsEmpty() then begin
                         if CurrentEffectiveStartDate <> 0D then begin
                             MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::TR074);
-                            exit;
+                            exit(false);
                         end;
                     end else
                         //SW019
@@ -175,7 +176,7 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
                     //TR063
                     if WMOStartProduct.Begindatum <> WMOIndication.EffectiveStartDate then begin
                         MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::TR063);
-                        exit;
+                        exit(false);
                     end;
 
                     //TR071 

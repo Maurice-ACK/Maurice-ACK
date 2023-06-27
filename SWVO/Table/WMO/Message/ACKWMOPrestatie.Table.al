@@ -63,7 +63,7 @@ table 50032 ACKWMOPrestatie
         {
             Caption = 'Bedrag', Locked = true;
         }
-        field(140; DebetCredit; Enum ACKDebitCredit)
+        field(140; DebitCredit; Enum ACKDebitCredit)
         {
             Caption = 'Debet/Credit', Locked = true;
         }
@@ -90,25 +90,5 @@ table 50032 ACKWMOPrestatie
         ACKWMOMessageRetourCode.SetRange(RelationTableNo, Database::ACKWMOPrestatie);
         ACKWMOMessageRetourCode.SetRange(RefID, Rec.SystemId);
         ACKWMOMessageRetourCode.DeleteAll(true);
-    end;
-
-    /// <summary>
-    /// FieldMapDictionary.
-    /// </summary>
-    /// <returns>Return variable Dict of type Dictionary of [Integer, Text].</returns>
-    procedure FieldMapDictionary() Dict: Dictionary of [Integer, Text]
-    begin
-        Dict.Add(Rec.FieldNo(ReferentieNummer), 'productReferentie.referentieNummer');
-        Dict.Add(Rec.FieldNo(VorigReferentieNummer), 'productReferentie.vorigReferentieNummer');
-        Dict.Add(Rec.FieldNo(ToewijzingNummer), 'toewijzingNummer');
-        Dict.Add(Rec.FieldNo(ProductCategorie), 'productCategorie');
-        Dict.Add(Rec.FieldNo(ProductCode), 'productCode');
-        Dict.Add(Rec.FieldNo(Begindatum), 'productPeriode.begindatum');
-        Dict.Add(Rec.FieldNo(Einddatum), 'productPeriode.einddatum');
-        Dict.Add(Rec.FieldNo(GeleverdVolume), 'geleverdVolume');
-        Dict.Add(Rec.FieldNo(Eenheid), 'eenheid');
-        Dict.Add(Rec.FieldNo(ProductTarief), 'productTarief');
-        Dict.Add(Rec.FieldNo(Bedrag), 'ingediendBedrag.bedrag');
-        Dict.Add(Rec.FieldNo(DebetCredit), 'ingediendBedrag.debetCredit');
     end;
 }

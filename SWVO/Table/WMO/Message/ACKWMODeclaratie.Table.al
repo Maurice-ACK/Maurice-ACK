@@ -39,7 +39,7 @@ table 50031 ACKWMODeclaratie
             Caption = 'Totaal bedrag', Locked = true;
             DataClassification = SystemMetadata;
         }
-        field(70; DebetCredit; Enum ACKDebitCredit)
+        field(70; DebitCredit; Enum ACKDebitCredit)
         {
             Caption = 'Debet/Credit', Locked = true;
             DataClassification = SystemMetadata;
@@ -54,7 +54,7 @@ table 50031 ACKWMODeclaratie
         key(DeclaratieNummer; DeclaratieNummer)
         {
         }
-        key(DataCaptionFields; DeclaratieNummer, DebetCredit, TotaalBedrag)
+        key(DataCaptionFields; DeclaratieNummer, DebitCredit, TotaalBedrag)
         {
         }
     }
@@ -81,23 +81,5 @@ table 50031 ACKWMODeclaratie
         ACKWMOMessageRetourCode.SetRange(RelationTableNo, Database::ACKWMODeclaratie);
         ACKWMOMessageRetourCode.SetRange(RefID, Rec.SystemId);
         ACKWMOMessageRetourCode.DeleteAll(true);
-    end;
-
-    /// <summary>
-    /// FieldMapDictionary.
-    /// Arrays in the object must be mapped with the tableId of the object inside the array.
-    /// </summary>
-    /// <returns>Return variable Dict of type Dictionary of [Integer, Text].</returns>
-    procedure FieldMapDictionary() Dict: Dictionary of [Integer, Text]
-    begin
-        Dict.Add(Rec.FieldNo(DeclaratieNummer), 'declaratieNummer');
-
-        Dict.Add(Rec.FieldNo(Begindatum), 'declaratiePeriode.begindatum');
-        Dict.Add(Rec.FieldNo(Einddatum), 'declaratiePeriode.einddatum');
-
-        Dict.Add(Rec.FieldNo(DeclaratieDagtekening), 'declaratieDagtekening');
-
-        Dict.Add(Rec.FieldNo(TotaalBedrag), 'totaalIngediendBedrag.totaalBedrag');
-        Dict.Add(Rec.FieldNo(DebetCredit), 'totaalIngediendBedrag.debitCredit');
     end;
 }

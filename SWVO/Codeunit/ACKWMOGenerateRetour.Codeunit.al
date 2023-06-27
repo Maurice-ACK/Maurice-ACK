@@ -30,9 +30,6 @@ codeunit 50023 ACKWMOGenerateRetour
         if FromWMOHeader.GetRetourHeader(RetourHeader, false) then
             Error(DuplicateRetourErr, RetourVektisCode, FromWMOHeader.Afzender, FromWMOHeader.Identificatie);
 
-        if FromWMOHeader.GetRetourHeader(RetourHeader, false) then
-            exit;
-
         Clear(RetourHeader);
 
         Create();
@@ -100,26 +97,26 @@ codeunit 50023 ACKWMOGenerateRetour
         WMODeclaratie: Record ACKWMODeclaratie;
         WMODeclaration: Codeunit ACKWMODeclarationHelper;
         TotalAmountSubmitted, TotalAmountAssigned : Integer;
-        SubmittedDebetCredit, AssignedDebetCredit : Enum ACKDebitCredit;
+        SubmittedDebitCredit, AssignedDebitCredit : Enum ACKDebitCredit;
     begin
         WMODeclaratie.Get(FromWMOHeader.SystemId);
 
         TotalAmountSubmitted := WMODeclaratie.TotaalBedrag;
-        SubmittedDebetCredit := WMODeclaratie.DebetCredit;
+        SubmittedDebitCredit := WMODeclaratie.DebitCredit;
 
         TotalAmountAssigned := WMODeclaration.GetTotalAmountDeclaredByDeclarationNo(FromWMOHeader.Afzender, WMODeclaratie.DeclaratieNummer);
 
         if TotalAmountAssigned >= 0 then
-            AssignedDebetCredit := ACKDebitCredit::D
+            AssignedDebitCredit := ACKDebitCredit::D
         else
-            AssignedDebetCredit := ACKDebitCredit::C;
+            AssignedDebitCredit := ACKDebitCredit::C;
 
         WMODeclarationAnswerRetour.Init();
         WMODeclarationAnswerRetour.HeaderId := RetourHeader.SystemId;
         WMODeclarationAnswerRetour.DeclaratieNummer := WMODeclaratie.DeclaratieNummer;
-        WMODeclarationAnswerRetour.IngediendDebetCredit := SubmittedDebetCredit;
+        WMODeclarationAnswerRetour.IngediendDebitCredit := SubmittedDebitCredit;
         WMODeclarationAnswerRetour.IngediendTotaalBedrag := TotalAmountSubmitted;
-        WMODeclarationAnswerRetour.ToegekendDebetCredit := AssignedDebetCredit;
+        WMODeclarationAnswerRetour.ToegekendDebitCredit := AssignedDebitCredit;
         WMODeclarationAnswerRetour.ToegekendTotaalBedrag := TotalAmountAssigned;
         WMODeclarationAnswerRetour.Insert(true);
 

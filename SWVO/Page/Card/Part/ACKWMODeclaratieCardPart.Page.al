@@ -36,7 +36,7 @@ page 50035 ACKWMODeclaratieCardPart
                 field(TotaalBedrag; Rec.TotaalBedrag)
                 {
                 }
-                field(DebetCredit; Rec.DebetCredit)
+                field(DebitCredit; Rec.DebitCredit)
                 {
                 }
             }

@@ -77,7 +77,7 @@ query 50012 ACKWMOPrestatiePageQuery
                         column(Bedrag; Bedrag)
                         {
                         }
-                        column(DebetCredit; DebetCredit)
+                        column(DebitCredit; DebitCredit)
                         {
                         }
                     }

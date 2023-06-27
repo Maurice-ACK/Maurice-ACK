@@ -118,6 +118,10 @@ table 50065 ACKWMODeclarationLine
             TableRelation = ACKWMOIndication.ProductCode where(ID = field(IndicationID));
             Editable = false;
         }
+        field(180; Status; Enum ACKWMODeclarationStatus)
+        {
+            Caption = 'Status', Locked = true;
+        }
     }
     keys
     {

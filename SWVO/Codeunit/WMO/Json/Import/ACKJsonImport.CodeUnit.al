@@ -102,7 +102,7 @@ codeunit 50038 ACKJsonImport
 
         if RecordRefCurrent.Number() = 0 then begin
             OpenRecordRef(RecordRefCurrent, JSONMapCurrent.TableNo);
-            SetRelationFields(RecordRefParent, RecordRefCurrent);
+            SetRelationFields(RecordRefParent, RecordRefCurrent, JSONMapCurrent.Path);
         end;
 
         case JSONMapCurrent.JSONType of
@@ -135,13 +135,14 @@ codeunit 50038 ACKJsonImport
                         Error(PathNotFoundErr, JSONMapChild.Path);
             until JSONMapChild.Next() = 0;
 
-        if RecordRefParent.Number() <> 0 then
+        if (RecordRefParent.Number() <> 0) and (RecordRefParent.Number() <> Database::ACKNewChangedUnchangedProduct) then
             InsertOrModifyRecordRef(RecordRefParent);
     end;
 
     local procedure ProcessArray(JSONMapCurrent: Record ACKJSONMap; JsonArray: JsonArray; var RecordRefCurrent: RecordRef)
     var
         JSONMapFirstChild: Record ACKJSONMap;
+        NewChangedUnchangedProduct: Record ACKNewChangedUnchangedProduct;
         RecordRefCopy: RecordRef;
         JsonToken: JsonToken;
         EmptyRequiredArrayErr: Label 'Array %1 is empty but child is required.', Comment = '%1 = Path', Locked = true;
@@ -149,6 +150,15 @@ codeunit 50038 ACKJsonImport
     begin
         if not JSONMapCurrent.GetFirstChild(JSONMapFirstChild) then
             Error(ArrayWithoutChildErr, JSONMapCurrent.GetFullPath());
+
+        case JSONMapCurrent.Path of
+            'ongewijzigdeProducten':
+                RecordRefCurrent.Field(NewChangedUnchangedProduct.FieldNo(NewChangedUnchangedProductType)).Validate(ACKNewChangedUnchangedProductType::Unchanged);
+            'teWijzigenProducten':
+                RecordRefCurrent.Field(NewChangedUnchangedProduct.FieldNo(NewChangedUnchangedProductType)).Validate(ACKNewChangedUnchangedProductType::Changed);
+            'nieuweProducten':
+                RecordRefCurrent.Field(NewChangedUnchangedProduct.FieldNo(NewChangedUnchangedProductType)).Validate(ACKNewChangedUnchangedProductType::New);
+        end;
 
         if not JsonArray.Get(0, JsonToken) then
             if JSONMapFirstChild.Required then
@@ -167,6 +177,7 @@ codeunit 50038 ACKJsonImport
                 ACKJsonTools.SetValue(RecordRefCopy, JSONMapFirstChild.FieldNo, JsonToken);
                 RecordRefCopy.Insert(true);
             end;
+            InsertOrModifyRecordRef(RecordRefCopy);
         end;
     end;
 
@@ -200,7 +211,7 @@ codeunit 50038 ACKJsonImport
     end;
 
 
-    local procedure SetRelationFields(ParentRecordRef: RecordRef; var ChildRecordRef: RecordRef)
+    local procedure SetRelationFields(ParentRecordRef: RecordRef; var ChildRecordRef: RecordRef; Path: Text)
     var
         WMOHeader: Record ACKWMOHeader;
         WMOClient: Record ACKWMOClient;

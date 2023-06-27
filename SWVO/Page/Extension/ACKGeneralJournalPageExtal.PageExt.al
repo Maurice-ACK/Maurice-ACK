@@ -42,21 +42,21 @@ pageextension 50004 "ACKGeneralJournal.PageExt.al" extends "General Journal"
             }
             group(ACKDebit)
             {
-                Caption = 'Debit';
+                Caption = 'Debet', Locked = true;
                 field(Debit; CalculateTotalDebitForAccount(Rec))
                 {
                     ApplicationArea = All;
-                    Caption = 'Debit';
+                    Caption = 'Debet', Locked = true;
                     Editable = false;
                 }
             }
             group(ACKCredit)
             {
-                Caption = 'Credit';
+                Caption = 'Credit', Locked = true;
                 field(Credit; CalculateTotalCreditForBalAccount(Rec))
                 {
                     ApplicationArea = All;
-                    Caption = 'Credit';
+                    Caption = 'Credit', Locked = true;
                     Editable = false;
                 }
             }

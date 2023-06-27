@@ -5,18 +5,22 @@ enum 50033 ACKWMODeclarationStatus
 {
     value(0; New)
     {
-        Caption = 'Nieuw', Locked = true;
+        Caption = 'New';
     }
     value(1; Canceled)
     {
-        Caption = 'Canceled', Locked = true;
+        Caption = 'Canceled';
     }
-    value(2; Posted)
+    value(3; Approved)
     {
-        Caption = 'Geboekt', Locked = true;
+        Caption = 'Approved';
     }
-    value(3; Paid)
+    value(4; Posted)
     {
-        Caption = 'Betaald', Locked = true;
+        Caption = 'Geboekt';
+    }
+    value(5; Paid)
+    {
+        Caption = 'Betaald';
     }
 }

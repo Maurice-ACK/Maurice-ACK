@@ -90,7 +90,7 @@ table 50051 ACKWMOPrestatieQueryTable
             Caption = 'Bedrag', Locked = true;
             DataClassification = SystemMetadata;
         }
-        field(170; DebetCredit; Enum ACKDebitCredit)
+        field(170; DebitCredit; Enum ACKDebitCredit)
         {
             Caption = 'Debet/Credit';
             DataClassification = SystemMetadata;

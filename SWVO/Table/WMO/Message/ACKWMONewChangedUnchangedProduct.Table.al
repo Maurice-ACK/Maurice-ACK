@@ -44,11 +44,6 @@ table 50005 ACKNewChangedUnchangedProduct
         {
             Caption = 'Type', Locked = true;
             DataClassification = CustomerContent;
-
-            trigger OnValidate()
-            begin
-                TestField(Rec.NewChangedUnchangedProductType);
-            end;
         }
 
         field(60; ToewijzingNummer; Integer)

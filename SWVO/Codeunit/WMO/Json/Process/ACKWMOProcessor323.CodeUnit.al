@@ -8,10 +8,14 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         WMODeclaratie: Record ACKWMODeclaratie;
         HealthcareMonth: Record ACKHealthcareMonth;
         MessageRetourCode: Record ACKWMOMessageRetourCode;
+        HealthcareProvider: Record Vendor;
+        WMODeclarationHeader: Record ACKWMODeclarationHeader;
         WMOProcessor: codeunit ACKWMOProcessor;
         WMODeclarationHelper: Codeunit ACKWMODeclarationHelper;
         ACKHelper: Codeunit ACKHelper;
         WMOHelper: Codeunit ACKWMOHelper;
+        ValidPrestaties: List of [Text[20]];
+        LocalPrestatieAmount: Dictionary of [Integer, Integer];
 
     /// <summary>
     /// Init.
@@ -44,6 +48,8 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         if not WMOProcessor.ValidateHeader(WMOHeader323, ACKVektisCode::wmo323) then
             exit(false);
 
+        HealthcareProvider.Get(WMOHeader323.Afzender);
+
         WMODeclaratie.SetRange(HeaderId, WMOHeader323.SystemId);
         WMODeclaratie.FindFirst();
 
@@ -53,20 +59,17 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         WMOClient.SetRange(HeaderId, WMOHeader323.SystemId);
         if WMOClient.FindSet() then
             repeat
-                if ValidateClient(WMOClient) then begin
-                    WMOPrestatie.SetRange(ClientID, WMOClient.SystemId);
+                //OP366 Credit first
+                WMOPrestatie.SetCurrentKey(DebitCredit);
+                WMOPrestatie.SetAscending(DebitCredit, true);
+                WMOPrestatie.SetRange(ClientID, WMOClient.SystemId);
 
-                    if WMOPrestatie.FindSet() then
-                        repeat
-                            ValidatePrestatie(WMOClient, WMOPrestatie);
-                        until WMOPrestatie.Next() = 0;
-                end;
+                if WMOPrestatie.FindSet() then
+                    repeat
+                        if ValidatePrestatie(WMOClient, WMOPrestatie) then
+                            ValidPrestaties.Add(WMOPrestatie.ReferentieNummer);
+                    until WMOPrestatie.Next() = 0;
             until WMOClient.Next() = 0;
-
-
-        // if WMOProcessor.ContainsInvalidRetourCodeFull(WMOHeader323) then
-        //     exit(false);
-
         exit(true);
     end;
 
@@ -85,65 +88,37 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
     /// </summary>
     procedure Process()
     begin
+        //OP366: Omdat een prestatieregel eerst volledig gecrediteerd moet worden alvorens er een correctie op deze prestatieregel ingediend kan worden, is het noodzakelijk dat bij de verwerking van de declaratieberichten eerst de creditregels verwerkt worden, en pas daarna de debetregels. 
         WMOProcessor.ValidateProcessStatus(WMOHeader323);
 
-        if Validate() then
-            WMOProcessor.Send(WMOHeader323)
+        if Validate() then begin
+            CreateDeclarationHeader();
+            CreateDeclarationLines();
+
+            WMOProcessor.Send(WMOHeader323);
+        end
         else
             WMOHeader323.SetStatus(ACKWMOHeaderStatus::InvalidRetourCreated);
 
         WMOHeader323.Modify(true);
-
-        Commit();
-        // WMOProcessor.CreateRetour(WMOHeader323); //Not ready yet.
     end;
-
-    local procedure ValidateClient(WMOClient: Record ACKWMOClient): Boolean
-    begin
-        exit(WMOProcessor.TR304_ExistingClient(WMOClient, WMOHeader323));
-    end;
-
 
     local procedure ValidatePrestatie(WMOClient: Record ACKWMOClient; WMOPrestatie: Record ACKWMOPrestatie): Boolean
     var
-        HealthcareProvider: Record Vendor;
+        ACKClient: Record ACKClient;
         IndicationQuery: Query ACKWMOIndicationQuery;
         WMOPrestatieQuery: Query ACKWMOPrestatieQuery;
         HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery;
         IndicatieStartdatum, IndicatieEinddatum : Date;
     begin
-        // Technische regels
+        //TR304
+        WMOProcessor.TR304_ExistingClient(WMOClient, WMOHeader323, ACKClient);
 
-        // TR318: Indien iedere DeclaratiePeriode zorg is geleverd, moet DeclaratiePeriode de kalendermaand volgend op voorgaande DeclaratiePeriode zijn.
-        // TR319: Een declaratiebericht bevat alleen prestaties waarvan de ProductPeriode valt binnen de huidige, of een voorgaande declaratieperiode.
-        // TR321: Indien in het ToegewezenProduct een Omvang is meegegeven moet GeleverdVolume in de Prestatie passen binnen Volume in het ToegewezenProduct.
-        // TR322: Indien in het ToegewezenProduct een Omvang is meegegeven, moet de som van GeleverdVolume in alle ingediende Prestaties die betrekking hebben op dat ToegewezenProduct passen binnen de toegewezen Omvang.
-        // TR323: Een credit Prestatie moet gerelateerd zijn aan een eerder verzonden (goedgekeurde) debet Prestatie op basis van sleutelvelden.
-        // TR333: DeclaratieNummer van de Declaratie moet uniek zijn voor de aanbieder binnen het wettelijk domein waarop de Declaratie betrekking heeft.
-        // TR338: De Prestatie is gerelateerd aan een ToegewezenProduct op basis van het Toewijzingnummer.
-        // TR339: ProductCategorie in Prestatie moet gelijk zijn aan ProductCategorie in het ToegewezenProduct indien deze opgenomen is.
-        // TR340: ProductCode in Prestatie moet gelijk zijn aan ProductCode in het ToegewezenProduct, indien deze opgenomen is.
-        // TR341: Eenheid in Prestatie moet passen bij Eenheid in het ToegewezenProduct.
-        // TR346: Indien Eenheid ongelijk is aan waarde 83 (Euro’s), moet IngediendBedrag gelijk zijn aan GeleverdVolume vermenigvuldigd met ProductTarief
-        // TR369: Indien in het ToegewezenProduct een Budget is meegegeven, moet de som van GeleverdVolume in alle ingediende Prestaties die betrekking hebben op dat ToegewezenProduct passen binnen het toegewezen Budget.
-        // TR378: Vullen met een bestaande gemeentecode uit het overzicht van CBS dat actueel is op Ingangsdatum of ToewijzingIngangsdatum.
-        // TR381: ProductCode vullen met een code die, volgens de gehanteerde productcodelijst, past bij de ProductCategorie.
-        // TR384: Het is niet toegestaan te declareren op een toewijzing met RedenWijziging waarde "13" (Verwijderd)
-        // TR387: De Begindatum van een ProductPeriode is altijd de eerste dag van de kalendermaand waarop de ProductPeriode betrekking heeft tenzij de Ingangsdatum van de toewijzing later in de betreffende maand ligt
-        // TR388: De Einddatum van een ProductPeriode is altijd de laatste dag van de kalendermaand waarop de ProductPeriode betrekking heeft tenzij de Einddatum van de toewijzing eerder in de betreffende maand ligt
-        // TR389: Prestatie met DebetCredit in IngediendBedrag waarde Debet mag alleen ingezonden worden voor dezelfde ProductPeriode, ProductCategorie en ProductCode met gelijk ToewijzingNummer als er niet al eerder een debetprestatie is verzonden.
-        // TR390: DebetCredit mag alleen waarde Credit hebben indien voor Prestatie met gelijk ProductReferentie niet een Prestatie met Credit bestaat
-        // TR418: ProductTarief in Prestatie dient overeen te komen met het contractuele tarief van ProductCode.
-
-        HealthcareProvider.Get(WMOHeader323.Afzender);
-
-        //#1 Assigned product No. must be unique for the municipality.
         IndicationQuery.SetRange(IndicationQuery.AssignmentNo, WMOPrestatie.ToewijzingNummer);
         IndicationQuery.SetRange(IndicationQuery.MunicipalityNo, WMOHeader323.Ontvanger);
 
         IndicationQuery.Open();
 
-        //TR304
         if not IndicationQuery.Read() then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR304);
             exit(false);
@@ -169,7 +144,6 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
                 exit(false);
             end;
 
-
         //TR314
         Clear(WMOPrestatieQuery);
         WMOPrestatieQuery.SetRange(WMOPrestatieQuery.Afzender, WMOHeader323.Afzender);
@@ -186,6 +160,10 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         if WMOPrestatie.Einddatum > WMODeclaratie.Einddatum then
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR319);
 
+        //Credit check first OP366 and TR323
+        if not ValidateReferencePrestatie(ACKClient, WMOPrestatie) then
+            exit(false);
+
         Clear(HealthcareMonthPCRateQuery);
         HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.IsActive, true);
         HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Year, Date2DMY(WMOPrestatie.Begindatum, 3));
@@ -198,7 +176,10 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
                 if not CheckIndicationStartEndMonth(IndicationQuery, WMOPrestatie, HealthcareMonthPCRateQuery) then
                     exit(false);
 
-            CheckDeclarationAmount(IndicationQuery, WMOPrestatie, HealthcareMonthPCRateQuery)
+            if not CheckDeclarationAmount(IndicationQuery, WMOPrestatie, HealthcareMonthPCRateQuery) then
+                exit(false);
+
+            SetLocalPrestatieAmount(WMOPrestatie.ToewijzingNummer, WMOPrestatie.Bedrag);
         end
         else begin
             HealthcareMonthPCRateQuery.Close();
@@ -274,12 +255,13 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
     end;
 
     local procedure CheckDeclarationAmount(IndicationQuery: Query ACKWMOIndicationQuery; WMOPrestatie: Record ACKWMOPrestatie;
-                                                                HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery)
+                                                                HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery) IsValid: Boolean
     var
         MaxDeclarationDays, DeclaredAmount : integer;
         MaxAllowedVolumeInteger, MaxAllowedAmountInteger, StoppedDays, PrestatieJaar, PrestatieMaand, DaysInMonth : Integer;
         MaxAllowedVolumeDecimal, MaxAllowedAmountDecimal : Decimal;
     begin
+        IsValid := true;
         PrestatieJaar := DATE2DMY(WMOPrestatie.Begindatum, 3);
         PrestatieMaand := DATE2DMY(WMOPrestatie.Begindatum, 2);
 
@@ -290,6 +272,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
 
         if MaxDeclarationDays <= 0 then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR319);
+            IsValid := false;
             exit;
         end;
 
@@ -328,19 +311,27 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         MaxAllowedVolumeInteger := Round(MaxAllowedVolumeDecimal, 1, '>');
 
         DeclaredAmount := WMODeclarationHelper.GetTotalAmountDeclaredInPeriodByAssignment(IndicationQuery.MunicipalityNo, IndicationQuery.HealthcareProviderNo, IndicationQuery.ClientNo, IndicationQuery.AssignmentNo, HealthcareMonth.Year, HealthcareMonth.Month.AsInteger());
+        DeclaredAmount += GetLocalPrestatieAmount(WMOPrestatie.ToewijzingNummer);
 
         //Tarief wordt niet meegegeven bij eenheid euro's.
-        if (WMOPrestatie.Eenheid <> ACKWmoEenheid::Euro) and (WMOPrestatie.ProductTarief <> HealthcareMonthPCRateQuery.Rate) then
+        if (WMOPrestatie.Eenheid <> ACKWmoEenheid::Euro) and (WMOPrestatie.ProductTarief <> HealthcareMonthPCRateQuery.Rate) then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR418);
+            IsValid := false;
+        end;
 
-        if WMOPrestatie.GeleverdVolume > MaxAllowedVolumeInteger then
+        if WMOPrestatie.GeleverdVolume > MaxAllowedVolumeInteger then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR321);
+            IsValid := false;
+        end else
+            if WMOPrestatie.Bedrag > MaxAllowedAmountInteger then begin
+                MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR321);
+                IsValid := false;
+            end;
 
-        if WMOPrestatie.Bedrag > MaxAllowedAmountInteger then
-            MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR321);
-
-        if WMOPrestatie.Bedrag > (MaxAllowedAmountInteger - DeclaredAmount) then
+        if WMOPrestatie.Bedrag > (MaxAllowedAmountInteger - DeclaredAmount) then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR322);
+            IsValid := false;
+        end;
     end;
 
     local procedure NoOfWeeks(NoOfDays: Integer) Weeks: Integer
@@ -350,4 +341,148 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
             Weeks := 1;
     end;
 
+    local procedure CreateDeclarationHeader()
+    begin
+        WMODeclarationHeader.SetRange(HeaderId, WMOHeader323.SystemId);
+
+        if not WMODeclarationHeader.FindFirst() then begin
+            WMODeclarationHeader.Init();
+            WMODeclarationHeader.HeaderId := WMOHeader323.SystemId;
+            WMODeclarationHeader.MunicipalityNo := WMOHeader323.Ontvanger;
+            WMODeclarationHeader.HealthcareProviderNo := WMOHeader323.Afzender;
+            WMODeclarationHeader.DeclarationNo := WMODeclaratie.DeclaratieNummer;
+            WMODeclarationHeader.DeclarationDate := WMODeclaratie.DeclaratieDagtekening;
+            WMODeclarationHeader.Year := HealthcareMonth.Year;
+            WMODeclarationHeader.Month := HealthcareMonth.Month.AsInteger();
+            WMODeclarationHeader.Status := ACKWMODeclarationStatus::New;
+            WMODeclarationHeader.Insert(true);
+        end;
+    end;
+
+    local procedure CreateDeclarationLines()
+    var
+        WMOClient: Record ACKWMOClient;
+        WMOPrestatie: Record ACKWMOPrestatie;
+        WMODeclarationLine: Record ACKWMODeclarationLine;
+        WMOIndication: Record ACKWMOIndication;
+        Rate: Integer;
+    begin
+        WMOClient.SetRange(HeaderId, WMOHeader323.SystemId);
+        if WMOClient.FindSet() then
+            repeat
+                WMOPrestatie.SetRange(ClientID, WMOClient.SystemId);
+                if WMOPrestatie.FindSet() then
+                    repeat
+                        if ValidPrestaties.Contains(WMOPrestatie.ReferentieNummer) then begin
+
+                            WMOIndication.SetRange(MunicipalityNo, WMOHeader323.Ontvanger);
+                            WMOIndication.SetRange(AssignmentNo, WMOPrestatie.ToewijzingNummer);
+                            WMOIndication.FindFirst();
+
+                            Rate := WMODeclarationHelper.GetHealthcareMonthRate(WMOPrestatie.ProductCode, WMOPrestatie.Eenheid, HealthcareMonth.Year, HealthcareMonth.Month.AsInteger());
+
+                            Clear(WMODeclarationLine);
+                            WMODeclarationLine.Init();
+                            WMODeclarationLine.DeclarationHeaderNo := WMODeclarationHeader.DeclarationHeaderNo;
+                            WMODeclarationLine.IndicationID := WMOIndication.ID;
+                            WMODeclarationLine.ClientNo := WMOIndication.ClientNo;
+                            WMODeclarationLine.AssignmentNo := WMOPrestatie.ToewijzingNummer;
+                            WMODeclarationLine.MunicipalityNo := WMOHeader323.Ontvanger;
+                            WMODeclarationLine.HealthcareProviderNo := WMOHeader323.Afzender;
+                            WMODeclarationLine.Reference := WMOPrestatie.ReferentieNummer;
+                            WMODeclarationLine.PreviousReference := WMOPrestatie.VorigReferentieNummer;
+                            WMODeclarationLine.ProductCategoryId := WMOPrestatie.ProductCategorie;
+                            WMODeclarationLine.ProductCode := WMOPrestatie.ProductCode;
+                            WMODeclarationLine.StartDate := WMOPrestatie.Begindatum;
+                            WMODeclarationLine.EndDate := WMOPrestatie.Einddatum;
+                            WMODeclarationLine.Unit := WMOPrestatie.Eenheid;
+                            WMODeclarationLine.Volume := WMOPrestatie.GeleverdVolume;
+
+                            if WMOPrestatie.DebitCredit = ACKDebitCredit::D then
+                                WMODeclarationLine.Amount := WMOPrestatie.Bedrag
+                            else
+                                WMODeclarationLine.Amount := -WMOPrestatie.Bedrag;
+
+                            WMODeclarationLine.ProductRate := Rate;
+                            WMODeclarationLine.Insert(true);
+                        end;
+                    until WMOPrestatie.Next() = 0;
+            until WMOClient.Next() = 0;
+    end;
+
+    local procedure SetLocalPrestatieAmount(ProductAssignedId: Integer; Amount: Integer)
+    begin
+        if LocalPrestatieAmount.ContainsKey(ProductAssignedId) then begin
+            Amount += LocalPrestatieAmount.Get(ProductAssignedId);
+            LocalPrestatieAmount.Set(ProductAssignedId, Amount);
+        end
+        else
+            LocalPrestatieAmount.Add(ProductAssignedId, Amount);
+    end;
+
+    local procedure GetLocalPrestatieAmount(ProductAssignedId: Integer) Amount: Integer
+    begin
+        if LocalPrestatieAmount.ContainsKey(ProductAssignedId) then
+            Amount := LocalPrestatieAmount.Get(ProductAssignedId);
+    end;
+
+    local procedure ValidateReferencePrestatie(ACKClient: Record ACKClient; WMOPrestatie: Record ACKWMOPrestatie): Boolean
+    var
+        RelatedPrestatieQuery: Query ACKWMOPrestatieQuery;
+        DeclaredAmount: integer;
+    begin
+        if WMOPrestatie.VorigReferentieNummer = '' then
+            case WMOPrestatie.DebitCredit of
+                ACKDebitCredit::C:
+                    begin
+                        MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR323);
+                        exit(false);
+                    end;
+                ACKDebitCredit::D:
+                    exit(true);
+            end;
+
+        //This is a xsd/xslt validation but added for extra check.
+        if WMOPrestatie.DebitCredit = ACKDebitCredit::D then begin
+            MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR316);
+            exit(false);
+        end;
+
+        //This cannot be enabled when migrating from AX2012 to Business Central because we won't migrate the old message data.
+
+        // RelatedPrestatieQuery.SetFilter(RelatedPrestatieQuery.PrestatieSystemId, '<>%1', WMOPrestatie.SystemId);
+        // RelatedPrestatieQuery.SetRange(RelatedPrestatieQuery.Afzender, WMOHeader323.Afzender);
+        // RelatedPrestatieQuery.SetRange(RelatedPrestatieQuery.SSN, ACKClient.SSN);
+        // RelatedPrestatieQuery.SetRange(RelatedPrestatieQuery.DebitCredit, ACKDebitCredit::D);
+        // RelatedPrestatieQuery.SetRange(RelatedPrestatieQuery.ReferentieNummer, WMOPrestatie.VorigReferentieNummer);
+
+        // if RelatedPrestatieQuery.Open() and RelatedPrestatieQuery.Read() then begin
+        //     //TR323
+        //     if (RelatedPrestatieQuery.ProductCategorie <> WMOPrestatie.ProductCategorie) or
+        //         (RelatedPrestatieQuery.ProductCode <> WMOPrestatie.ProductCode) or
+        //         (RelatedPrestatieQuery.ToewijzingNummer <> WMOPrestatie.ToewijzingNummer) or
+        //         (RelatedPrestatieQuery.Begindatum <> WMOPrestatie.Begindatum) or
+        //         (RelatedPrestatieQuery.Einddatum <> WMOPrestatie.Einddatum) or
+        //         (RelatedPrestatieQuery.GeleverdVolume <> WMOPrestatie.GeleverdVolume) or
+        //         (RelatedPrestatieQuery.Eenheid <> WMOPrestatie.Eenheid) or
+        //         (RelatedPrestatieQuery.Bedrag <> WMOPrestatie.Bedrag) then begin
+        //         MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR323);
+        //         exit(false);
+        //     end;
+        // end else begin
+        //     MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR323);
+        //     exit(false);
+        // end;
+
+        //Double check because it can't be done with previous message data.
+        DeclaredAmount := WMODeclarationHelper.GetTotalApprovedAmountDeclaredInPeriodByAssignment(WMOHeader323.Ontvanger, WMOHeader323.Afzender, ACKClient.ClientNo, WMOPrestatie.ToewijzingNummer, HealthcareMonth.Year, HealthcareMonth.Month.AsInteger());
+
+        //Check if credit amount is not more than the total approved amount already declared.
+        if DeclaredAmount < WMOPrestatie.Bedrag then begin
+            MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR323);
+            exit(false);
+        end;
+
+        exit(true);
+    end;
 }

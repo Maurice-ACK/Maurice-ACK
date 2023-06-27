@@ -29,7 +29,7 @@ page 50059 WMODeclaratie
                 field(TotaalBedrag; Rec.TotaalBedrag)
                 {
                 }
-                field(DebetCredit; Rec.DebetCredit)
+                field(DebitCredit; Rec.DebitCredit)
                 {
                 }
                 field(SystemCreatedAt; Rec.SystemCreatedAt)

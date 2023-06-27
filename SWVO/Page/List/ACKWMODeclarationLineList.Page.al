@@ -16,7 +16,7 @@ page 50112 ACKWMODeclarationLineList
         {
             repeater(General)
             {
-                field(DeclarationHeaderNo; Rec.DeclarationHeaderNo)
+                field(Status; Rec.Status)
                 {
                     Editable = false;
                 }

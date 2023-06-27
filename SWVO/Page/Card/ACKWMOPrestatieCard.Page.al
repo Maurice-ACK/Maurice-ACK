@@ -67,7 +67,7 @@ page 50043 ACKWMOPrestatieCard
                 // {
                 //     ApplicationArea = All;
                 // }
-                // field(DebetCredit; Rec.DebetCredit)
+                // field(DebitCredit; Rec.DebitCredit)
                 // {
                 //     ApplicationArea = All;
                 // }

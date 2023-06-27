@@ -118,6 +118,7 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
             //TR381
             WMOProcessor.TR081Check(IndicationQuery.ProductCode, WMOToegewezenProduct.ProductCode, WMOToegewezenProduct.ProductCategorie, WMOHeader301.SystemId, Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId);
 
+            //OP033X1 and IV066
             if (IndicationQuery.SSN <> WMOClient.SSN) or
                 (IndicationQuery.ProductCategoryId <> WMOToegewezenProduct.ProductCategorie) or
                 (IndicationQuery.ProductCode <> WMOToegewezenProduct.ProductCode) or
@@ -126,14 +127,23 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
                 exit(false);
             end;
 
-            //SW012
-            if (IndicationQuery.ProductVolume <> WMOToegewezenProduct.Volume) or
-                (IndicationQuery.ProductFrequency <> WMOToegewezenProduct.Frequentie) or
-                (IndicationQuery.ProductUnit <> WMOToegewezenProduct.Eenheid) or
-                (IndicationQuery.Budget <> WMOToegewezenProduct.Budget) then begin
-                MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW012);
-                exit(false);
-            end;
+            if WMOToegewezenProduct.Frequentie = ACKWMOFrequentie::TotaalInToewijzing then
+                if (IndicationQuery.ProductFrequency <> WMOToegewezenProduct.Frequentie) or
+                    (IndicationQuery.ProductUnit <> WMOToegewezenProduct.Eenheid) or
+                    (IndicationQuery.Budget <> WMOToegewezenProduct.Budget) then begin
+                    MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW012);
+                    exit(false);
+                end;
+
+            if WMOToegewezenProduct.Frequentie <> ACKWMOFrequentie::TotaalInToewijzing then
+                //SW012
+                if (IndicationQuery.ProductVolume <> WMOToegewezenProduct.Volume) or
+                    (IndicationQuery.ProductFrequency <> WMOToegewezenProduct.Frequentie) or
+                    (IndicationQuery.ProductUnit <> WMOToegewezenProduct.Eenheid) or
+                    (IndicationQuery.Budget <> WMOToegewezenProduct.Budget) then begin
+                    MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW012);
+                    exit(false);
+                end;
 
             //SW002
             if HasInvalidProductCombination(WMOToegewezenProduct) then

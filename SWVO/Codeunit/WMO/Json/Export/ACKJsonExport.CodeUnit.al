@@ -72,7 +72,7 @@ codeunit 50021 ACKJsonExport
             RecordRef.Open(JSONMap.TableNo);
 
         if RecordRefParent.Number() <> RecordRef.Number() then begin
-            GetChild(RecordRefParent, RecordRef);
+            GetChild(RecordRefParent, RecordRef, JSONMap.Path);
 
             if not RecordRef.FindSet(false) then
                 exit;
@@ -220,7 +220,7 @@ codeunit 50021 ACKJsonExport
         JsonToken := V.AsToken();
     end;
 
-    local procedure GetChild(ParentRecordRef: RecordRef; var ChildRecordRef: RecordRef)
+    local procedure GetChild(ParentRecordRef: RecordRef; var ChildRecordRef: RecordRef; Path: Text)
     var
         WMOClient: Record ACKWMOClient;
         WMORelatie: Record ACKWMORelatie;
@@ -272,6 +272,16 @@ codeunit 50021 ACKJsonExport
                 begin
                     ChildRecordRef.SetTable(NewChangedUnchangedProduct);
                     NewChangedUnchangedProduct.SetRange(ClientID, ParentSystemId);
+
+                    case Path of
+                        'ongewijzigdeProducten':
+                            NewChangedUnchangedProduct.SetRange(NewChangedUnchangedProductType, ACKNewChangedUnchangedProductType::Unchanged);
+                        'teWijzigenProducten':
+                            NewChangedUnchangedProduct.SetRange(NewChangedUnchangedProductType, ACKNewChangedUnchangedProductType::Changed);
+                        'nieuweProducten':
+                            NewChangedUnchangedProduct.SetRange(NewChangedUnchangedProductType, ACKNewChangedUnchangedProductType::New);
+                    end;
+
                     ChildRecordRef.GetTable(NewChangedUnchangedProduct);
                 end;
             Database::ACKWMOStartStopProduct:

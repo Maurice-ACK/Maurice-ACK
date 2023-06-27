@@ -128,7 +128,7 @@ page 50079 ACKWMOMessageDeclDoc
                 {
                     Importance = Additional;
                 }
-                field(DebetCredit; WMODeclaration.DebetCredit)
+                field(DebitCredit; WMODeclaration.DebitCredit)
                 {
                 }
                 field(TotaalBedrag; WMODeclaration.TotaalBedrag)
@@ -146,13 +146,13 @@ page 50079 ACKWMOMessageDeclDoc
                 field(IngediendTotaalBedrag; WMODeclaratieAntwoord.IngediendTotaalBedrag)
                 {
                 }
-                field(IngediendDebetCredit; WMODeclaratieAntwoord.IngediendDebetCredit)
+                field(IngediendDebitCredit; WMODeclaratieAntwoord.IngediendDebitCredit)
                 {
                 }
                 field(ToegekendTotaalBedrag; WMODeclaratieAntwoord.ToegekendTotaalBedrag)
                 {
                 }
-                field(ToegekendDebetCredit; WMODeclaratieAntwoord.ToegekendDebetCredit)
+                field(ToegekendDebitCredit; WMODeclaratieAntwoord.ToegekendDebitCredit)
                 {
                 }
             }

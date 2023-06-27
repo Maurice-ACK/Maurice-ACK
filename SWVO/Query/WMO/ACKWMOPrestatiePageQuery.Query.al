@@ -55,7 +55,7 @@ query 50021 ACKWMOPrestatieQuery
                 column(DeclaratieTotaalBedrag; TotaalBedrag)
                 {
                 }
-                column(DeclaratieDebetCredit; DebetCredit)
+                column(DeclaratieDebitCredit; DebitCredit)
                 {
                 }
 
@@ -111,7 +111,7 @@ query 50021 ACKWMOPrestatieQuery
                         column(Bedrag; Bedrag)
                         {
                         }
-                        column(DebetCredit; DebetCredit)
+                        column(DebitCredit; DebitCredit)
                         {
                         }
                     }

@@ -114,6 +114,7 @@ page 50005 ACKWMOIndicationList
                 Caption = 'Declarations';
                 Image = Payment;
                 RunObject = page ACKWMODeclarationList;
+                RunPageMode = View;
             }
         }
     }

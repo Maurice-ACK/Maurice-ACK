@@ -73,12 +73,30 @@ table 50064 ACKWMODeclarationHeader
             CalcFormula = sum(ACKWMODeclarationLine.Amount where(DeclarationHeaderNo = field(DeclarationHeaderNo)));
             Editable = false;
         }
+        field(110; TotalAmountApproved; Integer)
+        {
+            Caption = 'Total amount';
+            FieldClass = FlowField;
+            CalcFormula = sum(ACKWMODeclarationLine.Amount where(DeclarationHeaderNo = field(DeclarationHeaderNo)));
+            Editable = false;
+        }
+        field(120; TotalAmountCanceled; Integer)
+        {
+            Caption = 'Total amount';
+            FieldClass = FlowField;
+            CalcFormula = sum(ACKWMODeclarationLine.Amount where(DeclarationHeaderNo = field(DeclarationHeaderNo)));
+            Editable = false;
+        }
     }
     keys
     {
         key(PK; DeclarationHeaderNo)
         {
             Clustered = true;
+        }
+        key(HeaderKey; HeaderId, Status)
+        {
+            Unique = true;
         }
     }
 

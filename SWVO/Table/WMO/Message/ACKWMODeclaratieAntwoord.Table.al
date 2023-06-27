@@ -21,7 +21,7 @@ table 50063 ACKWMODeclaratieAntwoord
         {
             Caption = 'Ingediend Totaal bedrag', Locked = true;
         }
-        field(50; IngediendDebetCredit; Enum ACKDebitCredit)
+        field(50; IngediendDebitCredit; Enum ACKDebitCredit)
         {
             Caption = 'Ingediend Debet/Credit', Locked = true;
         }
@@ -29,7 +29,7 @@ table 50063 ACKWMODeclaratieAntwoord
         {
             Caption = 'Toegekend Totaal bedrag', Locked = true;
         }
-        field(70; ToegekendDebetCredit; Enum ACKDebitCredit)
+        field(70; ToegekendDebitCredit; Enum ACKDebitCredit)
         {
             Caption = 'Toegekend Debet/Credit', Locked = true;
         }

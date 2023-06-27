@@ -49,14 +49,22 @@ codeunit 50040 ACKDVSValidator
     var
         JsonText, XmlText : Text;
         Base64XML: Text;
+        StUF: Record ACKStUF;
     begin
         if WMOHeader.IsEmpty() then
             exit(false);
 
         WMOHeader := _WMOHeader;
 
-        ACKJsonExport.Export(WMOHeader).WriteTo(JsonText);
-        XmlText := SWVOAPIHttpClient.GetXMLFromJson(Base64Convert.ToBase64(JsonText, TextEncoding::UTF8));
+        StUF.SetRange(Referentienummer, WMOHeader.Referentienummer);
+        if StUF.FindFirst() then
+            XmlText := StUF.GetXML()
+        else begin
+            ACKJsonExport.Export(WMOHeader).WriteTo(JsonText);
+            XmlText := SWVOAPIHttpClient.GetXMLFromJson(Base64Convert.ToBase64(JsonText, TextEncoding::UTF8));
+        end;
+
+        //Message(XmlText);
         Base64XML := Base64Convert.ToBase64(XmlText, TextEncoding::UTF8);
 
         exit(ValidateBase64Xml(Base64XML));

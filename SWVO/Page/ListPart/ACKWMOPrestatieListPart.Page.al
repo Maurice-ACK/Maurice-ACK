@@ -60,7 +60,7 @@ page 50037 ACKWMOPrestatieListPart
                 field(Bedrag; Rec.Bedrag)
                 {
                 }
-                field(DebetCredit; Rec.DebetCredit)
+                field(DebitCredit; Rec.DebitCredit)
                 {
                 }
             }
@@ -108,7 +108,7 @@ page 50037 ACKWMOPrestatieListPart
                 Rec.Eenheid := WMOPrestatieQuery.Eenheid;
                 Rec.ProductTarief := WMOPrestatieQuery.ProductTarief;
                 Rec.Bedrag := WMOPrestatieQuery.Bedrag;
-                Rec.DebetCredit := WMOPrestatieQuery.DebetCredit;
+                Rec.DebitCredit := WMOPrestatieQuery.DebitCredit;
                 Rec.Insert();
             end;
             WMOPrestatieQuery.Close();

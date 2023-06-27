@@ -3,7 +3,7 @@
 /// </summary>
 enum 50019 ACKDebitCredit
 {
-    Caption = 'Debit/credit', Locked = true;
+    Caption = 'Debet/credit', Locked = true;
 
     value(0; C)
     {
@@ -11,6 +11,6 @@ enum 50019 ACKDebitCredit
     }
     value(1; D)
     {
-        Caption = 'Debit', Locked = true;
+        Caption = 'Debet', Locked = true;
     }
 }

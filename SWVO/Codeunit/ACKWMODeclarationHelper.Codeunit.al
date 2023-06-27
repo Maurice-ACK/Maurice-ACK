@@ -30,6 +30,33 @@ codeunit 50039 ACKWMODeclarationHelper
     end;
 
     /// <summary>
+    /// GetTotalApprovedAmountDeclaredInPeriodByAssignment.
+    /// </summary>
+    /// <param name="MunicipalityNo">Code[20].</param>
+    /// <param name="HealthcareProviderNo">Code[20].</param>
+    /// <param name="ClientNo">Code[20].</param>
+    /// <param name="AssignmentNo">Integer.</param>
+    /// <param name="Year">Integer.</param>
+    /// <param name="Month">Integer.</param>
+    /// <returns>Return variable TotalAmount of type Integer.</returns>
+    procedure GetTotalApprovedAmountDeclaredInPeriodByAssignment(MunicipalityNo: Code[20]; HealthcareProviderNo: Code[20]; ClientNo: Code[20]; AssignmentNo: Integer; Year: Integer; Month: Integer) TotalAmount: Integer
+    var
+        WMODeclarationQuery: Query ACKWMODeclarationQuery;
+    begin
+        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '>=%1', ACKWMODeclarationStatus::Approved.AsInteger());
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.HealthcareProviderNo, HealthcareProviderNo);
+        WMODeclarationQuery.SetRange(Year, Year);
+        WMODeclarationQuery.SetRange(Month, Month);
+
+        if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
+            TotalAmount := WMODeclarationQuery.TotalAmount;
+    end;
+
+
+    /// <summary>
     /// GetTotalAmountDeclaredByDeclarationNo.
     /// </summary>
     /// <param name="HealthcareProviderNo">Code[20].</param>

@@ -234,20 +234,28 @@ codeunit 50015 ACKWMOProcessor
     /// HasRetourCode.
     /// </summary>
     /// <param name="WMOHeader">Record ACKWMOHeader.</param>
-    /// <param name="RetourCode">Code[4].</param>
+    /// <param name="RetourCode">Enum ACKRetourCode.</param>
     /// <returns>Return value of type Boolean.</returns>
-    procedure HasRetourCode(WMOHeader: Record ACKWMOHeader; RetourCode: Code[4]): Boolean
+    procedure HasRetourCode(WMOHeader: Record ACKWMOHeader; RetourCode: Enum ACKRetourCode): Boolean
     var
         MessageRetourCodeQuery: Query ACKWMOMessageRetourCodeQuery;
     begin
         MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.HeaderId, WMOHeader.SystemId);
-        MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.RetourCodeId, RetourCode);
+        MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.RetourCodeId, Format(RetourCode));
 
         if MessageRetourCodeQuery.Open() and MessageRetourCodeQuery.Read() then
             exit(true);
         exit(false);
     end;
 
+    /// <summary>
+    /// HasRetourCode.
+    /// </summary>
+    /// <param name="HeaderId">Guid.</param>
+    /// <param name="TableRelationNo">Integer.</param>
+    /// <param name="RefId">Guid.</param>
+    /// <param name="RetourCode">Code[4].</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure HasRetourCode(HeaderId: Guid; TableRelationNo: Integer; RefId: Guid; RetourCode: Code[4]): Boolean
     var
         MessageRetourCodeQuery: Query ACKWMOMessageRetourCodeQuery;
@@ -296,17 +304,16 @@ codeunit 50015 ACKWMOProcessor
     /// </summary>
     /// <param name="WMOClient">VAR Record ACKWMOClient.</param>
     /// <param name="WMOHeader">VAR Record ACKWMOHeader.</param>
-    /// <returns>Return value of type Boolean.</returns>
-    procedure TR304_ExistingClient(var WMOClient: Record ACKWMOClient; var WMOHeader: Record ACKWMOHeader): Boolean
-    var
-        ACKClient: Record ACKClient;
+    /// <param name="ACKClient">VAR Record ACKClient.</param>
+    /// <returns>Return variable Found of type Boolean.</returns>
+    procedure TR304_ExistingClient(var WMOClient: Record ACKWMOClient; var WMOHeader: Record ACKWMOHeader; var ACKClient: Record ACKClient) Found: Boolean
     begin
-        ACKClient.SetRange(SSN, WMOClient.SSN);
-        if (WMOClient.SSN = '') or ACKClient.IsEmpty() then begin
-            MessageRetourCode.InsertRetourCode(Database::ACKWMOClient, WMOClient.SystemId, WMOHeader.SystemId, ACKWMORule::TR304);
-            exit(false);
-        end;
-        exit(true);
-    end;
+        Clear(ACKClient);
 
+        ACKClient.SetRange(SSN, WMOClient.SSN);
+        Found := ACKClient.FindFirst();
+
+        if Found = false then
+            MessageRetourCode.InsertRetourCode(Database::ACKWMOClient, WMOClient.SystemId, WMOHeader.SystemId, ACKWMORule::TR304);
+    end;
 }

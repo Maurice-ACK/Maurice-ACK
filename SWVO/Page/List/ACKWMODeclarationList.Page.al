@@ -67,6 +67,7 @@ page 50111 ACKWMODeclarationList
                 Caption = 'Lines';
                 Image = BOM;
                 RunObject = page ACKWMODeclarationLineList;
+                RunPageMode = View;
                 RunPageLink = DeclarationHeaderNo = field(DeclarationHeaderNo);
             }
         }

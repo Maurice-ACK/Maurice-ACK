@@ -34,6 +34,7 @@ codeunit 50017 ACKWMOProcessor317 implements ACKWMOIProcessor
     local procedure ValidateLoc(): Boolean
     var
         WMOClient: Record ACKWMOClient;
+        ACKClient: Record ACKClient;
     begin
         if not WMOProcessor.ValidateHeader(WMOHeader317, ACKVektisCode::wmo317) then
             exit(false);
@@ -41,8 +42,10 @@ codeunit 50017 ACKWMOProcessor317 implements ACKWMOIProcessor
         WMOClient.SetRange(HeaderId, WMOHeader317.SystemId);
         WMOClient.FindFirst();
 
-        if not WMOProcessor.TR304_ExistingClient(WMOClient, WMOHeader317) then
+        if not WMOProcessor.TR304_ExistingClient(WMOClient, WMOHeader317, ACKClient) then
             exit(false);
+
+        //Gewenste ingangsdatum checken.
 
         //Bestaat de toewijzing?
         //Datums zijn logisch?

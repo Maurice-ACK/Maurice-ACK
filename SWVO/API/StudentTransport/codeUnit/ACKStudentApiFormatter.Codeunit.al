@@ -77,7 +77,7 @@ codeunit 50001 ACKStudentApiFormatter
     begin
 
         foreach token in jsonInput do
-            message('hell o');
+            message('');
 
 
 

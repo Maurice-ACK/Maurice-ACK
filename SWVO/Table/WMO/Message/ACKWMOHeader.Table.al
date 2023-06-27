@@ -320,13 +320,17 @@ table 50004 ACKWMOHeader
         WMOHeaderBericht.SetRange(BerichtCode, VektisCode);
 
         if VektisCode = VektisCode::wmo323 then begin
-            WMOHeaderBericht.SetRange(Afzender, Rec.Ontvanger);
+            WMOHeaderBericht.SetRange(Ontvanger, Rec.Afzender);
             WMOHeaderBericht.SetRange(Identificatie, Rec.IdentificatieRetour);
-        end
-        else begin
-            WMOHeaderBericht.SetRange(Afzender, Rec.Afzender);
-            WMOHeaderBericht.SetRange(Identificatie, Rec.Identificatie);
-        end;
+        end else
+            if VektisCode = VektisCode::wmo325 then begin
+                WMOHeaderBericht.SetRange(Afzender, Rec.Ontvanger);
+                WMOHeaderBericht.SetRange(IdentificatieRetour, Rec.Identificatie);
+            end
+            else begin
+                WMOHeaderBericht.SetRange(Afzender, Rec.Afzender);
+                WMOHeaderBericht.SetRange(Identificatie, Rec.Identificatie);
+            end;
 
         Found := WMOHeaderBericht.FindFirst();
 
