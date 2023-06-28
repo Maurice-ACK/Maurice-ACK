@@ -168,7 +168,7 @@ codeunit 50029 ACKWMOProcessor325 implements ACKWMOIProcessor
         WMODeclarationHeader: Record ACKWMODeclarationHeader;
         WMODeclarationLine: Record ACKWMODeclarationLine;
         TotalAmountApproved: Integer;
-        NoHeaderFoundMsg: Label 'There is not declaration header, so nothing to approve.';
+        NoHeaderFoundMsg: Label 'No declaration found.';
     begin
         WMODeclarationHeader.SetRange(HeaderId, WMOHeader323.SystemId);
         WMODeclarationHeader.SetFilter(Status, '<=%1', ACKWMODeclarationStatus::Approved);

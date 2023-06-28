@@ -55,7 +55,6 @@ query 50022 ACKWMODeclarationQuery
             column(SystemModifiedBy; SystemModifiedBy)
             {
             }
-
             dataitem(ACKWMODeclarationLine; ACKWMODeclarationLine)
             {
                 DataItemLink = DeclarationHeaderNo = ACKWMODeclarationHeader.DeclarationHeaderNo;
@@ -105,10 +104,6 @@ query 50022 ACKWMODeclarationQuery
                 }
                 column(LineStatus; Status)
                 {
-                }
-                column(TotalLineAmount; Amount)
-                {
-                    Method = Sum;
                 }
             }
         }

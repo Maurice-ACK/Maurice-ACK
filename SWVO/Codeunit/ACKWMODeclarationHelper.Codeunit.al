@@ -25,8 +25,10 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery.SetRange(Year, Year);
         WMODeclarationQuery.SetRange(Month, Month);
 
-        if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
-            TotalAmount := WMODeclarationQuery.TotalAmount;
+        WMODeclarationQuery.Open();
+
+        while WMODeclarationQuery.Read() do
+            TotalAmount += WMODeclarationQuery.Amount;
     end;
 
     /// <summary>
@@ -51,8 +53,10 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery.SetRange(Year, Year);
         WMODeclarationQuery.SetRange(Month, Month);
 
-        if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
-            TotalAmount := WMODeclarationQuery.TotalAmount;
+        WMODeclarationQuery.Open();
+
+        while WMODeclarationQuery.Read() do
+            TotalAmount += WMODeclarationQuery.Amount;
     end;
 
 
@@ -70,8 +74,10 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery.SetRange(WMODeclarationQuery.DeclarationNo, DeclarationNo);
         WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
 
-        if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
-            TotalAmount := WMODeclarationQuery.TotalAmount;
+        WMODeclarationQuery.Open();
+
+        while WMODeclarationQuery.Read() do
+            TotalAmount += WMODeclarationQuery.Amount;
     end;
 
     /// <summary>
@@ -92,8 +98,10 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
 
-        if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
-            TotalAmount := WMODeclarationQuery.TotalAmount;
+        WMODeclarationQuery.Open();
+
+        while WMODeclarationQuery.Read() do
+            TotalAmount += WMODeclarationQuery.Amount;
     end;
 
     /// <summary>

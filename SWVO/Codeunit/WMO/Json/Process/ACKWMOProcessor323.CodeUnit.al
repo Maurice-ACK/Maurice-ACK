@@ -454,8 +454,8 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
     var
         WMODeclarationQuery: Query ACKWMODeclarationQuery;
     begin
-        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
         WMODeclarationQuery.SetFilter(WMODeclarationQuery.Reference, '<>%1', ExcludeReference);
+        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
         WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
@@ -463,8 +463,10 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         WMODeclarationQuery.SetRange(Year, Year);
         WMODeclarationQuery.SetRange(Month, Month);
 
-        if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
-            TotalAmount := WMODeclarationQuery.TotalAmount;
+        WMODeclarationQuery.Open();
+
+        while WMODeclarationQuery.Read() do
+            TotalAmount += WMODeclarationQuery.Amount;
     end;
 
     local procedure CreateDeclarationLines()
