@@ -77,7 +77,6 @@ page 50079 ACKWMOMessageDeclDoc
                         Importance = Additional;
                     }
                 }
-
                 group(Other)
                 {
                     Caption = 'Overige';
@@ -156,12 +155,60 @@ page 50079 ACKWMOMessageDeclDoc
                 {
                 }
             }
-            part(ACKWMOClientListPart; ACKWMOClientListPart)
+            part(ACKWMOPrestatieListPart; ACKWMOPrestatieListPart)
             {
                 ApplicationArea = All;
                 Editable = false;
                 SubPageLink = HeaderId = field(SystemId);
+                UpdatePropagation = Both;
             }
+
+            // repeater(Prestaties)
+            // {
+            //     Visible = PrestatiesEnabled;
+            //     Enabled = PrestatiesEnabled;
+            //     Caption = 'Prestaties', Locked = true;
+            //     field(SSN; ACKWMOPrestatieQueryTable.SSN)
+            //     {
+            //         Caption = 'BSN', Locked = true;
+            //     }
+            //     field(ClientName; ACKWMOPrestatieQueryTable.ClientName)
+            //     {
+            //         Caption = 'Naam', Locked = true;
+            //     }
+            //     field(ToewijzingNummer; ACKWMOPrestatieQueryTable.ToewijzingNummer)
+            //     {
+            //         Caption = 'Toewijzing nummer', Locked = true;
+            //     }
+            //     field(ProductCode; ACKWMOPrestatieQueryTable.ProductCode)
+            //     {
+            //         Caption = 'Productcode', Locked = true;
+            //     }
+            //     field(PrestatieBegindatum; ACKWMOPrestatieQueryTable.Begindatum)
+            //     {
+            //         Caption = 'Begindatum', Locked = true;
+            //     }
+            //     field(PrestatieEinddatum; ACKWMOPrestatieQueryTable.Einddatum)
+            //     {
+            //         Caption = 'Einddatum', Locked = true;
+            //     }
+            //     field(GeleverdVolume; ACKWMOPrestatieQueryTable.GeleverdVolume)
+            //     {
+            //         Caption = 'Geleverd volume', Locked = true;
+            //     }
+            //     field(Eenheid; ACKWMOPrestatieQueryTable.Eenheid)
+            //     {
+            //         Caption = 'Eenheid', Locked = true;
+            //     }
+            //     field(Bedrag; ACKWMOPrestatieQueryTable.Bedrag)
+            //     {
+            //         Caption = 'Bedrag', Locked = true;
+            //     }
+            //     field(PrestatieDebitCredit; ACKWMOPrestatieQueryTable.DebitCredit)
+            //     {
+            //         Caption = 'Debet/Credit', Locked = true;
+            //     }
+            // }
         }
         area(FactBoxes)
         {
@@ -172,7 +219,6 @@ page 50079 ACKWMOMessageDeclDoc
             }
         }
     }
-
     trigger OnAfterGetCurrRecord()
     begin
         case Rec.BerichtCode of

@@ -23,13 +23,10 @@ codeunit 50025 ACKWMOProcessor318 implements ACKWMOIProcessor
     begin
         WMOProcessor.ValidateProcessStatus(WMOHeader318);
 
-        if Validate() then begin
-            if not WMOProcessor.ContainsInvalidRetourCodeFull(WMOHeader318) then
-                ProcessNewChangedUnchangedProduct();
+        if Validate() then
+            ProcessNewChangedUnchangedProduct();
 
-            WMOProcessor.Send(WMOHeader318)
-        end;
-
+        WMOProcessor.Send(WMOHeader318);
         WMOHeader318.Modify(true);
     end;
 

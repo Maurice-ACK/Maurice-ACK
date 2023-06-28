@@ -94,12 +94,9 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         if Validate() then begin
             CreateDeclarationHeader();
             CreateDeclarationLines();
+        end;
 
-            WMOProcessor.Send(WMOHeader323);
-        end
-        else
-            WMOHeader323.SetStatus(ACKWMOHeaderStatus::InvalidRetourCreated);
-
+        WMOProcessor.Send(WMOHeader323);
         WMOHeader323.Modify(true);
 
         Commit();
@@ -134,6 +131,12 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
 
         if not IndicationQuery.Read() then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR304);
+            exit(false);
+        end;
+
+        //SW001 Start product is mandatory
+        if IndicationQuery.EffectiveStartDate = 0D then begin
+            MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::SW001);
             exit(false);
         end;
 

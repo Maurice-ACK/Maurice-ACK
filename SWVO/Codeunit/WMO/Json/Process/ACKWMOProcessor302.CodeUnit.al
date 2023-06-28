@@ -25,15 +25,10 @@ codeunit 50014 ACKWMOProcessor302 implements ACKWMOIProcessor
     begin
         WMOProcessor.ValidateProcessStatus(WMOHeader302);
 
-        if Validate() then begin
-            if not WMOProcessor.ContainsInvalidRetourCodeFull(WMOHeader302) then begin
-
-            end;
+        if Validate() then
             ProcessClient();
 
-            WMOProcessor.Send(WMOHeader302);
-        end;
-
+        WMOProcessor.Send(WMOHeader302);
         WMOHeader302.Modify(true);
     end;
 

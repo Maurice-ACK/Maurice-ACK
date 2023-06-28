@@ -23,9 +23,9 @@ codeunit 50030 ACKWMOProcessor320 implements ACKWMOIProcessor
     begin
         WMOProcessor.ValidateProcessStatus(WMOHeader320);
 
-        if Validate() then
-            WMOProcessor.Send(WMOHeader320);
+        Validate();
 
+        WMOProcessor.Send(WMOHeader320);
         WMOHeader320.Modify(true);
     end;
     /// <summary>

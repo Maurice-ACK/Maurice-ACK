@@ -23,13 +23,10 @@ codeunit 50024 ACKWMOProcessor308 implements ACKWMOIProcessor
     begin
         WMOProcessor.ValidateProcessStatus(WMOHeader308);
 
-        if Validate() then begin
-            if not WMOProcessor.ContainsInvalidRetourCodeFull(WMOHeader308) then
-                ProcessStopProducten();
+        if Validate() then
+            ProcessStopProducten();
 
-            WMOProcessor.Send(WMOHeader308)
-        end;
-
+        WMOProcessor.Send(WMOHeader308);
         WMOHeader308.Modify(true);
     end;
 

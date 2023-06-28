@@ -23,13 +23,10 @@ codeunit 50032 ACKWMOProcessor306 implements ACKWMOIProcessor
     begin
         WMOProcessor.ValidateProcessStatus(WMOHeader306);
 
-        if Validate() then begin
-            if not WMOProcessor.ContainsInvalidRetourCodeFull(WMOHeader306) then
-                ProcessStartProduct();
+        if Validate() then
+            ProcessStartProduct();
 
-            WMOProcessor.Send(WMOHeader306)
-        end;
-
+        WMOProcessor.Send(WMOHeader306);
         WMOHeader306.Modify(true);
     end;
 

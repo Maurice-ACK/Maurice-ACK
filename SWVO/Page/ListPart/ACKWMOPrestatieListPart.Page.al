@@ -5,12 +5,12 @@ page 50037 ACKWMOPrestatieListPart
 {
     Caption = 'Prestaties';
     PageType = ListPart;
-    SourceTable = ACKWMOPrestatieQueryTable;
+    SourceTable = ACKWMOClient;
     Editable = false;
     InsertAllowed = false;
     ModifyAllowed = false;
     DeleteAllowed = false;
-    SourceTableTemporary = true;
+    SourceTableTemporary = false;
     UsageCategory = None;
     ApplicationArea = All;
 
@@ -20,102 +20,97 @@ page 50037 ACKWMOPrestatieListPart
         {
             repeater(General)
             {
-                field(SSN; Rec.SSN)
+                field(SSN; ACKWMOPrestatieQueryTable.SSN)
                 {
                 }
-                field(ClientName; ClientName)
+                field(ClientName; ACKWMOPrestatieQueryTable.ClientName)
                 {
-                    Caption = 'Naam cliënt';
+                    Caption = 'Naam';
                 }
-                field(ReferentieNummer; Rec.ReferentieNummer)
-                {
-                }
-                field(VorigReferentieNummer; Rec.VorigReferentieNummer)
+                field(ReferentieNummer; ACKWMOPrestatieQueryTable.ReferentieNummer)
                 {
                 }
-                field(ToewijzingNummer; Rec.ToewijzingNummer)
+                field(VorigReferentieNummer; ACKWMOPrestatieQueryTable.VorigReferentieNummer)
                 {
                 }
-                field(ProductCategorie; Rec.ProductCategorie)
+                field(ToewijzingNummer; ACKWMOPrestatieQueryTable.ToewijzingNummer)
                 {
                 }
-                field(ProductCode; Rec.ProductCode)
+                field(ProductCategorie; ACKWMOPrestatieQueryTable.ProductCategorie)
                 {
                 }
-                field(Begindatum; Rec.Begindatum)
+                field(ProductCode; ACKWMOPrestatieQueryTable.ProductCode)
                 {
                 }
-                field(Einddatum; Rec.Einddatum)
+                field(Begindatum; ACKWMOPrestatieQueryTable.Begindatum)
                 {
                 }
-                field(GeleverdVolume; Rec.GeleverdVolume)
+                field(Einddatum; ACKWMOPrestatieQueryTable.Einddatum)
                 {
                 }
-                field(Eenheid; Rec.Eenheid)
+                field(GeleverdVolume; ACKWMOPrestatieQueryTable.GeleverdVolume)
                 {
                 }
-                field(ProductTarief; Rec.ProductTarief)
+                field(Eenheid; ACKWMOPrestatieQueryTable.Eenheid)
                 {
                 }
-                field(Bedrag; Rec.Bedrag)
+                field(ProductTarief; ACKWMOPrestatieQueryTable.ProductTarief)
                 {
                 }
-                field(DebitCredit; Rec.DebitCredit)
+                field(Bedrag; ACKWMOPrestatieQueryTable.Bedrag)
+                {
+                }
+                field(DebitCredit; ACKWMOPrestatieQueryTable.DebitCredit)
                 {
                 }
             }
         }
     }
 
-    trigger OnOpenPage()
-    begin
-        if not IsNullGuid(Rec.HeaderSystemId) then
-            Fetch();
-    end;
-
     trigger OnAfterGetCurrRecord()
-    var
-        Client: Record ACKClient;
     begin
-        if not Rec.IsEmpty() and (Rec.SSN <> '') then begin
-            Client.SetRange(SSN, WMOClient.SSN);
-            if Client.FindFirst() then
-                ClientName := Client.Surname;
-        end;
+        if not IsNullGuid(Rec.HeaderId) and (ACKWMOPrestatieQueryTable.HeaderSystemId <> Rec.HeaderId) then
+            Fetch();
     end;
 
     local procedure Fetch()
     var
+        ACKClient: Record ACKClient;
         WMOPrestatieQuery: Query ACKWMOPrestatieQuery;
     begin
-        WMOPrestatieQuery.SetRange(WMOPrestatieQuery.HeaderSystemId, Rec.HeaderSystemId);
+        WMOPrestatieQuery.SetRange(WMOPrestatieQuery.HeaderSystemId, Rec.HeaderId);
         if WMOPrestatieQuery.Open() then begin
             while WMOPrestatieQuery.Read() do begin
-                Rec.Init();
-                Rec.HeaderSystemId := WMOPrestatieQuery.HeaderSystemId;
-                Rec.DeclarationId := WMOPrestatieQuery.DeclaratieSystemId;
-                Rec.ClientId := WMOPrestatieQuery.ClientSystemId;
-                Rec.PrestatieId := WMOPrestatieQuery.PrestatieSystemId;
-                Rec.SSN := WMOPrestatieQuery.SSN;
-                Rec.ReferentieNummer := WMOPrestatieQuery.ReferentieNummer;
-                Rec.VorigReferentieNummer := WMOPrestatieQuery.VorigReferentieNummer;
-                Rec.ToewijzingNummer := WMOPrestatieQuery.ToewijzingNummer;
-                Rec.ProductCategorie := WMOPrestatieQuery.ProductCategorie;
-                Rec.ProductCode := WMOPrestatieQuery.ProductCode;
-                Rec.Begindatum := WMOPrestatieQuery.Begindatum;
-                Rec.Einddatum := WMOPrestatieQuery.Einddatum;
-                Rec.GeleverdVolume := WMOPrestatieQuery.GeleverdVolume;
-                Rec.Eenheid := WMOPrestatieQuery.Eenheid;
-                Rec.ProductTarief := WMOPrestatieQuery.ProductTarief;
-                Rec.Bedrag := WMOPrestatieQuery.Bedrag;
-                Rec.DebitCredit := WMOPrestatieQuery.DebitCredit;
-                Rec.Insert();
+                Clear(ACKClient);
+                ACKClient.SetRange(SSN, WMOPrestatieQuery.SSN);
+                ACKClient.FindFirst();
+
+                ACKWMOPrestatieQueryTable.Init();
+                ACKWMOPrestatieQueryTable.HeaderSystemId := WMOPrestatieQuery.HeaderSystemId;
+                ACKWMOPrestatieQueryTable.DeclarationId := WMOPrestatieQuery.DeclaratieSystemId;
+                ACKWMOPrestatieQueryTable.ClientId := WMOPrestatieQuery.ClientSystemId;
+                ACKWMOPrestatieQueryTable.PrestatieId := WMOPrestatieQuery.PrestatieSystemId;
+                ACKWMOPrestatieQueryTable.SSN := WMOPrestatieQuery.SSN;
+                ACKWMOPrestatieQueryTable.ClientName := ACKClient.Surname;
+                ACKWMOPrestatieQueryTable.ReferentieNummer := WMOPrestatieQuery.ReferentieNummer;
+                ACKWMOPrestatieQueryTable.VorigReferentieNummer := WMOPrestatieQuery.VorigReferentieNummer;
+                ACKWMOPrestatieQueryTable.ToewijzingNummer := WMOPrestatieQuery.ToewijzingNummer;
+                ACKWMOPrestatieQueryTable.ProductCategorie := WMOPrestatieQuery.ProductCategorie;
+                ACKWMOPrestatieQueryTable.ProductCode := WMOPrestatieQuery.ProductCode;
+                ACKWMOPrestatieQueryTable.Begindatum := WMOPrestatieQuery.Begindatum;
+                ACKWMOPrestatieQueryTable.Einddatum := WMOPrestatieQuery.Einddatum;
+                ACKWMOPrestatieQueryTable.GeleverdVolume := WMOPrestatieQuery.GeleverdVolume;
+                ACKWMOPrestatieQueryTable.Eenheid := WMOPrestatieQuery.Eenheid;
+                ACKWMOPrestatieQueryTable.ProductTarief := WMOPrestatieQuery.ProductTarief;
+                ACKWMOPrestatieQueryTable.Bedrag := WMOPrestatieQuery.Bedrag;
+                ACKWMOPrestatieQueryTable.DebitCredit := WMOPrestatieQuery.DebitCredit;
+                ACKWMOPrestatieQueryTable.Insert();
             end;
             WMOPrestatieQuery.Close();
         end;
     end;
 
     var
-        WMOClient: Record ACKWMOClient;
-        ClientName: Text[200];
+
+        ACKWMOPrestatieQueryTable: Record ACKWMOPrestatieQueryTable temporary;
 }

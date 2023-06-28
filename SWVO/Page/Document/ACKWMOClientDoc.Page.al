@@ -117,14 +117,14 @@ page 50048 ACKWMOClientDoc
                 Enabled = IsNewChangedUnchangedProductLVisible;
                 UpdatePropagation = Both;
             }
-            part(ACKWMOPrestatieListPart; ACKWMOPrestatieListPart)
-            {
-                Editable = false;
-                Visible = IsDeclarationVisible;
-                Enabled = IsDeclarationVisible;
-                SubPageLink = ClientId = field(SystemId);
-                UpdatePropagation = Both;
-            }
+            // part(ACKWMOPrestatieListPart; ACKWMOPrestatieListPart)
+            // {
+            //     Editable = false;
+            //     Visible = IsDeclarationVisible;
+            //     Enabled = IsDeclarationVisible;
+            //     SubPageLink = HeaderId = field(SystemId);
+            //     UpdatePropagation = Both;
+            // }
         }
         area(FactBoxes)
         {

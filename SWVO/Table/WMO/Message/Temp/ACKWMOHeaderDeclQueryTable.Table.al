@@ -95,6 +95,10 @@ table 50051 ACKWMOPrestatieQueryTable
             Caption = 'Debet/Credit';
             DataClassification = SystemMetadata;
         }
+        field(180; ClientName; Text[60])
+        {
+            Caption = 'Name', Locked = true;
+        }
     }
     keys
     {

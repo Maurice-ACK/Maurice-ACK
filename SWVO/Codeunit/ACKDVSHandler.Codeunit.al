@@ -98,12 +98,9 @@ codeunit 50040 ACKDVSValidator
 
         JsonObjectStatusCode := ACKJsonTools.SelectJsonObject(JsonObjectResponse, 'statusCode');
         StatusCode := CopyStr(ACKJsonTools.SelectJsonToken(JsonObjectStatusCode, 'code').AsValue().AsText(), 1, 4);
-
-        if StatusCode = '406' then
-            exit(false);
+        Reason := ACKJsonTools.SelectJsonToken(JsonObjectStatusCode, 'reason').AsValue().AsText();
 
         if StatusCode <> '200' then begin
-            Reason := ACKJsonTools.SelectJsonToken(JsonObjectStatusCode, 'reason').AsValue().AsText();
             ACKHelper.AddWmoEventLog(WMOHeader, Severity::Critical, StrSubstNo(StatusCodeReasonLbl, StatusCode, Reason));
             exit(false);
         end;
