@@ -103,6 +103,9 @@ query 50022 ACKWMODeclarationQuery
                 column(ProductCode; ProductCode)
                 {
                 }
+                column(LineStatus; Status)
+                {
+                }
                 column(TotalLineAmount; Amount)
                 {
                     Method = Sum;

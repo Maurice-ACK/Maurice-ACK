@@ -17,7 +17,7 @@ codeunit 50039 ACKWMODeclarationHelper
     var
         WMODeclarationQuery: Query ACKWMODeclarationQuery;
     begin
-        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Canceled.AsInteger());
+        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
         WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
@@ -43,7 +43,7 @@ codeunit 50039 ACKWMODeclarationHelper
     var
         WMODeclarationQuery: Query ACKWMODeclarationQuery;
     begin
-        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '>=%1', ACKWMODeclarationStatus::Approved.AsInteger());
+        WMODeclarationQuery.SetFilter(WMODeclarationQuery.LineStatus, '>=%1', ACKWMODeclarationStatus::Approved.AsInteger());
         WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
@@ -68,7 +68,7 @@ codeunit 50039 ACKWMODeclarationHelper
     begin
         WMODeclarationQuery.SetRange(WMODeclarationQuery.HealthcareProviderNo, HealthcareProviderNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.DeclarationNo, DeclarationNo);
-        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Canceled.AsInteger());
+        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
 
         if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
             TotalAmount := WMODeclarationQuery.TotalAmount;
@@ -90,7 +90,7 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery.SetRange(WMODeclarationQuery.HealthcareProviderNo, HealthcareProviderNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
-        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Canceled.AsInteger());
+        WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
 
         if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
             TotalAmount := WMODeclarationQuery.TotalAmount;

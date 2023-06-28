@@ -129,6 +129,10 @@ table 50065 ACKWMODeclarationLine
         {
             Clustered = true;
         }
+        key(Reference; DeclarationHeaderNo, Reference)
+        {
+            Unique = true;
+        }
         key(SumAmountKey; DeclarationHeaderNo)
         {
             SumIndexFields = Amount;

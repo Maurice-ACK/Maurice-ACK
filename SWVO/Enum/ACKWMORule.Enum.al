@@ -108,4 +108,6 @@ enum 50034 ACKWMORule
     value(822; "SW022") { Caption = 'SW022', Locked = true; }
     value(823; "SW023") { Caption = 'SW023', Locked = true; }
     value(824; "SW024") { Caption = 'SW024', Locked = true; }
+    value(825; "SW025") { Caption = 'SW025', Locked = true; }
+    value(826; "SW026") { Caption = 'SW026', Locked = true; }
 }

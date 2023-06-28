@@ -256,14 +256,14 @@ codeunit 50015 ACKWMOProcessor
     /// <param name="RefId">Guid.</param>
     /// <param name="RetourCode">Code[4].</param>
     /// <returns>Return value of type Boolean.</returns>
-    procedure HasRetourCode(HeaderId: Guid; TableRelationNo: Integer; RefId: Guid; RetourCode: Code[4]): Boolean
+    procedure HasRetourCode(HeaderId: Guid; TableRelationNo: Integer; RefId: Guid; RetourCode: Enum ACKRetourCode): Boolean
     var
         MessageRetourCodeQuery: Query ACKWMOMessageRetourCodeQuery;
     begin
         MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.HeaderId, HeaderId);
         MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.RelationTableNo, TableRelationNo);
         MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.RefId, RefId);
-        MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.RetourCodeId, RetourCode);
+        MessageRetourCodeQuery.SetRange(MessageRetourCodeQuery.RetourCodeId, Format(RetourCode));
 
         if MessageRetourCodeQuery.Open() and MessageRetourCodeQuery.Read() then
             exit(true);

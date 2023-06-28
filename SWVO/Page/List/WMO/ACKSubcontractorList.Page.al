@@ -7,7 +7,7 @@ page 50032 ACKSubcontractorList
     Caption = 'Subcontractors';
     PageType = List;
     SourceTable = ACKSubcontractor;
-    UsageCategory = None;
+    UsageCategory = Lists;
     InsertAllowed = true;
     DeleteAllowed = true;
     ModifyAllowed = true;

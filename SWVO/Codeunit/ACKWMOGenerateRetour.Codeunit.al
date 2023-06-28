@@ -117,7 +117,7 @@ codeunit 50023 ACKWMOGenerateRetour
         WMODeclarationAnswerRetour.IngediendDebitCredit := SubmittedDebitCredit;
         WMODeclarationAnswerRetour.IngediendTotaalBedrag := TotalAmountSubmitted;
         WMODeclarationAnswerRetour.ToegekendDebitCredit := AssignedDebitCredit;
-        WMODeclarationAnswerRetour.ToegekendTotaalBedrag := TotalAmountAssigned;
+        WMODeclarationAnswerRetour.ToegekendTotaalBedrag := Abs(TotalAmountAssigned);
         WMODeclarationAnswerRetour.Insert(true);
 
         //Retour codes
@@ -313,12 +313,14 @@ codeunit 50023 ACKWMOGenerateRetour
 
         if FromWMOPrestatie.FindSet(false) then
             repeat
-                Clear(WMOPrestatieRetour);
-                WMOPrestatieRetour.TransferFields(FromWMOPrestatie, false);
-                WMOPrestatieRetour.ClientID := ToClientId;
-                WMOPrestatieRetour.Insert(true);
+                if HasInvalidRetourCode(Database::ACKWMOPrestatie, FromWMOPrestatie.SystemId) then begin
+                    Clear(WMOPrestatieRetour);
+                    WMOPrestatieRetour.TransferFields(FromWMOPrestatie, false);
+                    WMOPrestatieRetour.ClientID := ToClientId;
+                    WMOPrestatieRetour.Insert(true);
 
-                CopyRetourCodes(Database::ACKWMOPrestatie, FromWMOPrestatie.SystemId, WMOPrestatieRetour.SystemId);
+                    CopyRetourCodes(Database::ACKWMOPrestatie, FromWMOPrestatie.SystemId, WMOPrestatieRetour.SystemId);
+                end;
             until FromWMOPrestatie.Next() = 0;
     end;
 

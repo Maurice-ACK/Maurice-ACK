@@ -7,9 +7,13 @@ enum 50033 ACKWMODeclarationStatus
     {
         Caption = 'New';
     }
-    value(1; Canceled)
+    value(1; PartlyRejected)
     {
-        Caption = 'Canceled';
+        Caption = 'Partly rejected';
+    }
+    value(2; Rejected)
+    {
+        Caption = 'Rejected';
     }
     value(3; Approved)
     {
