@@ -98,7 +98,7 @@ page 50019 ACKStUFAPI
                 }
                 field(berichtXml; Base64StringXml)
                 {
-                    Caption = 'Bericht xml', Locked = true;
+                    Caption = 'Bericht XML', Locked = true;
                 }
                 field(berichtJson; Base64StringJson)
                 {

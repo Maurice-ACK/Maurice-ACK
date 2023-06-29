@@ -12,11 +12,6 @@ tableextension 50001 ACKVendorExtension extends Vendor
             Caption = 'Start/End-month declaration';
             DataClassification = SystemMetadata;
         }
-        field(50001; ACKOnlyCorrectAmountDeclaration; Boolean)
-        {
-            Caption = 'Only correct amount declaration';
-            DataClassification = SystemMetadata;
-        }
         field(50002; ACKPermiWMO; Boolean)
         {
             Caption = 'iWMO (301A / 317A)';

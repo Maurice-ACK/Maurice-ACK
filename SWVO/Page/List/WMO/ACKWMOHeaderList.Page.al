@@ -98,7 +98,7 @@ page 50003 ACKWMOHeaderList
             action(DownloadOriginalXML)
             {
                 Image = Download;
-                Caption = 'Download original xml', Locked = true;
+                Caption = 'Download original XML';
 
                 trigger OnAction()
                 var
@@ -110,7 +110,7 @@ page 50003 ACKWMOHeaderList
             action(DownloadXML)
             {
                 Image = Download;
-                Caption = 'Download xml', Locked = true;
+                Caption = 'Download XML', Locked = true;
 
                 trigger OnAction()
                 var
@@ -160,8 +160,8 @@ page 50003 ACKWMOHeaderList
             action(UploadXml)
             {
                 Image = Import;
-                Caption = 'Upload xml';
-                ToolTip = 'Upload a wmo xml message from your computer.';
+                Caption = 'Upload XML';
+                ToolTip = 'Upload a Wmo XML message from your computer.';
 
                 trigger OnAction()
                 begin
@@ -172,7 +172,7 @@ page 50003 ACKWMOHeaderList
             {
                 Image = Import;
                 Caption = 'Upload JSON';
-                ToolTip = 'Upload a wmo JSON message from your computer.';
+                ToolTip = 'Upload a Wmo JSON message from your computer.';
 
                 trigger OnAction()
                 begin

@@ -1,7 +1,10 @@
+/// <summary>
+/// Page ACKClientAddressList (ID 50116).
+/// </summary>
 page 50116 ACKClientAddressList
 {
     ApplicationArea = All;
-    Caption = 'ClientAddressList';
+    Caption = 'Client addresses';
     PageType = List;
     SourceTable = ACKClientAddress;
     UsageCategory = None;

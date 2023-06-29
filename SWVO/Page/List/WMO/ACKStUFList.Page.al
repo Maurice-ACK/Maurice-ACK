@@ -148,8 +148,8 @@ page 50020 ACKStUFList
             action(UploadXml)
             {
                 Image = Import;
-                Caption = 'Upload xml';
-                ToolTip = 'Upload a wmo xml message from your computer.';
+                Caption = 'Upload XML';
+                ToolTip = 'Upload a Wmo XML message from your computer.';
 
                 trigger OnAction()
                 begin

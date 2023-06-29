@@ -55,6 +55,7 @@ page 50008 ACKClientCard
 
             part(ACKClientAddressListPart; ACKClientAddressListPart)
             {
+                Caption = 'Addresses';
                 Editable = true;
                 SubPageLink = ClientNo = field(ClientNo);
             }

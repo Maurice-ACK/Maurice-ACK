@@ -74,28 +74,32 @@ page 50093 ACKQuickActionsCardPart
                     {
                         Caption = 'Klanten', Locked = true;
                         RunObject = page "Customer List";
-                        RunPageLink = "Customer Posting Group" = filter('CUS');
+                        RunPageLink = "Customer Posting Group" = const('CUS');
+                        RunPageView = where("Customer Posting Group" = const('CUS'));
                         Image = TileReport;
                     }
                     action(Municipalities)
                     {
                         Caption = 'Gemeenten', Locked = true;
                         RunObject = page "Customer List";
-                        RunPageLink = "Customer Posting Group" = filter('GEM');
+                        RunPageLink = "Customer Posting Group" = const('GEM');
+                        RunPageView = where("Customer Posting Group" = const('GEM'));
                         Image = TileReport;
                     }
                     action(HealthcareProviders)
                     {
                         Caption = 'Zorgaanbieders', Locked = true;
                         RunObject = page "Vendor List";
-                        RunPageLink = "Vendor Posting Group" = filter('ZA');
+                        RunPageLink = "Vendor Posting Group" = const('ZA');
+                        RunPageView = where("Vendor Posting Group" = const('ZA'));
                         Image = TileReport;
                     }
                     action(Vendors)
                     {
                         Caption = 'Leveranciers', Locked = true;
                         RunObject = page "Vendor List";
-                        RunPageLink = "Vendor Posting Group" = filter('LEV');
+                        RunPageLink = "Vendor Posting Group" = const('LEV');
+                        RunPageView = where("Vendor Posting Group" = const('LEV'));
                         Image = TileReport;
                     }
                     action(SalesInvoices)

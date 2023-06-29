@@ -116,11 +116,11 @@ codeunit 50027 ACKGenerateStuf
         StUF.BerichtJson.CreateOutStream(outstream, TextEncoding::UTF8);
         JsonObject.WriteTo(outstream);
 
-        //Create the xml text from the JSON text
+        //Create the XML text from the JSON text
         JsonObject.WriteTo(JsonText);
         XMl := SWVOAPIHttpClient.GetXMLFromJson(Base64Convert.ToBase64(JsonText, TextEncoding::UTF8));
 
-        //Save the xml text in the blob field
+        //Save the XML text in the blob field
         StUF.BerichtXml.CreateOutStream(outstream, TextEncoding::UTF8);
         outstream.WriteText(XML);
     end;

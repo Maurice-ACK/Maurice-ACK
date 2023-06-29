@@ -209,7 +209,7 @@
         </trans-unit>
         <trans-unit id="Table 1687173493 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client notes</source>
-          <target state="needs-translation"/>
+          <target state="translated">Notities</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKClientNotes - Property Caption</note>
         </trans-unit>
@@ -863,19 +863,19 @@
         </trans-unit>
         <trans-unit id="Table 3593609799 - Method 4254856415 - NamedType 3930672410" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1: %2, %3 created.</source>
-          <target state="needs-translation"/>
+          <target state="translated">%1: %2, %3 aangemaakt.</target>
           <note from="Developer" annotates="general" priority="2">%1 = Table caption, %2 = Year, %3 = Month</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeRateMonth - Method Copy - NamedType ProductCodeRateMonthCreatedLbl</note>
         </trans-unit>
         <trans-unit id="Table 3593609799 - Method 3353343436 - NamedType 1900310498" size-unit="char" translate="yes" xml:space="preserve">
           <source>%1: %2, %3 already exists.</source>
-          <target state="needs-translation"/>
+          <target state="translated">%1: %2, %3 bestaat al.</target>
           <note from="Developer" annotates="general" priority="2">%1 = Table caption, %2 = Year, %3 = Month</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeRateMonth - Method CreateNewMonth - NamedType ProductCodeRateMonthDuplicateErr</note>
         </trans-unit>
         <trans-unit id="Table 3593609799 - Field 3276803522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>
-          <target state="needs-translation"/>
+          <target state="translated">Actief</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeRateMonth - Field IsActive - Property Caption</note>
         </trans-unit>
@@ -1127,7 +1127,7 @@
         </trans-unit>
         <trans-unit id="Table 2527100706 - Field 1972486082 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>JournalName</source>
-          <target state="needs-translation"/>
+          <target state="translated">Journaal</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKVendorAndPosting - Field JournalName - Property Caption</note>
         </trans-unit>
@@ -1259,7 +1259,7 @@
         </trans-unit>
         <trans-unit id="Table 3535395222 - Field 2972395370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Id</source>
-          <target state="needs-translation"/>
+          <target state="translated">Categorie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationLine - Field ProductCategoryId - Property Caption</note>
         </trans-unit>
@@ -1349,7 +1349,7 @@
         </trans-unit>
         <trans-unit id="Table 3116700396 - Field 2972395370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category Id</source>
-          <target state="needs-translation"/>
+          <target state="translated">Categorie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOIndication - Field ProductCategoryId - Property Caption</note>
         </trans-unit>
@@ -1427,7 +1427,7 @@
         </trans-unit>
         <trans-unit id="Table 1089395134 - Field 2668536903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Category ID</source>
-          <target state="needs-translation"/>
+          <target state="translated">Categorie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Field CategoryID - Property Caption</note>
         </trans-unit>
@@ -1516,8 +1516,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMORule - Field Rule - Property Caption</note>
         </trans-unit>
         <trans-unit id="Codeunit 758025634 - Method 1898252047 - NamedType 2663870443" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Failed to parse xml</source>
-          <target state="translated">Fout tijdens het uitpakken van het xml bericht</target>
+          <source>Failed to parse XML</source>
+          <target state="needs-adaptation">Fout tijdens het uitpakken van het xml bericht</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ACKDownloadWMOFile - Method DownloadXML - NamedType XMLParseErr</note>
         </trans-unit>
@@ -1558,8 +1558,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ACKHelper - Method UploadXml - NamedType SelectFileLbl</note>
         </trans-unit>
         <trans-unit id="Codeunit 77431209 - Method 952252662 - NamedType 2663870443" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Failed to parse xml</source>
-          <target state="translated">Fout tijdens het uitpakken van het xml bericht</target>
+          <source>Failed to parse XML</source>
+          <target state="needs-adaptation">Fout tijdens het uitpakken van het xml bericht</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ACKHelper - Method UploadXml - NamedType XMLParseErr</note>
         </trans-unit>
@@ -1607,7 +1607,7 @@
         </trans-unit>
         <trans-unit id="Codeunit 2617073280 - Method 3633563347 - NamedType 2034178160" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cannot create retour message from this type %1</source>
-          <target state="needs-translation"/>
+          <target state="translated">Kan geen retourbericht aanmaken van het type %1</target>
           <note from="Developer" annotates="general" priority="2">%1 = Vektiscode</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ACKWMOGenerateRetour - Method GenerateRetourDVS - NamedType InvalidTypeErr</note>
         </trans-unit>
@@ -1690,7 +1690,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientAddressCard - Action VerifyAddres - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 617611784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ClientAddressList</source>
+          <source>Client addresses</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientAddressList - Property Caption</note>
@@ -1706,6 +1706,12 @@
           <target>Clientkaart</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientCard - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3491357304 - Control 370658181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Addresses</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientCard - Control ACKClientAddressListPart - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3491357304 - Action 3572315256 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>View client indications.</source>
@@ -1811,13 +1817,13 @@
         </trans-unit>
         <trans-unit id="Page 2080704475 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client notes</source>
-          <target state="needs-translation"/>
+          <target state="translated">Notities</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKCLientNotesList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 2146815134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client notes</source>
-          <target state="needs-translation"/>
+          <target state="translated">Notities</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientNotesListPage - Property Caption</note>
         </trans-unit>
@@ -2141,7 +2147,7 @@
         </trans-unit>
         <trans-unit id="Page 278184185 - Action 2626368477 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Copy</source>
-          <target state="needs-translation"/>
+          <target state="translated">Kopiëren</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeRateList - Action Generate - Property Caption</note>
         </trans-unit>
@@ -2260,13 +2266,13 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKStUFList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1897949385 - Action 952252662 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload a wmo xml message from your computer.</source>
+          <source>Upload a Wmo XML message from your computer.</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKStUFList - Action UploadXml - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 1897949385 - Action 952252662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload xml</source>
+          <source>Upload XML</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKStUFList - Action UploadXml - Property Caption</note>
@@ -3034,7 +3040,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Control ReturnStatus - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3295138171 - Action 1512673773 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload a wmo JSON message from your computer.</source>
+          <source>Upload a Wmo JSON message from your computer.</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Action UploadJson - Property ToolTip</note>
@@ -3046,14 +3052,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Action UploadJson - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3295138171 - Action 952252662 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload a wmo xml message from your computer.</source>
+          <source>Upload a Wmo XML message from your computer.</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Action UploadXml - Property ToolTip</note>
         </trans-unit>
         <trans-unit id="Page 3295138171 - Action 952252662 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Upload xml</source>
-          <target state="translated">Upload XML</target>
+          <source>Upload XML</source>
+          <target state="needs-adaptation">Upload XML</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Action UploadXml - Property Caption</note>
         </trans-unit>
@@ -3116,6 +3122,12 @@
           <target state="translated">Valideren</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Action Validate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3295138171 - Action 941554568 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Download original XML</source>
+          <target state="translated">Download originele XML</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOHeaderList - Action DownloadOriginalXML - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1333527920 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client indication</source>
@@ -3531,12 +3543,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ACKVendorExtension - Property Caption</note>
         </trans-unit>
-        <trans-unit id="TableExtension 655902240 - Field 1797455129 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
-          <source>Only correct amount declaration</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ACKVendorExtension - Field ACKOnlyCorrectAmountDeclaration - Property Caption</note>
-        </trans-unit>
         <trans-unit id="TableExtension 655902240 - Field 4191917911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Homeless</source>
           <target state="translated">Dakloosheid</target>
@@ -3569,7 +3575,7 @@
         </trans-unit>
         <trans-unit id="TableExtension 655902240 - Field 4137867418 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Start/End-month declaration</source>
-          <target state="needs-translation"/>
+          <target state="translated">Start/eind-maand declaratie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ACKVendorExtension - Field ACKStartEndMonthDeclaration - Property Caption</note>
         </trans-unit>
@@ -3587,7 +3593,7 @@
         </trans-unit>
         <trans-unit id="Enum 73338203 - EnumValue 3543129988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Blocked</source>
-          <target state="needs-translation"/>
+          <target state="translated">Geblokkeerd</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Enum ACKCustomerStatus - EnumValue Blocked - Property Caption</note>
         </trans-unit>

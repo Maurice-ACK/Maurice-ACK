@@ -41,7 +41,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/JSON; charset=utf-8');
+        RequestHeaders.Add('Accept', 'application/json; charset=utf-8');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
 
         Success := Send(HttpRequestMessage, HttpResponseMessage);
@@ -87,7 +87,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
-        RequestHeaders.Add('Accept', 'application/JSON; charset=utf-8');
+        RequestHeaders.Add('Accept', 'application/json; charset=utf-8');
 
         exit(Send(HttpRequestMessage, HttpResponseMessage));
         // if Send(HttpRequestMessage, HttpResponseMessage) then begin
@@ -136,7 +136,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
@@ -186,7 +186,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
@@ -220,20 +220,20 @@ codeunit 50019 ACKSWVOAPHttpClient
         HttpRequestMessage.Method('POST');
 
         JsonObject.Add('validate', true);
-        JsonObject.Add('contentType', 'JSON');
+        JsonObject.Add('contentType', 'json');
         JsonObject.Add('base64String', Base64Text);
         JsonObject.WriteTo(ContentText);
         HttpContent.WriteFrom(ContentText);
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
-        RequestHeaders.Add('Accept', 'application/JSON');
+        RequestHeaders.Add('Accept', 'application/json');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
 
         exit(Send(HttpRequestMessage, HttpResponseMessage));
@@ -266,20 +266,20 @@ codeunit 50019 ACKSWVOAPHttpClient
         HttpRequestMessage.Method('POST');
 
         JsonObject.Add('validate', true);
-        JsonObject.Add('contentType', 'JSON');
+        JsonObject.Add('contentType', 'json');
         JsonObject.Add('base64String', Base64Text);
         JsonObject.WriteTo(ContentText);
         HttpContent.WriteFrom(ContentText);
         Message(ContentText);
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/JSON');
+        ContentHeaders.Add('Content-Type', 'application/json');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
-        // RequestHeaders.Add('Accept', 'application/JSON');
+        // RequestHeaders.Add('Accept', 'application/json');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
 
         exit(Send(HttpRequestMessage, HttpResponseMessage));
@@ -323,13 +323,13 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
-        RequestHeaders.Add('Accept', 'application/JSON; charset=utf-8');
+        RequestHeaders.Add('Accept', 'application/json; charset=utf-8');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
         // RequestHeaders.Add('X-Api-Key', ACKSWVOGeneralSetup.SWVOAPIKey());
 
@@ -364,13 +364,13 @@ codeunit 50019 ACKSWVOAPHttpClient
         HttpRequestMessage.Method('POST');
 
         JsonObject.Add('validate', true);
-        JsonObject.Add('contentType', 'JSON');
+        JsonObject.Add('contentType', 'json');
         JsonObject.Add('base64String', Base64Text);
         JsonObject.WriteTo(ContentText);
         HttpContent.WriteFrom(ContentText);
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/JSON');
+        ContentHeaders.Add('Content-Type', 'application/json');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
@@ -430,7 +430,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/JSON');
+        RequestHeaders.Add('Accept', 'application/json');
         //RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
         // RequestHeaders.Add('X-Api-Key', ACKSWVOGeneralSetup.SWVOAPIKey());
 
@@ -494,7 +494,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/JSON');
+        RequestHeaders.Add('Accept', 'application/json');
         //RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
         // RequestHeaders.Add('X-Api-Key', ACKSWVOGeneralSetup.SWVOAPIKey());
 
@@ -568,7 +568,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/JSON');
+        RequestHeaders.Add('Accept', 'application/json');
 
         Send(HttpRequestMessage, HttpResponseMessage);
 

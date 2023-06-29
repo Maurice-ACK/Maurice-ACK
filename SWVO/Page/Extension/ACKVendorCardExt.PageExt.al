@@ -9,11 +9,7 @@ pageextension 50000 ACKVendorCardExt extends "Vendor Card"
         {
             group(SWVO)
             {
-                field(StUFApplication; Rec.ACKOnlyCorrectAmountDeclaration)
-                {
-                    ApplicationArea = All;
-                }
-                field(StUFHeenEndpointURL; Rec.ACKStartEndMonthDeclaration)
+                field(ACKStartEndMonthDeclaration; Rec.ACKStartEndMonthDeclaration)
                 {
                     ApplicationArea = All;
                 }

@@ -337,7 +337,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         else
             DeclaredAmount := GetTotalAmountDeclaredInMonth(IndicationQuery.MunicipalityNo, IndicationQuery.HealthcareProviderNo, IndicationQuery.ClientNo, IndicationQuery.AssignmentNo, ProductCodeRateMonth.Year, ProductCodeRateMonth.Month.AsInteger(), WMOPrestatie.ReferentieNummer);
 
-        //If multiple debit/credit in 1 xml then add this to the total declared amount.
+        //If multiple debit/credit in 1 XML then add this to the total declared amount.
         DeclaredAmount += GetLocalPrestatieAmount(WMOPrestatie.ToewijzingNummer);
 
         //Tarief wordt niet meegegeven bij eenheid euro's.

@@ -6,7 +6,7 @@ codeunit 50041 ACKDownloadWMOFile
     var
         ACKStUF: record ACKStUF;
         XMLFileNameFormatLbl: Label '%1.xml', Locked = true;
-        JSONFileNameFormatLbl: Label '%1.JSON', Locked = true;
+        JSONFileNameFormatLbl: Label '%1.json', Locked = true;
 
     /// <summary>
     /// DownloadXML.
@@ -54,7 +54,7 @@ codeunit 50041 ACKDownloadWMOFile
         XMLDoc: XMLDocument;
         FileName: Text;
         root: XmlElement;
-        XMLParseErr: Label 'Failed to parse xml';
+        XMLParseErr: Label 'Failed to parse XML';
     begin
         if not XMLDocument.ReadFrom(XMLText, XMLDoc) then
             Error(XMLParseErr);

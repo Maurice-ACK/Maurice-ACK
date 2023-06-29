@@ -410,7 +410,7 @@ codeunit 50003 ACKHelper
         FilePath, InstreamText : Text;
         XMLFileTypeLbl: Label 'XML Files (*.xml)|*.xml', Locked = true;
         SelectFileLbl: Label 'Select file..';
-        XMLParseErr: Label 'Failed to parse xml';
+        XMLParseErr: Label 'Failed to parse XML';
         ReadOptions: XmlReadOptions;
         WriteOptions: XmlWriteOptions;
     begin
