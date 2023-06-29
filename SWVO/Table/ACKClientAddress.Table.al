@@ -67,7 +67,7 @@ table 50013 ACKClientAddress
         }
         field(80; "Place of residence"; Text[80])
         {
-            Caption = 'Plaatsnaam';
+            Caption = 'Place of residence';
 
             trigger OnValidate()
             begin

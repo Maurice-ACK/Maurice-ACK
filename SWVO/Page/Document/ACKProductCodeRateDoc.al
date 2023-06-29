@@ -4,14 +4,14 @@
 page 50011 ACKProductCodeRateDoc
 {
     ApplicationArea = All;
-    Caption = 'Healthcare month - product code rates';
+    Caption = 'Product code rates';
     PageType = Document;
     Editable = true;
     InsertAllowed = true;
     ModifyAllowed = true;
     DeleteAllowed = true;
     DelayedInsert = false;
-    SourceTable = ACKHealthcareMonth;
+    SourceTable = ACKProductCodeRateMonth;
     RefreshOnActivate = true;
     DataCaptionFields = Year, Month;
     UsageCategory = None;
@@ -37,7 +37,7 @@ page 50011 ACKProductCodeRateDoc
             {
                 Caption = 'Rates';
                 Editable = true;
-                SubPageLink = HealthcareMonthID = FIELD(ID);
+                SubPageLink = ProductCodeRateMonthID = FIELD(ID);
                 UpdatePropagation = Both;
             }
         }
@@ -52,11 +52,11 @@ page 50011 ACKProductCodeRateDoc
                 Caption = 'Copy';
                 trigger OnAction()
                 var
-                    ACKHealthcareMonthNew: Record ACKHealthcareMonth;
+                    ProductCodeRateMonthNew: Record ACKProductCodeRateMonth;
                 begin
-                    ACKHealthcareMonthNew := Rec.Copy();
-                    if not ACKHealthcareMonthNew.IsEmpty() then
-                        CurrPage.SetRecord(ACKHealthcareMonthNew);
+                    ProductCodeRateMonthNew := Rec.Copy();
+                    if not ProductCodeRateMonthNew.IsEmpty() then
+                        CurrPage.SetRecord(ProductCodeRateMonthNew);
                 end;
             }
         }

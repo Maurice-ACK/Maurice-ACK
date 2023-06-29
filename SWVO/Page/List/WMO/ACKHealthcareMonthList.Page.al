@@ -1,11 +1,11 @@
 /// <summary>
-/// Page ACKHealthcareMonthList
+/// Page ACKProductCodeRateList
 /// </summary>
-page 50014 ACKHealthcareMonthList
+page 50014 ACKProductCodeRateList
 {
-    Caption = 'Healthcare months - product rates';
+    Caption = 'Product code rate - months';
     PageType = List;
-    SourceTable = ACKHealthcareMonth;
+    SourceTable = ACKProductCodeRateMonth;
     CardPageId = ACKProductCodeRateDoc;
     InsertAllowed = false;
     ModifyAllowed = false;

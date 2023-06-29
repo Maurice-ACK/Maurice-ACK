@@ -41,7 +41,7 @@ page 50007 ACKSWVOGeneralSetup
 
                     field(SWVOAPIBaseUri; Rec.SWVOAPIBaseUri)
                     {
-                        Caption = 'Base url';
+                        Caption = 'Base url', Locked = true;
                         ToolTip = 'Base endpoint for connecting with SWVO API.';
                     }
                     field(Tenant_Id; Rec.BC_TenantId)
@@ -58,8 +58,8 @@ page 50007 ACKSWVOGeneralSetup
                     { }
                     field(ClientSecret; ClientSecretVar)
                     {
-                        Caption = 'Client secret';
-                        ToolTip = 'Client secret';
+                        Caption = 'Client secret', Locked = true;
+                        ToolTip = 'Client secret', Locked = true;
                         Editable = PageEdit;
                         ExtendedDatatype = Masked;
                         trigger OnValidate()

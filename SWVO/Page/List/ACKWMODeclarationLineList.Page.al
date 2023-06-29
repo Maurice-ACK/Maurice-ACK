@@ -4,7 +4,7 @@
 page 50112 ACKWMODeclarationLineList
 {
     ApplicationArea = All;
-    Caption = 'Wmo Declaration lines';
+    Caption = 'Declaration lines';
     PageType = List;
     SourceTable = ACKWMODeclarationLine;
     PopulateAllFields = true;

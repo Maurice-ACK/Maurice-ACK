@@ -105,23 +105,23 @@ codeunit 50039 ACKWMODeclarationHelper
     end;
 
     /// <summary>
-    /// GetHealthcareMonthRate.
+    /// GetProductCodeMonthRate.
     /// </summary>
     /// <param name="ProductCode">Text[5].</param>
     /// <param name="Eenheid">Enum ACKWMOEenheid.</param>
     /// <param name="Year">Integer.</param>
     /// <param name="Month">Integer.</param>
     /// <returns>Return variable Rate of type Integer.</returns>
-    procedure GetHealthcareMonthRate(ProductCode: Text[5]; Eenheid: Enum ACKWMOEenheid; Year: Integer; Month: Integer) Rate: Integer;
+    procedure GetProductCodeMonthRate(ProductCode: Text[5]; Eenheid: Enum ACKWMOEenheid; Year: Integer; Month: Integer) Rate: Integer;
     var
-        HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery;
+        ProductCodeMonthRateQuery: Query ACKProductCodeMonthRateQuery;
     begin
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Year, Year);
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Month, Month);
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.ProductCode, ProductCode);
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.DeclarationUnitId, Eenheid);
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Year, Year);
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Month, Month);
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.ProductCode, ProductCode);
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.DeclarationUnitId, Eenheid);
 
-        if HealthcareMonthPCRateQuery.Open() and HealthcareMonthPCRateQuery.Read() then
-            Rate := HealthcareMonthPCRateQuery.Rate;
+        if ProductCodeMonthRateQuery.Open() and ProductCodeMonthRateQuery.Read() then
+            Rate := ProductCodeMonthRateQuery.Rate;
     end;
 }

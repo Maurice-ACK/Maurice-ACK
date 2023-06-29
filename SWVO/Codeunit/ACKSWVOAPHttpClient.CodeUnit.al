@@ -13,7 +13,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         RecordRef: RecordRef;
         QueryParamDict: Dictionary of [Text, Text];
         FieldMapDictionary: Dictionary of [Integer, Text];
-        SendFailedErr: Label 'Failed to send request to: %1', Comment = '%1 = URL of the request', MaxLength = 100;
+        SendFailedErr: Label 'Failed to send request to: %1', Comment = '%1 = URL of the request', MaxLength = 100, Locked = true;
 
 
     /// <summary>
@@ -41,7 +41,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/json; charset=utf-8');
+        RequestHeaders.Add('Accept', 'application/JSON; charset=utf-8');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
 
         Success := Send(HttpRequestMessage, HttpResponseMessage);
@@ -61,7 +61,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         RequestHeaders, ContentHeaders : HttpHeaders;
         ACKStUF: Record ACKStUF;
         ACKJsonTools: Codeunit ACKJsonTools;
-        ResponseParseErr: Label 'Address API Response, unable to parse json as object. %1', Comment = '%1 = Response JSON.', MaxLength = 250;
+        ResponseParseErr: Label 'Address API Response, unable to parse JSON as object. %1', Comment = '%1 = Response JSON.', MaxLength = 250, Locked = true;
         RecordRef: RecordRef;
     begin
         if not ACKSWVOGeneralSetup.Get() then
@@ -87,11 +87,11 @@ codeunit 50019 ACKSWVOAPHttpClient
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
-        RequestHeaders.Add('Accept', 'application/json; charset=utf-8');
+        RequestHeaders.Add('Accept', 'application/JSON; charset=utf-8');
 
         exit(Send(HttpRequestMessage, HttpResponseMessage));
         // if Send(HttpRequestMessage, HttpResponseMessage) then begin
-        //     // Read the response content as json and into an array.
+        //     // Read the response content as JSON and into an array.
         //     HttpResponseMessage.Content().ReadAs(JsonContentText);
         //     if not JsonObject.ReadFrom(JsonContentText) then Error(ResponseParseErr, JsonContentText);
         //     //Map the result address to the corresponding fields in the ACKClientAddress table.
@@ -136,7 +136,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
@@ -186,7 +186,7 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
@@ -227,13 +227,13 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
-        RequestHeaders.Add('Accept', 'application/json');
+        RequestHeaders.Add('Accept', 'application/JSON');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
 
         exit(Send(HttpRequestMessage, HttpResponseMessage));
@@ -273,13 +273,13 @@ codeunit 50019 ACKSWVOAPHttpClient
         Message(ContentText);
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/json');
+        ContentHeaders.Add('Content-Type', 'application/JSON');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
-        // RequestHeaders.Add('Accept', 'application/json');
+        // RequestHeaders.Add('Accept', 'application/JSON');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
 
         exit(Send(HttpRequestMessage, HttpResponseMessage));
@@ -323,13 +323,13 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
+        ContentHeaders.Add('Content-Type', 'application/JSON; charset=utf-8');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
         RequestHeaders.Clear();
-        RequestHeaders.Add('Accept', 'application/json; charset=utf-8');
+        RequestHeaders.Add('Accept', 'application/JSON; charset=utf-8');
         RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
         // RequestHeaders.Add('X-Api-Key', ACKSWVOGeneralSetup.SWVOAPIKey());
 
@@ -370,7 +370,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         HttpContent.WriteFrom(ContentText);
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
-        ContentHeaders.Add('Content-Type', 'application/json');
+        ContentHeaders.Add('Content-Type', 'application/JSON');
         HttpRequestMessage.Content(HttpContent);
 
         //Add headers
@@ -407,7 +407,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         ResponseText: Text;
         JsonArray: JsonArray;
         JsonObject: JsonObject;
-        ResponseParseErr: Label 'Address API Response, unable to parse json as array. %1', Comment = '%1 = Response JSON.', MaxLength = 250;
+        ResponseParseErr: Label 'Address API Response, unable to parse JSON as array. %1', Comment = '%1 = Response JSON.', MaxLength = 250, Locked = true;
     begin
         if ACKClientAddress.IsEmpty() then
             exit;
@@ -430,13 +430,13 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/json');
+        RequestHeaders.Add('Accept', 'application/JSON');
         //RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
         // RequestHeaders.Add('X-Api-Key', ACKSWVOGeneralSetup.SWVOAPIKey());
 
         Send(HttpRequestMessage, HttpResponseMessage);
 
-        // Read the response content as json and into an array.
+        // Read the response content as JSON and into an array.
         HttpResponseMessage.Content().ReadAs(ResponseText);
         if (ResponseText = '[]') then
             exit;
@@ -494,14 +494,14 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/json');
+        RequestHeaders.Add('Accept', 'application/JSON');
         //RequestHeaders.Add('Authorization', 'Bearer ' + AcquireAccessToken());
         // RequestHeaders.Add('X-Api-Key', ACKSWVOGeneralSetup.SWVOAPIKey());
 
         if not Send(HttpRequestMessage, HttpResponseMessage) then
             exit;
 
-        // Read the response content as json and into an array.
+        // Read the response content as JSON and into an array.
         HttpResponseMessage.Content().ReadAs(ResponseText);
         if (ResponseText = '[]') then
             exit(false);
@@ -568,11 +568,11 @@ codeunit 50019 ACKSWVOAPHttpClient
 
         //Add headers
         HttpRequestMessage.GetHeaders(RequestHeaders);
-        RequestHeaders.Add('Accept', 'application/json');
+        RequestHeaders.Add('Accept', 'application/JSON');
 
         Send(HttpRequestMessage, HttpResponseMessage);
 
-        // Read the response content as json and into an array.
+        // Read the response content as JSON and into an array.
         HttpResponseMessage.Content().ReadAs(ResponseText);
 
         if (ResponseText = '{}') then
@@ -773,8 +773,8 @@ codeunit 50019 ACKSWVOAPHttpClient
     var
         OAuth2: Codeunit OAuth2;
         GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
-        AuthorityLbl: Label 'https://login.microsoftonline.com/%1/oauth2/v2.0/token', Comment = '%1 = tenant id';
-        AccessTokenErr: Label 'Failed to retrieve access token %1', Comment = '%1 = last error text';
+        AuthorityLbl: Label 'https://login.microsoftonline.com/%1/oauth2/v2.0/token', Comment = '%1 = tenant id', Locked = true;
+        AccessTokenErr: Label 'Failed to retrieve access token %1', Comment = '%1 = last error text', Locked = true;
         Scopes: List of [Text];
         ClientId, Secret, OAuthAuthorityUrl : Text;
     begin

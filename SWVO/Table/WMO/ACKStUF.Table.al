@@ -100,7 +100,7 @@ table 50017 ACKStUF
         }
         field(190; BerichtJson; Blob)
         {
-            Caption = 'Bericht json', Locked = true;
+            Caption = 'Bericht JSON', Locked = true;
         }
         field(200; Status; Enum ACKJobStatus)
         {
@@ -113,6 +113,7 @@ table 50017 ACKStUF
         field(220; Plek; Option)
         {
             OptionMembers = client,server;
+            OptionCaption = 'client,server', Locked = true;
             Caption = 'Plek', Locked = true;
         }
         field(230; Omschrijving; Text[250])
@@ -176,7 +177,7 @@ table 50017 ACKStUF
         InStreamBase64Bytes: InStream;
         JsonText: Text;
         EmptyJSONErr: Label 'JSON message is empty.';
-        JSONParseErr: Label 'Cannot parse text %1 to JSON object.', Comment = '%1 = JSON text';
+        JSONParseErr: Label 'Cannot parse text %1 to JSON object.', Comment = '%1 = JSON text', Locked = true;
     begin
         if not Rec.BerichtJson.HasValue() then
             Error(EmptyJSONErr);

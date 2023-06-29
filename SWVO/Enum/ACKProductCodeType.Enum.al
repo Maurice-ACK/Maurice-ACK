@@ -6,10 +6,11 @@ enum 50026 ACKProductCodeType
     Extensible = false;
     Caption = 'Product code type';
 
-    value(0; Wmo)
+    value(0;
+    Wmo)
     {
         Caption = 'Wmo';
-    }
+}
     value(1; Transport)
     {
         Caption = 'Transport';

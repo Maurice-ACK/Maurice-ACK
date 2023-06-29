@@ -237,7 +237,7 @@ codeunit 50022 ACKJsonTools
     /// <param name="JsonObject">JsonObject.</param>
     /// <param name="Rec">Variant.</param>
     /// <param name="FieldMapDictionary">Dictionary of [Integer, Text].</param>
-    /// <returns>True is record and the json have the same values.</returns>
+    /// <returns>True is record and the JSON have the same values.</returns>
     procedure CompareJsonObjectToRecordRef(Rec: Variant; JsonObject: JsonObject; FieldMapDictionary: Dictionary of [Integer, Text]): Boolean
     var
         RecordRef: RecordRef;

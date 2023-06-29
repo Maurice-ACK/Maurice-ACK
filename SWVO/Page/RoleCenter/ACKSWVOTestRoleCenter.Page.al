@@ -150,11 +150,11 @@ page 50058 ACKSWVOTestRoleCenter
                     Image = Relationship;
                     RunObject = page ACKProductCodeFrequencyList;
                 }
-                action(ACKHealthcareMonthList)
+                action(ACKProductCodeRateMonthList)
                 {
-                    Caption = 'Healthcare months - Product rates';
+                    Caption = 'Product code rates';
                     Image = Journal;
-                    RunObject = page ACKHealthcareMonthList;
+                    RunObject = page ACKProductCodeRateList;
                 }
                 action(ACKJSONMessageList)
                 {

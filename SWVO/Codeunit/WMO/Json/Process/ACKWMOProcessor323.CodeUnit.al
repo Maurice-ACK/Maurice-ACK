@@ -6,7 +6,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
     var
         WMOHeader323: Record ACKWMOHeader;
         WMODeclaratie: Record ACKWMODeclaratie;
-        HealthcareMonth: Record ACKHealthcareMonth;
+        ProductCodeRateMonth: Record ACKProductCodeRateMonth;
         MessageRetourCode: Record ACKWMOMessageRetourCode;
         HealthcareProvider: Record Vendor;
         WMODeclarationHeader: Record ACKWMODeclarationHeader;
@@ -75,7 +75,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
 
     local procedure ValidateDeclaration(): Boolean
     begin
-        if not HealthcareMonth.GetFromDate(WMODeclaratie.Begindatum) then begin
+        if not ProductCodeRateMonth.GetFromDate(WMODeclaratie.Begindatum) then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMODeclaratie, WMODeclaratie.SystemId, WMOHeader323.SystemId, ACKWMORule::SW017);
             exit(false);
         end;
@@ -118,7 +118,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         ACKClient: Record ACKClient;
         IndicationQuery: Query ACKWMOIndicationQuery;
         WMOPrestatieQuery: Query ACKWMOPrestatieQuery;
-        HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery;
+        ProductCodeMonthRateQuery: Query ACKProductCodeMonthRateQuery;
         RealIndicationEndDate: Date;
     begin
         //TR304
@@ -184,23 +184,23 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
             exit(false);
 
         if WMOPrestatie.DebitCredit = ACKDebitCredit::D then begin
-            Clear(HealthcareMonthPCRateQuery);
-            HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.IsActive, true);
-            HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Year, Date2DMY(WMOPrestatie.Begindatum, 3));
-            HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Month, ACKHelper.GetMonthByDate(WMOPrestatie.Begindatum));
-            HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.ProductCode, WMOPrestatie.ProductCode);
-            HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.DeclarationUnitId, WMOPrestatie.Eenheid);
+            Clear(ProductCodeMonthRateQuery);
+            ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.IsActive, true);
+            ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Year, Date2DMY(WMOPrestatie.Begindatum, 3));
+            ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Month, ACKHelper.GetMonthByDate(WMOPrestatie.Begindatum));
+            ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.ProductCode, WMOPrestatie.ProductCode);
+            ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.DeclarationUnitId, WMOPrestatie.Eenheid);
 
-            if HealthcareMonthPCRateQuery.Open() and HealthcareMonthPCRateQuery.Read() then begin
+            if ProductCodeMonthRateQuery.Open() and ProductCodeMonthRateQuery.Read() then begin
                 if HealthcareProvider.ACKStartEndMonthDeclaration then
-                    if not CheckIndicationStartEndMonth(IndicationQuery, WMOPrestatie, HealthcareMonthPCRateQuery) then
+                    if not CheckIndicationStartEndMonth(IndicationQuery, WMOPrestatie) then
                         exit(false);
 
-                if not CheckDeclarationAmount(IndicationQuery, WMOPrestatie, HealthcareMonthPCRateQuery) then
+                if not CheckDeclarationAmount(IndicationQuery, WMOPrestatie, ProductCodeMonthRateQuery) then
                     exit(false);
             end
             else begin
-                HealthcareMonthPCRateQuery.Close();
+                ProductCodeMonthRateQuery.Close();
                 MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR418);
                 exit(false);
             end;
@@ -213,8 +213,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         exit(true);
     end;
 
-    local procedure CheckIndicationStartEndMonth(IndicationQuery: Query ACKWMOIndicationQuery; WMOPrestatie: Record ACKWMOPrestatie;
-                                                                      HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery): Boolean
+    local procedure CheckIndicationStartEndMonth(IndicationQuery: Query ACKWMOIndicationQuery; WMOPrestatie: Record ACKWMOPrestatie): Boolean
     var
         IndicatieStartdatum, IndicatieEinddatum : Date;
         AantalDagenGestopt, AantalDagenGedeclareerd,
@@ -276,7 +275,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
     end;
 
     local procedure CheckDeclarationAmount(IndicationQuery: Query ACKWMOIndicationQuery; WMOPrestatie: Record ACKWMOPrestatie;
-                                                                HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery) IsValid: Boolean
+                                                                ProductCodeMonthRateQuery: Query ACKProductCodeMonthRateQuery) IsValid: Boolean
     var
         MaxDeclarationDays, DeclaredAmount : integer;
         StoppedDays, PrestatieJaar, PrestatieMaand, DaysInMonth : Integer;
@@ -309,7 +308,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
                     MaxAllowedVolume := IndicationQuery.ProductVolume / 60;
             ACKWMOEenheid::Euro:
                 if IndicationQuery.ProductUnit = ACKWMOEenheid::StuksOutput then
-                    MaxAllowedVolume := IndicationQuery.ProductVolume * HealthcareMonthPCRateQuery.Rate;
+                    MaxAllowedVolume := IndicationQuery.ProductVolume * ProductCodeMonthRateQuery.Rate;
         end;
 
         //2. Determine the maximum allowed volume based on the frequency
@@ -327,7 +326,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         if WMOPrestatie.Eenheid = ACKWMOEenheid::Euro then
             MaxAllowedAmount := MaxAllowedVolume
         else
-            MaxAllowedAmount := MaxAllowedVolume * HealthcareMonthPCRateQuery.Rate;
+            MaxAllowedAmount := MaxAllowedVolume * ProductCodeMonthRateQuery.Rate;
 
         //Rounding to eurocent
         MaxAllowedVolume := Round(MaxAllowedVolume, 1, '>');
@@ -336,13 +335,13 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
         if IndicationQuery.ProductFrequency = ACKWMOFrequentie::TotaalInToewijzing then
             DeclaredAmount := GetTotalAmountDeclaredAll(IndicationQuery.MunicipalityNo, IndicationQuery.HealthcareProviderNo, IndicationQuery.ClientNo, IndicationQuery.AssignmentNo, WMOPrestatie.ReferentieNummer)
         else
-            DeclaredAmount := GetTotalAmountDeclaredInMonth(IndicationQuery.MunicipalityNo, IndicationQuery.HealthcareProviderNo, IndicationQuery.ClientNo, IndicationQuery.AssignmentNo, HealthcareMonth.Year, HealthcareMonth.Month.AsInteger(), WMOPrestatie.ReferentieNummer);
+            DeclaredAmount := GetTotalAmountDeclaredInMonth(IndicationQuery.MunicipalityNo, IndicationQuery.HealthcareProviderNo, IndicationQuery.ClientNo, IndicationQuery.AssignmentNo, ProductCodeRateMonth.Year, ProductCodeRateMonth.Month.AsInteger(), WMOPrestatie.ReferentieNummer);
 
         //If multiple debit/credit in 1 xml then add this to the total declared amount.
         DeclaredAmount += GetLocalPrestatieAmount(WMOPrestatie.ToewijzingNummer);
 
         //Tarief wordt niet meegegeven bij eenheid euro's.
-        if (WMOPrestatie.Eenheid <> ACKWmoEenheid::Euro) and (WMOPrestatie.ProductTarief <> HealthcareMonthPCRateQuery.Rate) then begin
+        if (WMOPrestatie.Eenheid <> ACKWmoEenheid::Euro) and (WMOPrestatie.ProductTarief <> ProductCodeMonthRateQuery.Rate) then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOPrestatie, WMOPrestatie.SystemId, WMOHeader323.SystemId, ACKWMORule::TR418);
             IsValid := false;
         end;
@@ -381,8 +380,8 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
             WMODeclarationHeader.HealthcareProviderNo := WMOHeader323.Afzender;
             WMODeclarationHeader.DeclarationNo := WMODeclaratie.DeclaratieNummer;
             WMODeclarationHeader.DeclarationDate := WMODeclaratie.DeclaratieDagtekening;
-            WMODeclarationHeader.Year := HealthcareMonth.Year;
-            WMODeclarationHeader.Month := HealthcareMonth.Month.AsInteger();
+            WMODeclarationHeader.Year := ProductCodeRateMonth.Year;
+            WMODeclarationHeader.Month := ProductCodeRateMonth.Month.AsInteger();
             WMODeclarationHeader.Status := ACKWMODeclarationStatus::New;
             WMODeclarationHeader.Insert(true);
         end;
@@ -453,7 +452,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
             exit(false);
         end;
 
-        DeclaredAmount := GetTotalAmountDeclaredInMonth(WMOHeader323.Ontvanger, WMOHeader323.Afzender, ACKClient.ClientNo, WMOPrestatie.ToewijzingNummer, HealthcareMonth.Year, HealthcareMonth.Month.AsInteger(), WMOPrestatie.ReferentieNummer);
+        DeclaredAmount := GetTotalAmountDeclaredInMonth(WMOHeader323.Ontvanger, WMOHeader323.Afzender, ACKClient.ClientNo, WMOPrestatie.ToewijzingNummer, ProductCodeRateMonth.Year, ProductCodeRateMonth.Month.AsInteger(), WMOPrestatie.ReferentieNummer);
 
         //Check if credit amount is not more than the total approved amount already declared.
         if DeclaredAmount < WMOPrestatie.Bedrag then begin
@@ -518,7 +517,7 @@ codeunit 50035 ACKWMOProcessor323 implements ACKWMOIProcessor
                         Clear(WMOIndication);
                         Clear(WMODeclarationLine);
 
-                        Rate := WMODeclarationHelper.GetHealthcareMonthRate(WMOPrestatie.ProductCode, WMOPrestatie.Eenheid, HealthcareMonth.Year, HealthcareMonth.Month.AsInteger());
+                        Rate := WMODeclarationHelper.GetProductCodeMonthRate(WMOPrestatie.ProductCode, WMOPrestatie.Eenheid, ProductCodeRateMonth.Year, ProductCodeRateMonth.Month.AsInteger());
 
                         WMOIndication.SetRange(MunicipalityNo, WMOHeader323.Ontvanger);
                         WMOIndication.SetRange(AssignmentNo, WMOPrestatie.ToewijzingNummer);

@@ -4,7 +4,7 @@
 page 50031 ACKNewChangedUnchangedProductC
 {
     ApplicationArea = All;
-    Caption = 'New/Changed/Unchanged product';
+    Caption = 'Nieuw/Gewijzigd/Ongewijzigd product', Locked = true;
     PageType = Card;
     SourceTable = ACKNewChangedUnchangedProduct;
     Editable = false;

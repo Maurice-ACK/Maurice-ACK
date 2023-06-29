@@ -100,7 +100,7 @@ codeunit 50005 ACKStudentApi
 
             errorHandling.Init();
             errorHandling.custId := custId;
-            errorHandling.Json.CreateOutStream(ostream);
+            errorHandling.JSON.CreateOutStream(ostream);
             ostream.Write(inputJson);
             errorHandling.Insert();
             Error('Error has occurred')

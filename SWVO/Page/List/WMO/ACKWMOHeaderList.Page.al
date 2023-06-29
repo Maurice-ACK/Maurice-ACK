@@ -171,8 +171,8 @@ page 50003 ACKWMOHeaderList
             action(UploadJson)
             {
                 Image = Import;
-                Caption = 'Upload json';
-                ToolTip = 'Upload a wmo json message from your computer.';
+                Caption = 'Upload JSON';
+                ToolTip = 'Upload a wmo JSON message from your computer.';
 
                 trigger OnAction()
                 begin

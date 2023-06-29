@@ -41,12 +41,12 @@ page 50013 ACKGenerateProductCodeRates
     /// <summary>
     /// Setup.
     /// </summary>
-    /// <param name="ACKHealthcareMonth">Record ACKHealthcareMonth.</param>
-    procedure Setup(ACKHealthcareMonth: Record ACKHealthcareMonth)
+    /// <param name="ProductCodeRateMonth">Record ACKProductCodeRateMonth.</param>
+    procedure Setup(ProductCodeRateMonth: Record ACKProductCodeRateMonth)
     begin
-        Year := ACKHealthcareMonth.Year;
-        Month := ACKHealthcareMonth.Month;
-        IsActive := ACKHealthcareMonth.IsActive;
+        Year := ProductCodeRateMonth.Year;
+        Month := ProductCodeRateMonth.Month;
+        IsActive := ProductCodeRateMonth.IsActive;
     end;
 
     /// <summary>

@@ -3,7 +3,7 @@
 /// </summary>
 query 50020 ACKStartStopProductQ
 {
-    Caption = 'Header - Client - Start/Stop product query';
+    Caption = 'Header - Client - Start/Stop product query', Locked = true;
     QueryType = Normal;
     DataAccessIntent = ReadOnly;
 

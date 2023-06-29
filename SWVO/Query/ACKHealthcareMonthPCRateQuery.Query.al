@@ -1,14 +1,14 @@
 /// <summary>
-/// Query ACKHealthcareMonthPCRateQuery
+/// Query ACKProductCodeMonthRateQuery
 /// </summary>
-query 50003 ACKHealthcareMonthPCRateQuery
+query 50003 ACKProductCodeMonthRateQuery
 {
-    Caption = 'Healthcare month - product code rate query';
+    Caption = 'Product code rate query', Locked = true;
     QueryType = Normal;
 
     elements
     {
-        dataitem(ACKHealthcareMonth; ACKHealthcareMonth)
+        dataitem(ACKProductCodeRateMonth; ACKProductCodeRateMonth)
         {
             column(Year; Year)
             {
@@ -21,7 +21,7 @@ query 50003 ACKHealthcareMonthPCRateQuery
             }
             dataitem(ACKProductCodeRate; ACKProductCodeRate)
             {
-                DataItemLink = HealthcareMonthID = ACKHealthcareMonth.ID;
+                DataItemLink = ProductCodeRateMonthID = ACKProductCodeRateMonth.ID;
                 SqlJoinType = InnerJoin;
 
                 column(ProductCode; ProductCode)

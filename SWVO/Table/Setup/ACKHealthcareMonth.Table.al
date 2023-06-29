@@ -1,13 +1,13 @@
 /// <summary>
-/// Table ACKHealthcareMonth.
+/// Table ACKProductCodeRateMonth.
 /// </summary>
-table 50028 ACKHealthcareMonth
+table 50028 ACKProductCodeRateMonth
 {
-    Caption = 'Healthcare month';
+    Caption = 'Product code rate - month';
     DataClassification = SystemMetadata;
     DataCaptionFields = Year, Month;
-    LookupPageId = ACKHealthcareMonthList;
-    DrillDownPageId = ACKHealthcareMonthList;
+    LookupPageId = ACKProductCodeRateList;
+    DrillDownPageId = ACKProductCodeRateList;
 
     fields
     {
@@ -49,7 +49,7 @@ table 50028 ACKHealthcareMonth
     var
         ProductCodeRate: Record ACKProductCodeRate;
     begin
-        ProductCodeRate.SetRange(HealthcareMonthID, Rec.ID);
+        ProductCodeRate.SetRange(ProductCodeRateMonthID, Rec.ID);
         ProductCodeRate.DeleteAll(true);
     end;
 
@@ -86,30 +86,30 @@ table 50028 ACKHealthcareMonth
     /// <summary>
     /// Copy.
     /// </summary>
-    /// <returns>Return variable ACKHealthcareMonthNew of type Record ACKHealthcareMonth.</returns>
-    procedure Copy() ACKHealthcareMonthNew: Record ACKHealthcareMonth
+    /// <returns>Return variable ProductCodeRateMonth of type Record ACKProductCodeRateMonth.</returns>
+    procedure Copy() ProductCodeRateMonth: Record ACKProductCodeRateMonth
     var
         ACKProductCodeRateFrom, ACKProductCodeRateNew : Record ACKProductCodeRate;
         ACKGenerateProductCodeRates: Page ACKGenerateProductCodeRates;
         ResponseAction: Action;
-        HealthcareMonthCreatedLbl: Label '%1: %2, %3 created.', Comment = '%1 = Table caption, %2 = Year, %3 = Month';
+        ProductCodeRateMonthCreatedLbl: Label '%1: %2, %3 created.', Comment = '%1 = Table caption, %2 = Year, %3 = Month';
     begin
         ACKGenerateProductCodeRates.Setup(Rec);
         ResponseAction := ACKGenerateProductCodeRates.RunModal();
         case ResponseAction of
             Action::OK:
                 begin
-                    ACKHealthcareMonthNew := CreateNewMonth(ACKGenerateProductCodeRates.GetYear(), ACKGenerateProductCodeRates.GetMonth(), ACKGenerateProductCodeRates.GetIsActive());
-                    ACKProductCodeRateFrom.SetRange(HealthcareMonthID, Rec.ID);
+                    ProductCodeRateMonth := CreateNewMonth(ACKGenerateProductCodeRates.GetYear(), ACKGenerateProductCodeRates.GetMonth(), ACKGenerateProductCodeRates.GetIsActive());
+                    ACKProductCodeRateFrom.SetRange(ProductCodeRateMonthID, Rec.ID);
                     if ACKProductCodeRateFrom.FindSet(true) then
                         repeat
                             ACKProductCodeRateNew.Init();
                             ACKProductCodeRateNew.TransferFields(ACKProductCodeRateFrom);
-                            ACKProductCodeRateNew.HealthcareMonthID := ACKHealthcareMonthNew.ID;
+                            ACKProductCodeRateNew.ProductCodeRateMonthID := ProductCodeRateMonth.ID;
                             ACKProductCodeRateNew.Insert(true);
                         until ACKProductCodeRateFrom.Next() = 0;
 
-                    Message(HealthcareMonthCreatedLbl, ACKHealthcareMonthNew.TableCaption(), ACKHealthcareMonthNew.Year, ACKHealthcareMonthNew.Month);
+                    Message(ProductCodeRateMonthCreatedLbl, ProductCodeRateMonth.TableCaption(), ProductCodeRateMonth.Year, ProductCodeRateMonth.Month);
                 end;
         end;
     end;
@@ -120,23 +120,23 @@ table 50028 ACKHealthcareMonth
     /// <param name="_Year">Integer.</param>
     /// <param name="_Month">Enum ACKMonthOfYear.</param>
     /// <param name="_IsActive">Boolean.</param>
-    /// <returns>Return variable ACKHealthcareMonthNew of type Record ACKHealthcareMonth.</returns>
-    procedure CreateNewMonth(_Year: Integer; _Month: Enum ACKMonthOfYear; _IsActive: Boolean) ACKHealthcareMonthNew: Record ACKHealthcareMonth
+    /// <returns>Return variable ProductCodeRateMonthNew of type Record ACKProductCodeRateMonth.</returns>
+    procedure CreateNewMonth(_Year: Integer; _Month: Enum ACKMonthOfYear; _IsActive: Boolean) ProductCodeRateMonthNew: Record ACKProductCodeRateMonth
     var
-        HealthCareMonthDuplicateErr: Label '%1: %2, %3 already exists.', Comment = '%1 = Table caption, %2 = Year, %3 = Month';
+        ProductCodeRateMonthDuplicateErr: Label '%1: %2, %3 already exists.', Comment = '%1 = Table caption, %2 = Year, %3 = Month';
     begin
-        ACKHealthcareMonthNew.SetCurrentKey(Year, Month);
-        ACKHealthcareMonthNew.SetRange(Year, _Year);
-        ACKHealthcareMonthNew.SetRange(Month, _Month);
+        ProductCodeRateMonthNew.SetCurrentKey(Year, Month);
+        ProductCodeRateMonthNew.SetRange(Year, _Year);
+        ProductCodeRateMonthNew.SetRange(Month, _Month);
 
-        if not ACKHealthcareMonthNew.IsEmpty() then
-            Error(HealthCareMonthDuplicateErr, ACKHealthcareMonthNew.TableCaption(), _Year, _Month);
+        if not ProductCodeRateMonthNew.IsEmpty() then
+            Error(ProductCodeRateMonthDuplicateErr, ProductCodeRateMonthNew.TableCaption(), _Year, _Month);
 
-        ACKHealthcareMonthNew.Init();
-        ACKHealthcareMonthNew.Year := _Year;
-        ACKHealthcareMonthNew.Month := _Month;
-        ACKHealthcareMonthNew.IsActive := _IsActive;
-        ACKHealthcareMonthNew.Insert(true);
+        ProductCodeRateMonthNew.Init();
+        ProductCodeRateMonthNew.Year := _Year;
+        ProductCodeRateMonthNew.Month := _Month;
+        ProductCodeRateMonthNew.IsActive := _IsActive;
+        ProductCodeRateMonthNew.Insert(true);
     end;
 
     var

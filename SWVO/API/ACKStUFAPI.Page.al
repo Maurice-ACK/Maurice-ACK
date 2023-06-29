@@ -102,7 +102,7 @@ page 50019 ACKStUFAPI
                 }
                 field(berichtJson; Base64StringJson)
                 {
-                    Caption = 'Bericht json', Locked = true;
+                    Caption = 'Bericht JSON', Locked = true;
                 }
             }
         }

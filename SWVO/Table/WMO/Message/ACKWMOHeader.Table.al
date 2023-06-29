@@ -265,7 +265,7 @@ table 50004 ACKWMOHeader
 
     local procedure GetRelationCaption(Relation: Integer) Caption: Text[21]
     var
-        InvalidRelationErr: Label 'Invalid relation';
+        InvalidRelationErr: Label 'Invalid relation', Locked = true;
     begin
         case Relation of
             Database::Customer:

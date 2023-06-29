@@ -4,7 +4,7 @@
 page 50015 ACKWMOHeaderCardPart
 {
     ApplicationArea = All;
-    Caption = 'Header';
+    Caption = 'Header', Locked = true;
     PageType = CardPart;
     SourceTable = ACKWMOHeader;
     Editable = false;
@@ -18,7 +18,7 @@ page 50015 ACKWMOHeaderCardPart
         {
             group(Header)
             {
-                Caption = 'Header';
+                Caption = 'Header', Locked = true;
                 field(Status; Rec.Status)
                 {
                 }

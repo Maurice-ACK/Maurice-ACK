@@ -16,9 +16,9 @@ table 50050 "ACKStudentTransportInsertError"
         {
             Caption = 'Leerling ID', Locked = true;
         }
-        field(30; Json; blob)
+        field(30; JSON; blob)
         {
-            Caption = 'Json';
+            Caption = 'JSON';
         }
     }
     keys

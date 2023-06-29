@@ -11,7 +11,7 @@ codeunit 50028 ACKWMOHelper
     var
         WMOHeaderHeen: Record ACKWMOHeader;
         ToewijzingNummerFilter: Text;
-        InvalidHeaderIdErr: Label 'Invalid header id';
+        InvalidHeaderIdErr: Label 'Invalid header id', Locked = true;
     begin
         if IsNullGuid(WMOHeader.SystemId) then
             Error(InvalidHeaderIdErr);

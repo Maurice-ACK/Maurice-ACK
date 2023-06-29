@@ -60,7 +60,7 @@ page 50101 ACKWMOAPI
         Message := Base64Convert.FromBase64(Base64StringJson, TextEncoding::UTF8);
 
         if not MessageJsonObject.ReadFrom(Message) then
-            Error('Cannot parse json %1 to json object.', Message);
+            Error('Cannot parse JSON %1 to JSON object.', Message);
 
         MessageJsonObject.SelectToken('header.berichtVersie', JsonToken);
         Versie := JsonToken.AsValue().AsInteger();

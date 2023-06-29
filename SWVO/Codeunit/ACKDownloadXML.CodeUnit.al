@@ -6,7 +6,7 @@ codeunit 50041 ACKDownloadWMOFile
     var
         ACKStUF: record ACKStUF;
         XMLFileNameFormatLbl: Label '%1.xml', Locked = true;
-        JSONFileNameFormatLbl: Label '%1.json', Locked = true;
+        JSONFileNameFormatLbl: Label '%1.JSON', Locked = true;
 
     /// <summary>
     /// DownloadXML.

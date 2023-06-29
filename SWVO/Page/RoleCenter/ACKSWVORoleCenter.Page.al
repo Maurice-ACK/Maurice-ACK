@@ -137,11 +137,11 @@ page 50045 ACKSWVORoleCenter
                     Image = Relationship;
                     RunObject = page ACKProductCodeFrequencyList;
                 }
-                action(ACKHealthcareMonthList)
+                action(ACKProductCodeRateList)
                 {
-                    Caption = 'Healthcare months - product rates';
+                    Caption = 'Product code rates';
                     Image = Journal;
-                    RunObject = page ACKHealthcareMonthList;
+                    RunObject = page ACKProductCodeRateList;
                 }
             }
             group(Action8)

@@ -31,7 +31,7 @@ page 50088 ACKStudentTransportErrors
         {
             group(test)
             {
-                action("Download Json")
+                action("Download JSON")
                 {
                     ApplicationArea = All;
                     Promoted = true;
@@ -48,10 +48,10 @@ page 50088 ACKStudentTransportErrors
                         tmpblob: Codeunit "Temp Blob";
                         filename: text;
                     begin
-                        rec.Json.CreateInStream(iStream);
+                        rec.JSON.CreateInStream(iStream);
                         iStream.read(output, 100);
 
-                        filename := 'Json' + format(rec.SystemCreatedAt) + '.txt';
+                        filename := 'JSON' + format(rec.SystemCreatedAt) + '.txt';
 
                         DownloadFromStream(iStream, 'Export', '', 'All Files (*.*)|*.*', filename);
 

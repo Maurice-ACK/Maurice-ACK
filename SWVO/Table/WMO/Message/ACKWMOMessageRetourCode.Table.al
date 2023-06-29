@@ -3,7 +3,7 @@
 /// </summary>
 table 50006 ACKWMOMessageRetourCode
 {
-    Caption = 'Message retour code';
+    Caption = 'Retour code';
     DataCaptionFields = RetourCodeID;
     DataClassification = SystemMetadata;
 
@@ -94,7 +94,7 @@ table 50006 ACKWMOMessageRetourCode
         }
         field(80; MessageInvalid; Boolean)
         {
-            Caption = 'Message invalid';
+            Caption = 'Invalid';
             FieldClass = FlowField;
             CalcFormula = lookup(ACKWMORetourCode.MessageInvalid where(ID = field(RetourCodeID)));
             Editable = false;
@@ -197,7 +197,7 @@ table 50006 ACKWMOMessageRetourCode
         WMORule: Record ACKWMORule;
         ACKWMOMessageRetourCode: Record ACKWMOMessageRetourCode;
         RetourCodeText: Code[4];
-        InvalidReferenceErr: Label 'Ref id cannot be null';
+        InvalidReferenceErr: Label 'Parameter _RefId cannot be empty', Locked = true;
     begin
         if IsNullGuid(_RefId) then
             Error(InvalidReferenceErr);

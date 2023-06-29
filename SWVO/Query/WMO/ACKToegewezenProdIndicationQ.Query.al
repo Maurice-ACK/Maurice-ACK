@@ -3,7 +3,7 @@
 /// </summary>
 query 50006 ACKToegewezenProdIndicationQ
 {
-    Caption = 'Assigned product - indication query';
+    Caption = 'Assigned product - indication query', Locked = true;
     QueryType = Normal;
 
     elements

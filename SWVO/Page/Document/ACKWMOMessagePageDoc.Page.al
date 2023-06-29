@@ -4,7 +4,7 @@
 page 50057 ACKWMOMessagePageDoc
 {
     ApplicationArea = All;
-    Caption = 'Wmo message';
+    Caption = 'Wmo bericht', Locked = true;
     PageType = Document;
     SourceTable = ACKWMOHeaderClientQueryTable;
     SourceTableTemporary = true;
@@ -20,7 +20,7 @@ page 50057 ACKWMOMessagePageDoc
         {
             group(Header)
             {
-                Caption = 'Header';
+                Caption = 'Header', Locked = true;
                 field(Status; WMOHeader.Status)
                 {
                 }
@@ -87,26 +87,32 @@ page 50057 ACKWMOMessagePageDoc
                     }
                     field(BerichtVersie; WMOHeader.BerichtVersie)
                     {
+                        Caption = 'Bericht versie', Locked = true;
                         Importance = Additional;
                     }
                     field(BerichtSubversie; WMOHeader.BerichtSubversie)
                     {
+                        Caption = 'Bericht sub versie', Locked = true;
                         Importance = Additional;
                     }
                     field(BasisschemaXsdVersie; WMOHeader.BasisschemaXsdVersie)
                     {
+                        Caption = 'Basisschema XSD versie', Locked = true;
                         Importance = Additional;
                     }
                     field(BerichtXsdVersie; WMOHeader.BerichtXsdVersie)
                     {
+                        Caption = 'Bericht XSD versie', Locked = true;
                         Importance = Additional;
                     }
                     field(BasisschemaXsdVersieRetour; WMOHeader.BasisschemaXsdVersieRetour)
                     {
+                        Caption = 'Basisschema XSD versie retour', Locked = true;
                         Importance = Additional;
                     }
                     field(BerichtXsdVersieRetour; WMOHeader.BerichtXsdVersieRetour)
                     {
+                        Caption = 'Bericht XSD versie retour', Locked = true;
                         Importance = Additional;
                     }
                 }
@@ -129,7 +135,6 @@ page 50057 ACKWMOMessagePageDoc
                 field(Voorletters; WMOClient.Voorletters)
                 {
                 }
-
                 field(Achternaam; WMOClient.Achternaam)
                 {
                 }
@@ -145,34 +150,42 @@ page 50057 ACKWMOMessagePageDoc
                 }
                 field(JuridischeStatus; WMOClient.JuridischeStatus)
                 {
+                    Caption = 'Juridische status', Locked = true;
                     Importance = Additional;
                 }
                 field(WettelijkeVertegenwoordiging; WMOClient.WettelijkeVertegenwoordiging)
                 {
+                    Caption = 'WettelijkeVertegenwoordiging', Locked = true;
                     Importance = Additional;
                 }
                 field(PartnerAchternaam; WMOClient.PartnerAchternaam)
                 {
+                    Caption = 'Partner achternaam', Locked = true;
                     Importance = Additional;
                 }
                 field(PartnerVoorvoegsel; WMOClient.PartnerVoorvoegsel)
                 {
+                    Caption = 'Partner voorvoegsel', Locked = true;
                     Importance = Additional;
                 }
                 field(CommunicatieVorm; WMOClient.CommunicatieVorm)
                 {
+                    Caption = 'Communicatie vorm', Locked = true;
                     Importance = Additional;
                 }
                 field(CommunicatieTaal; WMOClient.CommunicatieTaal)
                 {
+                    Caption = 'Communicatie taal', Locked = true;
                     Importance = Additional;
                 }
                 field(NaamGebruik; WMOClient.NaamGebruik)
                 {
+                    Caption = 'Naam gebruik', Locked = true;
                     Importance = Additional;
                 }
                 field(GeboortedatumGebruik; WMOClient.GeboortedatumGebruik)
                 {
+                    Caption = 'Geboortedatum gebruik', Locked = true;
                     Importance = Additional;
                 }
             }

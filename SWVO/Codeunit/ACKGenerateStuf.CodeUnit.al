@@ -109,14 +109,14 @@ codeunit 50027 ACKGenerateStuf
         JsonObject: JsonObject;
         JsonText, XMl : Text;
     begin
-        //Create the json object from data
+        //Create the JSON object from data
         JsonObject := ACKJsonExport.Export(WMOHeader);
 
-        //Save the json text in the blob field
+        //Save the JSON text in the blob field
         StUF.BerichtJson.CreateOutStream(outstream, TextEncoding::UTF8);
         JsonObject.WriteTo(outstream);
 
-        //Create the xml text from the json text
+        //Create the xml text from the JSON text
         JsonObject.WriteTo(JsonText);
         XMl := SWVOAPIHttpClient.GetXMLFromJson(Base64Convert.ToBase64(JsonText, TextEncoding::UTF8));
 

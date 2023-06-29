@@ -3,7 +3,7 @@
 /// </summary>
 query 50019 ACKAssignedProductQ
 {
-    Caption = 'Header - Client - Assigned product query';
+    Caption = 'Header - Client - Assigned product query', Locked = true;
     QueryType = Normal;
     DataAccessIntent = ReadOnly;
 

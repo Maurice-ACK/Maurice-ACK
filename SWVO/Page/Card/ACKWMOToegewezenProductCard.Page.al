@@ -19,7 +19,7 @@ page 50018 ACKWMOToegewezenProductCard
         {
             group(Assignment)
             {
-                Caption = 'Assignment';
+                Caption = 'Toewijzing', Locked = true;
 
                 field(ToewijzingNummer; Rec.ToewijzingNummer)
                 {

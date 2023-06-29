@@ -235,7 +235,7 @@ table 50009 ACKWMOIndication
     /// <returns>Return variable Found of type Boolean.</returns>
     procedure GetTempStop(var IndicationTempStop: Record ACKIndicationTempStop; _date: Date) Found: Boolean
     var
-        InvalidDateParamErr: Label '_Date parameter cannot be 0D.';
+        InvalidDateParamErr: Label '_Date parameter cannot be 0D.', Locked = true;
     begin
         if _date = 0D then
             error(InvalidDateParamErr);

@@ -37,7 +37,7 @@ codeunit 50026 ACKReadBase64ToJson
 
     //         HttpContent.GetHeaders(HttpHeaders);
     //         HttpHeaders.Clear();
-    //         HttpHeaders.Add('Content-Type', 'application/json');
+    //         HttpHeaders.Add('Content-Type', 'application/JSON');
 
     //         HttpRequestMessage.Content := HttpContent;
 
@@ -49,7 +49,7 @@ codeunit 50026 ACKReadBase64ToJson
     //         if not HttpResponseMessage.IsSuccessStatusCode() then
     //             Error('not success');
 
-    //         // Read the response content as json.
+    //         // Read the response content as JSON.
     //         HttpResponseMessage.Content().ReadAs(ResponseText);
 
     //         JsonObject.ReadFrom(ResponseText);

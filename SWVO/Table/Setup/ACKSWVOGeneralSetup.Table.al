@@ -39,11 +39,11 @@ table 50011 ACKSWVOGeneralSetup
         field(40; SWVOAPIBaseUri; Text[250])
         {
             //To test on a local docker instance use http://host.docker.internal as the host ip.
-            Caption = 'SWVO API base url';
+            Caption = 'SWVO API base url', Locked = true;
         }
         field(50; BC_TenantId; Guid)
         {
-            Caption = 'Tenant id';
+            Caption = 'Tenant id', Locked = true;
         }
         field(60; BC_ClientId; Guid)
         {
@@ -51,15 +51,15 @@ table 50011 ACKSWVOGeneralSetup
         }
         field(80; BC_Scope; Text[255])
         {
-            Caption = 'Scope';
+            Caption = 'Scope', Locked = true;
         }
         field(90; DigiEndpointURL; Text[250])
         {
-            Caption = 'Digikoppeling endpoint URL';
+            Caption = 'Digikoppeling endpoint URL', Locked = true;
         }
         field(100; DigiEndpointSOAPAction; Text[150])
         {
-            Caption = 'Digikoppeling endpoint SOAP action';
+            Caption = 'Digikoppeling endpoint SOAP action', Locked = true;
         }
         field(110; VendorPostingGroup; Code[20])
         {
@@ -83,20 +83,20 @@ table 50011 ACKSWVOGeneralSetup
         }
         field(150; StufApplicationVersion; Code[4])
         {
-            Caption = 'Application version';
+            Caption = 'Applicatieversie', Locked = true;
         }
         field(160; StufApplicationSubVersion; Code[4])
         {
-            Caption = 'Application sub version';
+            Caption = 'Applicatie subversie', Locked = true;
         }
 
         field(170; StufFunctionVersion; Code[4])
         {
-            Caption = 'Function version';
+            Caption = 'Functieversie', Locked = true;
         }
         field(180; StufFunctionSubVersion; Code[4])
         {
-            Caption = 'Function sub version';
+            Caption = 'Functie subversie', Locked = true;
         }
         field(190; JSONMapNos; Code[20])
         {
@@ -106,15 +106,14 @@ table 50011 ACKSWVOGeneralSetup
         field(200; VerifyAddressBag; Boolean)
         {
             Caption = 'BAG validation';
-
         }
         field(210; StUFSenderApplicationDefault; Text[60])
         {
-            Caption = 'StUF default sender application';
+            Caption = 'StUF standaard applicatie zender', Locked = true;
         }
         field(220; StUFReceiverApplicationHC; Text[60])
         {
-            Caption = 'StUF applicatie healthcare providers';
+            Caption = 'StUF applicatie zorgaanbieders', Locked = true;
         }
     }
 
@@ -150,6 +149,8 @@ table 50011 ACKSWVOGeneralSetup
     end;
 
     var
-        BC_Client_Secret: Label 'BC_Client_Secret';
+#pragma warning disable AA0074
+        BC_Client_Secret: Label 'BC_Client_Secret', Locked = true;
+#pragma warning restore AA0074
 }
 

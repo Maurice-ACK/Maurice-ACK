@@ -60,7 +60,7 @@ table 50029 ACKHCProductCode
         }
         field(60; ProductCodeType; Enum ACKProductCodeType)
         {
-            Caption = 'Product code type';
+            Caption = 'Type', Locked = true;
             FieldClass = FlowField;
             CalcFormula = lookup(ACKWMOProductCode.ProductCodeType where(ProductCode = field(ProductCode)));
             Editable = false;

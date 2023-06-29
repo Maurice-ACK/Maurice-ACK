@@ -20,7 +20,7 @@ page 50079 ACKWMOMessageDeclDoc
         {
             group(Header)
             {
-                Caption = 'Header';
+                Caption = 'Header', Locked = true;
                 field(Status; Rec.Status)
                 {
                 }
@@ -137,10 +137,10 @@ page 50079 ACKWMOMessageDeclDoc
             group(DeclaratieAntwoord)
             {
                 Visible = not Is323;
-                Caption = 'Declaratie antwoord';
+                Caption = 'Declaratie antwoord', Locked = true;
                 field(DeclaratieAntwoordDNummer; WMODeclaratieAntwoord.DeclaratieNummer)
                 {
-                    Caption = 'Declaratie nummer';
+                    Caption = 'Declaratie nummer', Locked = true;
                 }
                 field(IngediendTotaalBedrag; WMODeclaratieAntwoord.IngediendTotaalBedrag)
                 {

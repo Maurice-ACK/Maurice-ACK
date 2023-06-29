@@ -1,6 +1,6 @@
 query 50005 ACKWMOHeaderClientQuery
 {
-    Caption = 'Wmo Header - Client Query';
+    Caption = 'Wmo Header - Client Query', Locked = true;
     QueryType = Normal;
 
     elements

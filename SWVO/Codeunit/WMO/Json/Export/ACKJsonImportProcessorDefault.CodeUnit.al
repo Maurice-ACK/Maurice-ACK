@@ -4,7 +4,7 @@
 codeunit 50037 ACKJsonExportProcessorDefault implements ACKIJsonExportProcessor
 {
     var
-        NotImplementedVektisErr: Label 'No json export processor is implemented for vektis code: %1', Comment = '%1 = ACKVektisCode';
+        NotImplementedVektisErr: Label 'No JSON export processor is implemented for vektis code: %1', Comment = '%1 = ACKVektisCode';
 
     /// <summary>
     /// Export.

@@ -4,7 +4,7 @@
 enum 50035 ACKWMOHeaderStatus
 {
     Extensible = false;
-    Caption = 'Header status';
+    Caption = 'Header status', Locked = true;
 
     value(0; NVT)
     {

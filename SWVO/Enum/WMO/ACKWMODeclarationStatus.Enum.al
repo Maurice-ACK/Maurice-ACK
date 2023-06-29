@@ -7,24 +7,20 @@ enum 50033 ACKWMODeclarationStatus
     {
         Caption = 'New';
     }
-    value(1; PartlyRejected)
-    {
-        Caption = 'Partly rejected';
-    }
-    value(2; Rejected)
+    value(1; Rejected)
     {
         Caption = 'Rejected';
     }
-    value(3; Approved)
+    value(2; Approved)
     {
         Caption = 'Approved';
     }
-    value(4; Posted)
+    value(3; Posted)
     {
-        Caption = 'Geboekt';
+        Caption = 'Posted';
     }
-    value(5; Paid)
+    value(4; Paid)
     {
-        Caption = 'Betaald';
+        Caption = 'Paid';
     }
 }

@@ -1,5 +1,5 @@
 /// <summary>
-/// Table ACKHealthcareMonth.
+/// Table ACKProductCodeRate.
 /// </summary>
 table 50067 ACKProductCodeRate
 {
@@ -8,10 +8,10 @@ table 50067 ACKProductCodeRate
 
     fields
     {
-        field(10; HealthcareMonthID; Integer)
+        field(10; ProductCodeRateMonthID; Integer)
         {
-            Caption = 'Healthcare month ID';
-            TableRelation = ACKHealthcareMonth.ID;
+            Caption = 'Month ID', Locked = true;
+            TableRelation = ACKProductCodeRateMonth.ID;
             NotBlank = true;
         }
         field(20; ProductCode; Code[5])
@@ -64,7 +64,7 @@ table 50067 ACKProductCodeRate
     }
     keys
     {
-        key(PK; HealthcareMonthID, ProductCode, IndicationUnitid, DeclarationUnitId)
+        key(PK; ProductCodeRateMonthID, ProductCode, IndicationUnitid, DeclarationUnitId)
         {
             Clustered = true;
         }

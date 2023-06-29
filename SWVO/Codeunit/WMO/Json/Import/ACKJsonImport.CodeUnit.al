@@ -119,7 +119,7 @@ codeunit 50038 ACKJsonImport
     var
         JSONMapChild: Record ACKJSONMap;
         JsonTokenCurrent: JsonToken;
-        PathNotFoundErr: Label 'Could not find required path %1', Comment = '%1 = Path';
+        PathNotFoundErr: Label 'Could not find required path %1', Comment = '%1 = Path', Locked = true;
     begin
         JSONMapChild.SetCurrentKey(SortOrder);
         JSONMapChild.SetRange(MessageCode, JSONMessage.MessageCode);

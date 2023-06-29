@@ -335,7 +335,7 @@ codeunit 50003 ACKHelper
     procedure InsertRecord(Rec: Variant)
     var
         RecordRef: RecordRef;
-        InvalidParameterTypeErr: Label 'Parameter must be of type: Record';
+        InvalidParameterTypeErr: Label 'Parameter must be of type: Record', Locked = true;
         InsertFailedErr: Label '%1: insert failed', Comment = '%1 = Table caption';
     begin
         if not Rec.IsRecord() then
@@ -441,11 +441,11 @@ codeunit 50003 ACKHelper
         VektisCode: Enum ACKVektisCode;
         BerichtVersie, BerichtSubversie : Integer;
         FilePath, InstreamText : Text;
-        JSONFileTypeLbl: Label 'json Files (*.json)|*.json', Locked = true;
+        JSONFileTypeLbl: Label 'JSON Files (*.JSON)|*.JSON', Locked = true;
         SelectFileLbl: Label 'Select file..';
     begin
         if UploadIntoStream(SelectFileLbl, '', JSONFileTypeLbl, FilePath, InStream) then begin
-            FileMgmnt.ValidateFileExtension(FilePath, '.json');
+            FileMgmnt.ValidateFileExtension(FilePath, '.JSON');
 
             JsonObject.ReadFrom(InStream);
             JsonObject.SelectToken('header.berichtCode', JsonToken);
@@ -490,11 +490,19 @@ codeunit 50003 ACKHelper
             until RecRef.Next() = 0;
     end;
 
+    /// <summary>
+    /// GetRecordFromVariant.
+    /// </summary>
+    /// <param name="_Rec">Variant.</param>
+    /// <param name="RecordRef">VAR RecordRef.</param>
+    /// <param name="EmptyValid">Boolean.</param>
+    /// <param name="ThrowError">Boolean.</param>
+    /// <returns>Return value of type Boolean.</returns>
     procedure GetRecordFromVariant(_Rec: Variant; var RecordRef: RecordRef; EmptyValid: Boolean; ThrowError: Boolean): Boolean
     var
         DataTypeManagement: Codeunit "Data Type Management";
-        RecordTypeErrMsg: Label 'Parameter must be of type Record or RecordRef.';
-        RecordEmptyErrMsg: Label 'Record should not be empty.';
+        RecordTypeErrMsg: Label 'Parameter must be of type Record or RecordRef.', Locked = true;
+        RecordEmptyErrMsg: Label 'Record should not be empty.', Locked = true;
         IsValid: Boolean;
     begin
         IsValid := DataTypeManagement.GetRecordRef(_Rec, RecordRef);
@@ -528,7 +536,7 @@ codeunit 50003 ACKHelper
     var
         ACKSWVOGeneralSetup: Record ACKSWVOGeneralSetup;
         Customer: Record Customer;
-        NotFoundErr: Label 'Invalid relation to customer municipality.';
+        NotFoundErr: Label 'Invalid relation to customer municipality.', Locked = true;
     begin
         if MunicipalityNo = '' then
             if AllowEmpty then
@@ -561,7 +569,7 @@ codeunit 50003 ACKHelper
     var
         ACKSWVOGeneralSetup: Record ACKSWVOGeneralSetup;
         Vendor: Record Vendor;
-        NotFoundErr: Label 'Invalid relation to vendor healthcare provider.';
+        NotFoundErr: Label 'Invalid relation to vendor healthcare provider.', Locked = true;
     begin
         if HealthcareProviderNo = '' then
             if AllowEmpty then

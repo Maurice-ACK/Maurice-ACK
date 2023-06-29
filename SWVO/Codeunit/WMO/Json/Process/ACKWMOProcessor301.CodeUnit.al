@@ -81,7 +81,7 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
         ProductCodeFrequency: Record ACKProductCodeFrequency;
         HealthcareProviderProductCode: Record ACKHCProductCode;
         IndicationQuery: Query ACKWMOIndicationQuery;
-        HealthcareMonthPCRateQuery: Query ACKHealthcareMonthPCRateQuery;
+        ProductCodeMonthRateQuery: Query ACKProductCodeMonthRateQuery;
         WMODeclarationQuery: Query ACKWMODeclarationQuery;
     begin
         //TR379
@@ -176,23 +176,23 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
             Clear(IndicationQuery);
         end;
 
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Year, Date2DMY(WMOToegewezenProduct.Ingangsdatum, 3));
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.Month, ACKHelper.GetMonthByDate(WMOToegewezenProduct.Ingangsdatum));
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.ProductCode, WMOToegewezenProduct.ProductCode);
-        HealthcareMonthPCRateQuery.SetRange(HealthcareMonthPCRateQuery.IndicationUnitid, WMOToegewezenProduct.Eenheid);
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Year, Date2DMY(WMOToegewezenProduct.Ingangsdatum, 3));
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Month, ACKHelper.GetMonthByDate(WMOToegewezenProduct.Ingangsdatum));
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.ProductCode, WMOToegewezenProduct.ProductCode);
+        ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.IndicationUnitid, WMOToegewezenProduct.Eenheid);
 
         //SW004
-        if HealthcareMonthPCRateQuery.Open() and not HealthcareMonthPCRateQuery.Read() then begin
+        if ProductCodeMonthRateQuery.Open() and not ProductCodeMonthRateQuery.Read() then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW004);
             exit(false);
         end;
 
         //SW006
-        if HealthcareMonthPCRateQuery.IsPredefined then
+        if ProductCodeMonthRateQuery.IsPredefined then
             if WMOToegewezenProduct.Volume <> 1 then
                 MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW006);
 
-        HealthcareMonthPCRateQuery.Close();
+        ProductCodeMonthRateQuery.Close();
         exit(true);
     end;
 

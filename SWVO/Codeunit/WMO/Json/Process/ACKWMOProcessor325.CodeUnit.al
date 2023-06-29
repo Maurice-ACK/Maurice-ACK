@@ -7,7 +7,7 @@ codeunit 50029 ACKWMOProcessor325 implements ACKWMOIProcessor
         WMOHeader325, WMOHeader323 : Record ACKWMOHeader;
         WMODeclaratieAntwoord: Record ACKWMODeclaratieAntwoord;
         WMODeclaration: Record ACKWMODeclaratie;
-        HealthcareMonth: Record ACKHealthcareMonth;
+        ProductCodeRateMonth: Record ACKProductCodeRateMonth;
         MessageRetourCode: Record ACKWMOMessageRetourCode;
         WMOProcessor: codeunit ACKWMOProcessor;
         WMODeclarationHelper: Codeunit ACKWMODeclarationHelper;
@@ -43,7 +43,7 @@ codeunit 50029 ACKWMOProcessor325 implements ACKWMOIProcessor
         WMOClient: Record ACKWMOClient;
         ACKClient: Record ACKClient;
         TotalAmountDeclarationHeader: Integer;
-        AmountCheckErr: Label 'Totaal toegekend bedrag 325 komt niet overeen met declaratie.';
+        AmountCheckErr: Label 'Total amount assigned in Wmo 325 message, doesn''t match with declaration amount.';
     begin
         Clear(InvalidPrestaties);
 
@@ -117,7 +117,7 @@ codeunit 50029 ACKWMOProcessor325 implements ACKWMOIProcessor
         WMOProcessor.ValidateProcessStatus(WMOHeader325);
 
         if Validate() then begin
-            HealthcareMonth.GetFromDate(WMODeclaration.Begindatum);
+            ProductCodeRateMonth.GetFromDate(WMODeclaration.Begindatum);
             SetStatusDeclaration();
         end;
 

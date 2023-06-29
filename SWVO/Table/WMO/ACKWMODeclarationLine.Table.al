@@ -14,6 +14,7 @@ table 50065 ACKWMODeclarationLine
         }
         field(20; DeclarationHeaderNo; Code[20])
         {
+            Caption = 'DeclarationHeaderNo', Locked = true;
             TableRelation = ACKWMODeclarationHeader.DeclarationHeaderNo;
 
             trigger OnValidate()
