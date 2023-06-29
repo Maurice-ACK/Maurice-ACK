@@ -149,13 +149,12 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
             if HasInvalidProductCombination(WMOToegewezenProduct) then
                 exit(false);
 
-            //SW012
-            if IndicationQuery.StartDate <> WMOToegewezenProduct.Ingangsdatum then begin
-                MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW011);
-                exit(false);
-            end;
-
             if WMOToegewezenProduct.RedenWijziging = ACKWMORedenWijziging::Empty then begin
+                if IndicationQuery.StartDate <> WMOToegewezenProduct.Ingangsdatum then begin
+                    MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW011);
+                    exit(false);
+                end;
+
                 if IndicationQuery.EndDate <> WMOToegewezenProduct.Einddatum then begin
                     MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::TR332);
                     exit(false);

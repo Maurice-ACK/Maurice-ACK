@@ -133,45 +133,76 @@ codeunit 50028 ACKWMOHelper
     procedure GetIndicationRealStartAndEndDate(IndicationQueryFrom: Query ACKWMOIndicationQuery; var _StartDate: Date; var _EndDate: Date)
     var
         WMOIndication: Record ACKWMOIndication;
+        MaxDaysBetween: Integer;
     begin
+        MaxDaysBetween := 30;
+
         if IndicationQueryFrom.ClientNo = '' then
             Error('Wrong use of function.');
 
         WMOIndication.GetBySystemId(IndicationQueryFrom.IndicationSystemId);
+
         _StartDate := WMOIndication.GetRealStartDate();
         _EndDate := WMOIndication.GetRealEndDate();
 
-        if _EndDate = 0D then
-            _EndDate := ACKHelper.MaxDate();
+        GetIndicationRealStartDate(IndicationQueryFrom, MaxDaysBetween, _StartDate);
 
+        if _EndDate = 0D then
+            exit;
+
+        GetIndicationRealEndDate(IndicationQueryFrom, MaxDaysBetween, _EndDate);
+    end;
+
+
+    local procedure GetIndicationRealStartDate(IndicationQueryFrom: Query ACKWMOIndicationQuery; MaxDaysBetween: Integer; var _StartDate: Date)
+    var
+        WMOIndication: Record ACKWMOIndication;
+    begin
+        SetWMOIndicationFilters(IndicationQueryFrom, WMOIndication);
+        WMOIndication.SetAscending(StartDate, false);
+        WMOIndication.SetFilter(StartDate, '<%1', _StartDate);
+
+        if WMOIndication.FindSet(false) then
+            repeat
+                if WMOIndication.StartDate <> WMOIndication.EndDate then
+                    if WMOIndication.GetRealStartDate() < _StartDate then
+                        if (WMOIndication.GetRealEndDate() + MaxDaysBetween) >= _StartDate then
+                            _StartDate := WMOIndication.GetRealStartDate()
+                        else
+                            exit;
+            until WMOIndication.Next() = 0;
+    end;
+
+    local procedure GetIndicationRealEndDate(IndicationQueryFrom: Query ACKWMOIndicationQuery; MaxDaysBetween: Integer; var _EndDate: Date)
+    var
+        WMOIndication: Record ACKWMOIndication;
+    begin
+        SetWMOIndicationFilters(IndicationQueryFrom, WMOIndication);
+        WMOIndication.SetAscending(Startdate, true);
+        WMOIndication.SetFilter(EndDate, '>%1', _EndDate);
+
+        if WMOIndication.FindSet(false) then
+            repeat
+                if WMOIndication.StartDate <> WMOIndication.EndDate then
+                    if WMOIndication.GetRealEndDate() > _EndDate then
+                        if (WMOIndication.GetRealStartDate() - MaxDaysBetween) <= _EndDate then
+                            _EndDate := WMOIndication.GetRealEndDate()
+                        else
+                            exit;
+            until WMOIndication.Next() = 0;
+    end;
+
+    local procedure SetWMOIndicationFilters(IndicationQueryFrom: Query ACKWMOIndicationQuery; var WMOIndication: Record ACKWMOIndication)
+    begin
         Clear(WMOIndication);
         WMOIndication.SetCurrentKey(ClientNo, MunicipalityNo, HealthcareProviderNo, ProductCode, StartDate);
-        WMOIndication.SetAscending(StartDate, true);
         WMOIndication.SetFilter(SystemId, '<>%1', IndicationQueryFrom.IndicationSystemId);
         WMOIndication.SetRange(ClientNo, IndicationQueryFrom.ClientNo);
         WMOIndication.SetRange(MunicipalityNo, IndicationQueryFrom.MunicipalityNo);
         WMOIndication.SetRange(HealthcareProviderNo, IndicationQueryFrom.HealthcareProviderNo);
         WMOIndication.SetRange(ProductCategoryId, IndicationQueryFrom.ProductCategoryId);
         WMOIndication.SetRange(ProductCode, IndicationQueryFrom.ProductCode);
-
-        if WMOIndication.FindSet(false) then
-            repeat
-                if WMOIndication.StartDate <> WMOIndication.EndDate then begin
-                    if WMOIndication.GetRealStartDate() < _StartDate then
-                        if WMOIndication.GetRealEndDate() + 1 = _StartDate then
-                            _StartDate := WMOIndication.GetRealStartDate();
-
-                    if WMOIndication.GetRealEndDate() > _EndDate then
-                        if WMOIndication.GetRealStartDate() = _EndDate + 1 then
-                            _EndDate := WMOIndication.GetRealEndDate();
-                end;
-            until WMOIndication.Next() = 0;
-
-        //Keep using 0D as the default for indications in the future.
-        if _EndDate = ACKHelper.MaxDate() then
-            _EndDate := 0D;
+        WMOIndication.SetRange(ProductUnit, IndicationQueryFrom.ProductUnit);
+        WMOIndication.SetRange(ProductFrequency, IndicationQueryFrom.ProductFrequency);
     end;
-
-    var
-        ACKHelper: Codeunit ACKHelper;
 }

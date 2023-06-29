@@ -134,6 +134,9 @@ codeunit 50014 ACKWMOProcessor302 implements ACKWMOIProcessor
         ACKWMOIndication.SetRange(AssignmentNo, WMOToegewezenProduct.ToewijzingNummer);
 
         if ACKWMOIndication.FindFirst() then begin
+            if WMOToegewezenProduct.Frequentie = ACKWMOFrequentie::TotaalInToewijzing then
+                ACKWMOIndication.ProductVolume := WMOToegewezenProduct.Volume;
+
             ACKWMOIndication.EndDate := WMOToegewezenProduct.Einddatum;
             ACKWMOIndication.RedenWijziging := WMOToegewezenProduct.RedenWijziging;
             ACKWMOIndication.Modify(true);
