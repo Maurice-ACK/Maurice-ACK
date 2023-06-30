@@ -13,7 +13,7 @@ table 50041 ACKProductCategoryGLAccount
         field(10; CategoryID; Code[2])
         {
             Caption = 'Category';
-            TableRelation = ACKWMOProductCategory.ID;
+            TableRelation = ACKProductCategory.ID;
             DataClassification = SystemMetadata;
             NotBlank = true;
             ValidateTableRelation = true;

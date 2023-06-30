@@ -17,7 +17,7 @@ table 50067 ACKProductCodeRate
         field(20; ProductCode; Code[5])
         {
             Caption = 'Product code';
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
             NotBlank = true;
         }
         field(40; IndicationUnitid; enum ACKWMOEenheid)
@@ -51,14 +51,14 @@ table 50067 ACKProductCodeRate
         {
             Caption = 'Product category';
             FieldClass = FlowField;
-            CalcFormula = lookup(ACKWMOProductCode.CategoryID where(ProductCode = field(ProductCode)));
+            CalcFormula = lookup(ACKProductCode.CategoryID where(ProductCode = field(ProductCode)));
             Editable = false;
         }
         field(90; ProductCodeDescription; Text[500])
         {
             Caption = 'Product code description';
             FieldClass = FlowField;
-            CalcFormula = lookup(ACKWMOProductCode.Description where(ProductCode = field(ProductCode)));
+            CalcFormula = lookup(ACKProductCode.Description where(ProductCode = field(ProductCode)));
             Editable = false;
         }
     }

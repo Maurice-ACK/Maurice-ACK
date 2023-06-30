@@ -1,11 +1,11 @@
 /// <summary>
-/// Table ACKWMOProductCode
+/// Table ACKProductCode
 /// </summary>
-table 50007 ACKWMOProductCode
+table 50007 ACKProductCode
 {
     Caption = 'Product code';
-    LookupPageId = ACKWMOProductCodeList;
-    DrillDownPageId = ACKWMOProductCodeList;
+    LookupPageId = ACKProductCodeList;
+    DrillDownPageId = ACKProductCodeList;
 
     DataClassification = SystemMetadata;
 
@@ -24,7 +24,7 @@ table 50007 ACKWMOProductCode
         field(20; CategoryID; Code[2])
         {
             Caption = 'Category ID';
-            TableRelation = ACKWMOProductCategory.ID;
+            TableRelation = ACKProductCategory.ID;
             NotBlank = true;
             ValidateTableRelation = true;
 

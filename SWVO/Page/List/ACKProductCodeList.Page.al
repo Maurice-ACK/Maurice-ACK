@@ -1,12 +1,12 @@
 /// <summary>
-/// Page ACKWMOProductCodeList
+/// Page ACKProductCodeList
 /// </summary>
-page 50001 ACKWMOProductCodeList
+page 50001 ACKProductCodeList
 {
     ApplicationArea = All;
     Caption = 'Product code';
     PageType = List;
-    SourceTable = ACKWMOProductCode;
+    SourceTable = ACKProductCode;
     UsageCategory = Lists;
     DelayedInsert = true;
 
@@ -40,12 +40,20 @@ page 50001 ACKWMOProductCodeList
     }
     actions
     {
+        area(Promoted)
+        {
+            actionref(ACKProductFrequenciesPromoted; ACKProductFrequencies)
+            {
+            }
+            actionref(ACKInvalidPCCombinationPromoted; ACKInvalidPCCombination)
+            {
+            }
+        }
+
         area(Processing)
         {
             action(ACKProductFrequencies)
             {
-                Promoted = true;
-                PromotedCategory = Process;
                 Caption = 'Product frequency combinations';
                 Image = Relationship;
                 RunObject = Page ACKProductCodeFrequencyList;
@@ -54,8 +62,6 @@ page 50001 ACKWMOProductCodeList
             }
             action(ACKInvalidPCCombination)
             {
-                Promoted = true;
-                PromotedCategory = Process;
                 Caption = 'Invalid combinations';
                 Image = ErrorLog;
                 RunObject = Page ACKInvalidPCCombinationList;
@@ -66,12 +72,6 @@ page 50001 ACKWMOProductCodeList
     }
     views
     {
-        view(IsActiveFilter)
-        {
-            Filters = where(IsActive = const(true));
-            Caption = 'Actief', Locked = true;
-            SharedLayout = true;
-        }
         view(TypeWmoFilter)
         {
             Filters = where(ProductCodeType = const(ACKProductCodeType::Wmo));

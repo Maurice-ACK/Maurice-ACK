@@ -22,7 +22,7 @@ page 50030 ACKHCProductCodeList
             {
                 field(ProductCode; Rec.ProductCode)
                 {
-                    LookupPageId = ACKWMOProductCodeList;
+                    LookupPageId = ACKProductCodeList;
                 }
                 field(ProductCodeDescription; Rec.ProductCodeDescription)
                 {

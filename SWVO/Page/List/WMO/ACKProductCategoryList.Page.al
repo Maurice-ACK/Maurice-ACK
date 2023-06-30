@@ -1,12 +1,12 @@
 /// <summary>
-/// Page ACKWMOProductCategoryList.
+/// Page ACKProductCategoryList.
 /// </summary>
-page 50002 ACKWMOProductCategoryList
+page 50002 ACKProductCategoryList
 {
     ApplicationArea = All;
     Caption = 'Product category';
     PageType = List;
-    SourceTable = ACKWMOProductCategory;
+    SourceTable = ACKProductCategory;
     UsageCategory = Lists;
     DelayedInsert = true;
 

@@ -281,7 +281,7 @@ codeunit 50015 ACKWMOProcessor
     /// <param name="RefId">Guid.</param>
     procedure TR081Check(IndicationProductCode: Text[5]; ProductCode: Text[5]; Category: Code[2]; HeaderId: Guid; TableRelationNo: Integer; RefId: Guid)
     var
-        WMOProductCode: Record ACKWMOProductCode;
+        WMOProductCode: Record ACKProductCode;
     begin
         if ProductCode <> '' then begin
             //TR381

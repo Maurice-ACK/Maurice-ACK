@@ -15,7 +15,7 @@ table 50037 ACKInvalidPCCombination
         {
             Caption = 'Product code';
             NotBlank = true;
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
 
             trigger OnValidate()
             begin
@@ -26,7 +26,7 @@ table 50037 ACKInvalidPCCombination
         {
             Caption = 'Product code invalid';
             NotBlank = true;
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
 
             trigger OnValidate()
             begin

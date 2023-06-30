@@ -11,7 +11,7 @@ page 50046 ACKProductCategoryAPI
     EntityName = 'productCategory';
     EntitySetName = 'productCategories';
     PageType = API;
-    SourceTable = ACKWMOProductCategory;
+    SourceTable = ACKProductCategory;
 
     layout
     {

@@ -72,16 +72,16 @@ table 50009 ACKWMOIndication
         {
             Caption = 'Category Id';
             Editable = false;
-            TableRelation = ACKWMOProductCode.CategoryID where(ProductCode = field(ProductCode));
+            TableRelation = ACKProductCode.CategoryID where(ProductCode = field(ProductCode));
         }
         field(70; ProductCode; Code[5])
         {
             Caption = 'Product code';
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
 
             trigger OnValidate()
             var
-                ACKWMOProductCode: Record ACKWMOProductCode;
+                ACKWMOProductCode: Record ACKProductCode;
             begin
                 if ACKWMOProductCode.Get(Rec.ProductCode) then
                     Validate(Rec.ProductCategoryId, ACKWMOProductCode.CategoryID);

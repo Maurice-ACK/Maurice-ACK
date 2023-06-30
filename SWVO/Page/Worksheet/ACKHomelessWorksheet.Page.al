@@ -3,7 +3,7 @@
 /// </summary>
 page 50103 ACKHomelessWorksheet
 {
-    Caption = 'HomelessList';
+    Caption = 'Homeless';
     CardPageID = ACKHomelessCard;
     DataCaptionFields = SSN_Available;
     PageType = Worksheet;

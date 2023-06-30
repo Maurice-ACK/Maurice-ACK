@@ -11,7 +11,7 @@ page 50054 ACKProductCodeAPI
     EntityName = 'productCode';
     EntitySetName = 'productCodes';
     PageType = API;
-    SourceTable = ACKWMOProductCode;
+    SourceTable = ACKProductCode;
 
     layout
     {

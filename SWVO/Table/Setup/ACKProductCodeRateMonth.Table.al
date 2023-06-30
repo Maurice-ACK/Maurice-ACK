@@ -80,7 +80,7 @@ table 50028 ACKProductCodeRateMonth
     /// <returns>Return variable TotalDays of type Integer.</returns>
     procedure NoOfDaysInMonth() TotalDays: Integer
     begin
-        TotalDays := ACKHelper.NoOfDaysInMonth(Rec.Year, Rec.Month);
+        TotalDays := ACKHelper.NoOfDaysInMonth(Rec.Year, Rec.Month.AsInteger());
     end;
 
     /// <summary>
@@ -141,6 +141,6 @@ table 50028 ACKProductCodeRateMonth
 
     var
         ACKHelper: Codeunit ACKHelper;
-        NrFormatLbl: Label '%1-%2', Comment = '%1 = Year, %2 = Month', MaxLength = 7, Locked = true;
+    //NrFormatLbl: Label '%1-%2', Comment = '%1 = Year, %2 = Month', MaxLength = 7, Locked = true;
 }
 

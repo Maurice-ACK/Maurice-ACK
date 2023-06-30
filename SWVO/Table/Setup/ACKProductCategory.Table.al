@@ -1,11 +1,11 @@
 /// <summary>
-/// Table ACKWMOProductCategory
+/// Table ACKProductCategory
 /// </summary>
-table 50008 ACKWMOProductCategory
+table 50008 ACKProductCategory
 {
     Caption = 'Product category';
-    LookupPageId = ACKWMOProductCategoryList;
-    DrillDownPageId = ACKWMOProductCategoryList;
+    LookupPageId = ACKProductCategoryList;
+    DrillDownPageId = ACKProductCategoryList;
 
     DataClassification = CustomerContent;
 

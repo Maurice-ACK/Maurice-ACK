@@ -14,7 +14,7 @@ table 50033 ACKProductCodeFrequency
         {
             Caption = 'Product code';
             NotBlank = true;
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
         }
         field(20; ProductFrequency; enum ACKWMOFrequentie)
         {

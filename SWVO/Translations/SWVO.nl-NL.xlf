@@ -713,7 +713,7 @@
         </trans-unit>
         <trans-unit id="Table 3863082286 - Field 2686962215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>id</source>
-          <target state="needs-translation"/>
+          <target state="translated">ID</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKPostRegistrationArchive - Field id - Property Caption</note>
         </trans-unit>
@@ -759,6 +759,24 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKPostRegistrationSendRecv - Field Type - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 336064238 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product category</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCategory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 336064238 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="translated">Beschrijving</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCategory - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 336064238 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Category</source>
+          <target state="translated">Categorie</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCategory - Field ID - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2734270924 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product category - G/L Account</source>
           <target>Productcategorie - Grootboek account</target>
@@ -800,6 +818,42 @@
           <target>Einddatum</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCategoryGLAccount - Field ValidTo - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2953311617 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product code</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2953311617 - Field 2668536903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Category ID</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCode - Field CategoryID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2953311617 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="translated">Beschrijving</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCode - Field Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2953311617 - Field 3276803522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Active</source>
+          <target state="translated">Actief</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCode - Field IsActive - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2953311617 - Field 1887992906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code</source>
+          <target state="translated">Code</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCode - Field ProductCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2953311617 - Field 1493962450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCode - Field ProductCodeType - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1467467613 - Field 1887992906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code</source>
@@ -1401,60 +1455,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOMessageRetourCode - Field RuleDescription - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Table 2263543425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product category</source>
-          <target>Productcategorie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCategory - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2263543425 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <target>Beschrijving</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCategory - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 2263543425 - Field 3641927271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Category</source>
-          <target state="translated">Categorie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCategory - Field ID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1089395134 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product code</source>
-          <target state="translated">Productcode</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1089395134 - Field 2668536903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Category ID</source>
-          <target state="translated">Categorie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Field CategoryID - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1089395134 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Description</source>
-          <target>Beschrijving</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Field Description - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1089395134 - Field 3276803522 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Active</source>
-          <target>Actief</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Field IsActive - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1089395134 - Field 1887992906 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Code</source>
-          <target state="translated">Code</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Field ProductCode - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1089395134 - Field 1493962450 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Type</source>
-          <target>Type</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMOProductCode - Field ProductCodeType - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Table 105346598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wmo Retour codes</source>
           <target state="translated">Wmo retourcodes</target>
@@ -1691,7 +1691,7 @@
         </trans-unit>
         <trans-unit id="Page 617611784 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Client addresses</source>
-          <target state="needs-translation"/>
+          <target state="translated">Client adressen</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientAddressList - Property Caption</note>
         </trans-unit>
@@ -1709,7 +1709,7 @@
         </trans-unit>
         <trans-unit id="Page 3491357304 - Control 370658181 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Addresses</source>
-          <target state="needs-translation"/>
+          <target state="translated">Adressen</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKClientCard - Control ACKClientAddressListPart - Property Caption</note>
         </trans-unit>
@@ -1966,7 +1966,7 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKHomelessList - Action Filter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4089561059 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>HomelessList</source>
+          <source>Homeless</source>
           <target state="translated">Dakloosheid</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKHomelessWorksheet - Property Caption</note>
@@ -2109,11 +2109,59 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCategoryGLAccountL - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 4199864180 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product category</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCategoryList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4199864180 - Action 3127367123 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or set up the G/L Accounts by product category.</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCategoryList - Action GLAccounts - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4199864180 - Action 3127367123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Accounts</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCategoryList - Action GLAccounts - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 162940835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code - frequency</source>
           <target state="translated">Productcode - frequentie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeFrequencyList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3762123335 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product code</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3762123335 - Action 1646155318 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or set up the invalid product code combinations.</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeList - Action ACKInvalidPCCombination - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3762123335 - Action 1646155318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid combinations</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeList - Action ACKInvalidPCCombination - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3762123335 - Action 2107025460 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View or set up product code - frequency combinations.</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeList - Action ACKProductFrequencies - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3762123335 - Action 2107025460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product frequency combinations</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeList - Action ACKProductFrequencies - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 831003055 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code rates</source>
@@ -2277,12 +2325,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKStUFList - Action UploadXml - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 1897949385 - Action 15300147 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo</source>
-          <target state="translated">Wmo</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKStUFList - Action ClientDoc - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 1897949385 - Action 2675496269 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Process</source>
           <target state="translated">Verwerken</target>
@@ -2445,437 +2487,191 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOGeneralSetup - Action TestAuthConnectionSWVOAPI - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SWVO Role Center</source>
-          <target>SWVO - rolcentrum</target>
+        <trans-unit id="Page 930307123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SWVO employee role center</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Action 4165283977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Client</source>
-          <target>Cliënt</target>
+        <trans-unit id="Page 930307123 - Action 3675160336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Account Reconciliations</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action1 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Bank Acc. Reconciliation List - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2041487070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKClientList</source>
-          <target>Cliënten</target>
+        <trans-unit id="Page 930307123 - Action 3301827404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Account Statement List</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKClientList - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Bank Account Statement List - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Action 3406667849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo transport</source>
-          <target state="translated">Wmo vervoer</target>
+        <trans-unit id="Page 930307123 - Action 4020075288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Bank Accounts</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action10 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action BankAccounts - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2732607834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo transport lines</source>
-          <target state="translated">Wmo Vervoer regels</target>
+        <trans-unit id="Page 930307123 - Action 3434938165 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Posted Sales Invoices</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKTransportLineList - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Posted Sales Invoices - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Action 4044364466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Post registration</source>
-          <target>Postregistratie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action11 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 565646494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKPostRegistrationList</source>
-          <target>Postregistratie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKPostRegistrationList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 3527587360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo</source>
-          <target state="translated">Wmo</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action2 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 3295138171 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Messages</source>
-          <target state="translated">Wmo berichten</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKWMOHeaderList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2082256470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Indications</source>
-          <target>Indicatiebesluiten</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKWMOIndicationList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2387043308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKWMORetourCodeList</source>
-          <target>Retourcodes</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKWMORetourCodeList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2889890743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Student transport</source>
-          <target>Leerlingenvervoer</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action3 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 1617485535 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKMulitCardScheduleCard</source>
-          <target>Planning Mybility</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKMulitCardScheduleCard - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 189899217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKStudentTransportCustomer</source>
-          <target>Leerlingen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKStudentTransportCustomer - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2557133101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKStudentTransportCustomerIndication</source>
-          <target>Indicatie leerlingenvervoer</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKStudentTransportCustomerIndication - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2648480293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKStudentTransportNode</source>
-          <target>Knooppunten leerlingenvervoer</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKStudentTransportNode - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 1094384878 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKStudentTransportRoute</source>
-          <target>Routes leerlingenvervoer</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKStudentTransportRoute - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 4215056242 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKStudentTransportSchedule</source>
-          <target>Planning leerlingenvervoer</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKStudentTransportSchedule - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2421103149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup</source>
-          <target>Algemene instellingen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action5 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2465702140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Invalid product code combinations</source>
-          <target>Ongeldige productcode combinaties</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKInvalidPCCombinationList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 278184185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product code rates</source>
-          <target state="translated">Productcode tarieven</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKProductCodeRateList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2107025460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product code - product frequencies</source>
-          <target state="translated">Productcode - frequencies</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKProductFrequencies - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 94506743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKSWVOGeneralSetup</source>
-          <target>SWVO-Setup</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKSWVOGeneralSetup - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 652643143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product categories</source>
-          <target state="translated">Productcategorieën</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKWMOProductCategoryList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 2130789892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product codes</source>
-          <target state="translated">Productcodes</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKWMOProductCodeList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 3996374954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Resources</source>
-          <target>Hulpmiddelen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action8 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 1933085131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKResourceList</source>
-          <target>Hulpmiddelen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKResourceList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 848477453 - Action 3358678337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 930307123 - Action 2296486466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Homeless</source>
-          <target>Dakloosheid</target>
+          <target state="translated">Dakloosheid</target>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action Action9 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Homeless - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 848477453 - Action 1819539943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKHomelessList</source>
-          <target>Daklozen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenter - Action ACKHomelessList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SWVOTestRoleCenter</source>
-          <target state="translated">Rolcenter</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 4165283977 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Client</source>
-          <target>Cliënt</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action1 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2041487070 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKClientList</source>
-          <target>Cliënten</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKClientList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3406667849 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo Transport</source>
-          <target state="translated">Wmo Vervoer</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action10 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2732607834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo Transport lines</source>
-          <target state="translated">Wmo Vervoer regels</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKTransportLineList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 4044364466 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Post registration</source>
-          <target>Postregistratie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action11 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 565646494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKPostRegistrationList</source>
-          <target>Postregistratie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKPostRegistrationList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2131274615 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Btw</source>
+        <trans-unit id="Page 930307123 - Action 1819539943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Homeless</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action12 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKHomelessList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 1770625610 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>VAT Statement</source>
-          <target>Btw-aangifte</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action VAT Statement - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2768971232 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Dagboeken</source>
+        <trans-unit id="Page 930307123 - Action 2165385378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PostedGeneralJournal</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action13 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action PostedGeneralJournal - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2609691689 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Betalingsdagboeken</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Betalingsdagboeken - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3161504767 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Periodieke dagboeken</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Periodieke dagboeken - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 4050300754 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posted General Journal</source>
-          <target>Geboekte dagboeken</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Posted General Journal - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 1662487021 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Grootboek</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action14 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3105459369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 930307123 - Action 3105459369 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Chart of Accounts</source>
-          <target>Rekeningschema</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Chart of Accounts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 1103640261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>G/L Account Categories</source>
-          <target>GB-rekeningcategorieën</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action G/L Account Categories - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2300183638 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Leveranciers</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action15 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Chart of Accounts - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2445586772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 930307123 - Action 1103640261 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>G/L Account Categories</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action G/L Account Categories - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 2119176275 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post registration</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action PostRegistration - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 565646494 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Post registration</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKPostRegistrationList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 3504687331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resources</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Resources - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 1933085131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Resources</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKResourceList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 1514883969 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Setup</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Setup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 2465702140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invalid product code combinations</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKInvalidPCCombinationList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 3762123335 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product codes</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKProductCodeList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 2107025460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product code - product frequencies</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKProductFrequencies - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 94506743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACKSWVOGeneralSetup</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKSWVOGeneralSetup - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 1247230534 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Student transport</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action StudentTransport - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 3328151729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>TransportLineList</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action TransportLineList - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 334623485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>VAT</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action VAT - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 930307123 - Action 2445586772 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Inkoopfacturen</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Inkoopfacturen - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Inkoopfacturen - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 407220332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 930307123 - Action 407220332 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posted Purchase Invoices</source>
-          <target>Geboekte inkoopfacturen</target>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Posted Purchase Invoices - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Posted Purchase Invoices - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 4194195770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 930307123 - Action 4194195770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor List</source>
-          <target>Leveranciers</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Vendor List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 387093787 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Klanten</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action16 - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action Vendor List - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2901867346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Customer List</source>
-          <target>Klanten</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Customer List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3434938165 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Posted Sales Invoices</source>
-          <target>Geboekte verkoopfacturen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Posted Sales Invoices - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3105343626 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Verkoopfacturen</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Verkoopfacturen - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 1024790404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bank</source>
-          <target state="translated">Bank</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action17 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3675160336 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bank Acc. Reconciliation List</source>
-          <target>Bankreconciliaties</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Bank Acc. Reconciliation List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3408061871 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bank Account List</source>
-          <target>Bankrekeningen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Bank Account List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3301827404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Bank Account Statement List</source>
-          <target>Bankrekeningafschriften</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Bank Account Statement List - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3527587360 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Wmo</source>
-          <target state="translated">Wmo</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action2 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3295138171 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Messages</source>
-          <target state="translated">Wmo berichten</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKWMOHeaderList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2082256470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Indications</source>
-          <target>Indicatiebesluiten</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKWMOIndicationList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2387043308 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKWMORetourCodeList</source>
-          <target>Retourcodes</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKWMORetourCodeList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2421103149 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Setup</source>
-          <target>Algemene instellingen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action5 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2465702140 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Invalid product code combinations</source>
-          <target>Ongeldige productcode combinaties</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKInvalidPCCombinationList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2648550513 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+        <trans-unit id="Page 930307123 - Action 278184185 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code rates</source>
-          <target state="translated">Productcode tarieven</target>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKProductCodeRateMonthList - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKProductCodeRateList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2107025460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product code - product frequencies</source>
-          <target state="translated">Productcode - frequencies</target>
+        <trans-unit id="Page 930307123 - Action 3295138171 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Messages</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKProductFrequencies - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKWMOHeaderList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 94506743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKSWVOGeneralSetup</source>
-          <target>SWVO-Setup</target>
+        <trans-unit id="Page 930307123 - Action 2082256470 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACKWMOIndicationList</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKSWVOGeneralSetup - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKWMOIndicationList - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 652643143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Productcategories</source>
-          <target>Productcategorieën</target>
+        <trans-unit id="Page 930307123 - Action 2231453086 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Validation rules</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKWMOProductCategoryList - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKWMORule - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 2130789892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product codes</source>
-          <target state="translated">Productcodes</target>
+        <trans-unit id="Page 930307123 - Action 3029697122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Wmo transport</source>
+          <target state="translated">Wmo vervoer</target>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKWMOProductCodeList - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action WmoTransport - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3996374954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Resources</source>
-          <target>Hulpmiddelen</target>
+        <trans-unit id="Page 930307123 - Action 2732607834 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ACKTransportLineList</source>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action8 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 1933085131 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKResourceList</source>
-          <target>Hulpmiddelen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKResourceList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 3358678337 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Homeless</source>
-          <target>Dakloosheid</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action Action9 - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 3057487935 - Action 1819539943 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>ACKHomelessList</source>
-          <target>Daklozen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVOTestRoleCenter - Action ACKHomelessList - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ACKSWVORoleCenterEmployee - Action ACKTransportLineList - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4122448932 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Assigned products</source>
@@ -3291,54 +3087,6 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOPrestatieListPart - Control ClientName - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Page 652643143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product category</source>
-          <target>Productcategorie</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCategoryList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 652643143 - Action 3127367123 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View or set up the G/L Accounts by product category.</source>
-          <target>Bekijk of stel de grootboekrekeningen in per productcategorie.</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCategoryList - Action GLAccounts - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 652643143 - Action 3127367123 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>G/L Accounts</source>
-          <target>Grootboekrekeningen</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCategoryList - Action GLAccounts - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2130789892 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product code</source>
-          <target state="translated">Productcode</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCodeList - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2130789892 - Action 1646155318 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View or set up the invalid product code combinations.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCodeList - Action ACKInvalidPCCombination - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2130789892 - Action 1646155318 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Invalid combinations</source>
-          <target state="translated">Ongeldige combinaties</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCodeList - Action ACKInvalidPCCombination - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Page 2130789892 - Action 2107025460 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>View or set up product code - frequency combinations.</source>
-          <target state="needs-translation"/>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCodeList - Action ACKProductFrequencies - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="Page 2130789892 - Action 2107025460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product frequency combinations</source>
-          <target state="translated">Product frequentie combinaties</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCodeList - Action ACKProductFrequencies - Property Caption</note>
-        </trans-unit>
         <trans-unit id="Page 3166614981 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Relaties</source>
           <target>Relaties</target>
@@ -3579,11 +3327,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ACKVendorExtension - Field ACKStartEndMonthDeclaration - Property Caption</note>
         </trans-unit>
-        <trans-unit id="Profile 1076702219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SWVO Medewerker</source>
+        <trans-unit id="Profile 2006748135 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SWVO employee</source>
           <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Profile ACKSWVOTestProfile - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Profile ACKSWVOProfileEmployee - Property Caption</note>
         </trans-unit>
         <trans-unit id="Enum 73338203 - EnumValue 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Active</source>

@@ -61,7 +61,7 @@ table 50034 ACKResource
         field(140; ProductCode; Code[5])
         {
             Caption = 'Productcode', Locked = true;
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
         }
         field(160; EndDate; Date)
         {
@@ -112,7 +112,7 @@ table 50034 ACKResource
         {
             Caption = 'Productcode beschrijving', Locked = true;
             FieldClass = FlowField;
-            CalcFormula = lookup(ACKWMOProductCode.Description where(ProductCode = field(ProductCode)));
+            CalcFormula = lookup(ACKProductCode.Description where(ProductCode = field(ProductCode)));
             Editable = false;
         }
         field(290; DeceasedDate; Date)

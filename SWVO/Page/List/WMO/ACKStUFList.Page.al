@@ -161,7 +161,7 @@ page 50020 ACKStUFList
         {
             action(ClientDoc)
             {
-                Caption = 'Wmo';
+                Caption = 'Wmo', Locked = true;
                 Image = Document;
 
                 trigger OnAction()

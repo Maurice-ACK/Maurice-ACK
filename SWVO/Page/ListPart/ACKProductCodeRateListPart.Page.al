@@ -20,11 +20,11 @@ page 50012 ACKProductCodeRateListPart
             {
                 field(ProductCode; Rec.ProductCode)
                 {
-                    LookupPageID = ACKWMOProductCodeList;
+                    LookupPageID = ACKProductCodeList;
 
                     trigger OnAfterLookup(Selected: RecordRef)
                     var
-                        ACKWMOProductCode: Record ACKWMOProductCode;
+                        ACKWMOProductCode: Record ACKProductCode;
                     begin
                         Selected.SetTable(ACKWMOProductCode);
 

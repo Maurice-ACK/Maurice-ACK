@@ -15,7 +15,7 @@ table 50029 ACKHCProductCode
             Caption = 'Product code';
             DataClassification = SystemMetadata;
             NotBlank = true;
-            TableRelation = ACKWMOProductCode.ProductCode;
+            TableRelation = ACKProductCode.ProductCode;
         }
         field(20; HealthcareProviderNo; Code[20])
         {
@@ -48,21 +48,21 @@ table 50029 ACKHCProductCode
         {
             Caption = 'Product category';
             FieldClass = FlowField;
-            CalcFormula = lookup(ACKWMOProductCode.CategoryID where(ProductCode = field(ProductCode)));
+            CalcFormula = lookup(ACKProductCode.CategoryID where(ProductCode = field(ProductCode)));
             Editable = false;
         }
         field(50; ProductCodeDescription; Text[500])
         {
             Caption = 'Product code description';
             FieldClass = FlowField;
-            CalcFormula = lookup(ACKWMOProductCode.Description where(ProductCode = field(ProductCode)));
+            CalcFormula = lookup(ACKProductCode.Description where(ProductCode = field(ProductCode)));
             Editable = false;
         }
         field(60; ProductCodeType; Enum ACKProductCodeType)
         {
             Caption = 'Type', Locked = true;
             FieldClass = FlowField;
-            CalcFormula = lookup(ACKWMOProductCode.ProductCodeType where(ProductCode = field(ProductCode)));
+            CalcFormula = lookup(ACKProductCode.ProductCodeType where(ProductCode = field(ProductCode)));
             Editable = false;
         }
     }

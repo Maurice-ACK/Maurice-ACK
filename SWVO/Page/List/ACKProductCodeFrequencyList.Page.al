@@ -22,7 +22,7 @@ page 50085 ACKProductCodeFrequencyList
             {
                 field(ProductCode; Rec.ProductCode)
                 {
-                    LookupPageId = ACKWMOProductCodeList;
+                    LookupPageId = ACKProductCodeList;
                 }
                 field(ProductFrequency; Rec.ProductFrequency)
                 {
