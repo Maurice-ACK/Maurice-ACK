@@ -39,6 +39,7 @@ page 50045 ACKSWVORoleCenterEmployee
 
                 action(ACKSWVOGeneralSetup)
                 {
+                    Caption = 'General setup';
                     Image = Journal;
                     RunObject = page ACKSWVOGeneralSetup;
                 }
@@ -80,6 +81,7 @@ page 50045 ACKSWVORoleCenterEmployee
                 }
                 action(ACKWMOIndicationList)
                 {
+                    Caption = 'Indications';
                     Image = Journal;
                     RunObject = page ACKWMOIndicationList;
                 }
@@ -103,6 +105,7 @@ page 50045 ACKSWVORoleCenterEmployee
 
                 action(TransportLineList)
                 {
+                    Caption = 'Leerlingenvervoer', Locked = true;
                     Image = Journal;
                     RunObject = page ACKTransportLineList;
                 }
@@ -139,6 +142,7 @@ page 50045 ACKSWVORoleCenterEmployee
 
                 action(ACKTransportLineList)
                 {
+                    Caption = 'Wmo vervoer regels', Locked = true;
                     Image = Journal;
                     RunObject = page ACKTransportLineList;
                 }
@@ -187,6 +191,7 @@ page 50045 ACKSWVORoleCenterEmployee
                 }
                 action(PostedGeneralJournal)
                 {
+                    Caption = 'Posted General Journal';
                     Image = Journal;
                     RunObject = page "Posted General Journal";
                 }
@@ -204,6 +209,7 @@ page 50045 ACKSWVORoleCenterEmployee
                 }
                 action("G/L Account Categories")
                 {
+                    Caption = 'G/L Account Categories';
                     Image = Journal;
                     RunObject = page "G/L Account Categories";
                 }
@@ -215,16 +221,19 @@ page 50045 ACKSWVORoleCenterEmployee
 
                 action("Vendor List")
                 {
+                    Caption = 'Vendors';
                     Image = Journal;
                     RunObject = page "Vendor List";
                 }
-                action("Inkoopfacturen")
+                action(PurchaseInvoices)
                 {
+                    Caption = 'Purchase invoices';
                     Image = Journal;
                     RunObject = page "Purchase Invoices";
                 }
                 action("Posted Purchase Invoices")
                 {
+                    Caption = 'Posted Purchase Invoices';
                     Image = Journal;
                     RunObject = page "Posted Purchase Invoices";
                 }
@@ -246,8 +255,9 @@ page 50045 ACKSWVORoleCenterEmployee
                     Image = Journal;
                     RunObject = page "Sales Invoice List";
                 }
-                action("Posted Sales Invoices")
+                action(PostedSalesInvoices)
                 {
+                    Caption = 'Posted Sales Invoices';
                     Image = Journal;
                     RunObject = page "Posted Sales Invoices";
                 }

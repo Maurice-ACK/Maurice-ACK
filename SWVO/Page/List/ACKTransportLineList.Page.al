@@ -3,7 +3,7 @@
 /// </summary>
 page 50094 ACKTransportLineList
 {
-    Caption = 'Wmo vervoer regels', Locked = true;
+    Caption = 'Leerlingenvervoer', Locked = true;
     CardPageID = ACKTransportLineCard;
     Editable = true;
     InsertAllowed = false;
