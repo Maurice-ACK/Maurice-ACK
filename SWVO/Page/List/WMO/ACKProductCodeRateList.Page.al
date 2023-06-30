@@ -10,8 +10,9 @@ page 50014 ACKProductCodeRateList
     InsertAllowed = false;
     ModifyAllowed = false;
     DeleteAllowed = true;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     ApplicationArea = All;
+    SourceTableView = sorting(Year, Month) order(descending);
 
     layout
     {

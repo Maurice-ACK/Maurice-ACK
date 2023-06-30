@@ -2111,7 +2111,7 @@
         </trans-unit>
         <trans-unit id="Page 162940835 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code - frequency</source>
-          <target state="translated">Productcode - frequencie</target>
+          <target state="translated">Productcode - frequentie</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKProductCodeFrequencyList - Property Caption</note>
         </trans-unit>
@@ -3335,7 +3335,7 @@
         </trans-unit>
         <trans-unit id="Page 2130789892 - Action 2107025460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product frequency combinations</source>
-          <target state="translated">Product frequencie combinaties</target>
+          <target state="translated">Product frequentie combinaties</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKWMOProductCodeList - Action ACKProductFrequencies - Property Caption</note>
         </trans-unit>

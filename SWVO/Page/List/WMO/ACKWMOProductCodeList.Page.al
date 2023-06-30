@@ -64,4 +64,37 @@ page 50001 ACKWMOProductCodeList
             }
         }
     }
+    views
+    {
+        view(IsActiveFilter)
+        {
+            Filters = where(IsActive = const(true));
+            Caption = 'Actief', Locked = true;
+            SharedLayout = true;
+        }
+        view(TypeWmoFilter)
+        {
+            Filters = where(ProductCodeType = const(ACKProductCodeType::Wmo));
+            Caption = 'Wmo', Locked = true;
+            SharedLayout = true;
+        }
+        view(TypeTransportFilter)
+        {
+            Caption = 'Vervoer', Locked = true;
+            Filters = where(ProductCodeType = const(ACKProductCodeType::Transport));
+            SharedLayout = true;
+        }
+        view(TypeResourcesFilter)
+        {
+            Caption = 'Hulpmiddelen', Locked = true;
+            Filters = where(ProductCodeType = const(ACKProductCodeType::Resources));
+            SharedLayout = true;
+        }
+        view(TypeShelteredHousingFilter)
+        {
+            Caption = 'Beschermd wonen', Locked = true;
+            Filters = where(ProductCodeType = const(ACKProductCodeType::ShelteredHousing));
+            SharedLayout = true;
+        }
+    }
 }
