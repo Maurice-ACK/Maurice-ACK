@@ -31,7 +31,13 @@ page 50005 ACKWMOIndicationList
                 field(MunicipalityNo; Rec.MunicipalityNo)
                 {
                 }
+                field(MunicipalityName; Rec.MunicipalityName)
+                {
+                }
                 field(HealthcareProviderNo; Rec.HealthcareProviderNo)
+                {
+                }
+                field(HealthcareProviderName; Rec.HealthcareProviderName)
                 {
                 }
                 field(AssignmentNo; Rec.AssignmentNo)

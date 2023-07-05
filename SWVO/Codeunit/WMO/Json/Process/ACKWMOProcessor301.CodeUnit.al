@@ -72,8 +72,8 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
 
         WMOHeader301.Modify(true);
 
-        Commit();
-        WMOProcessor.CreateRetour(WMOHeader301);
+        //Commit();
+        //WMOProcessor.CreateRetour(WMOHeader301);
     end;
 
     local procedure ValidateToegewezenProduct(WMOToegewezenProduct: Record ACKWMOToegewezenProduct): Boolean
@@ -110,14 +110,14 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
             exit(false);
         end;
 
-        IndicationQuery.SetRange(IndicationQuery.SSN, WMOClient.SSN);
+        //TR381
+        if not WMOProcessor.TR081Check(WMOToegewezenProduct.ProductCode, WMOToegewezenProduct.ProductCategorie, WMOHeader301.SystemId, Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId) then
+            exit(false);
+
         IndicationQuery.SetRange(IndicationQuery.MunicipalityNo, WMOHeader301.Afzender);
         IndicationQuery.SetRange(IndicationQuery.AssignmentNo, WMOToegewezenProduct.ToewijzingNummer);
 
         if IndicationQuery.Open() and IndicationQuery.Read() then begin
-            //TR381
-            WMOProcessor.TR081Check(IndicationQuery.ProductCode, WMOToegewezenProduct.ProductCode, WMOToegewezenProduct.ProductCategorie, WMOHeader301.SystemId, Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId);
-
             //OP033X1 and IV066
             if (IndicationQuery.SSN <> WMOClient.SSN) or
                 (IndicationQuery.ProductCategoryId <> WMOToegewezenProduct.ProductCategorie) or
@@ -145,10 +145,6 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
                     exit(false);
                 end;
 
-            //SW002
-            if HasInvalidProductCombination(WMOToegewezenProduct) then
-                exit(false);
-
             if WMOToegewezenProduct.RedenWijziging = ACKWMORedenWijziging::Empty then begin
                 if IndicationQuery.StartDate <> WMOToegewezenProduct.Ingangsdatum then begin
                     MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW011);
@@ -163,8 +159,8 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
             else
                 if WMOToegewezenProduct.RedenWijziging = ACKWMORedenWijziging::Verwijderd then begin
                     //TR385
-                    WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, IndicationQuery.ClientNo);
-                    WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, WMOToegewezenProduct.ToewijzingNummer);
+                    WMODeclarationQuery.SetRange(WMODeclarationQuery.LineClientNo, IndicationQuery.ClientNo);
+                    WMODeclarationQuery.SetRange(WMODeclarationQuery.LineAssignmentNo, WMOToegewezenProduct.ToewijzingNummer);
                     if WMODeclarationQuery.Open() and WMODeclarationQuery.Read() then
                         if WMODeclarationQuery.TotalAmount > 0 then begin
                             MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::TR385);
@@ -175,6 +171,10 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
             IndicationQuery.Close();
             Clear(IndicationQuery);
         end;
+
+        //SW002
+        if HasInvalidProductCombination(WMOToegewezenProduct) then
+            exit(false);
 
         ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Year, Date2DMY(WMOToegewezenProduct.Ingangsdatum, 3));
         ProductCodeMonthRateQuery.SetRange(ProductCodeMonthRateQuery.Month, ACKHelper.GetMonthByDate(WMOToegewezenProduct.Ingangsdatum));
@@ -200,7 +200,7 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
     var
         InvalidPCCombinationQuery: Query ACKInvalidPCCombinationQuery;
     begin
-        if not IsValidCombinationWithPreviousProducts(WMOToegewezenProduct) then begin
+        if not IsValidCombinationWithPreviousLocalProducts(WMOToegewezenProduct) then begin
             MessageRetourCode.InsertRetourCode(Database::ACKWMOToegewezenProduct, WMOToegewezenProduct.SystemId, WMOHeader301.SystemId, ACKWMORule::SW002);
             exit(true);
         end;
@@ -238,7 +238,7 @@ codeunit 50013 ACKWMOProcessor301 implements ACKWMOIProcessor
         exit(false);
     end;
 
-    local procedure IsValidCombinationWithPreviousProducts(var WMOToegewezenProduct: Record ACKWMOToegewezenProduct): Boolean
+    local procedure IsValidCombinationWithPreviousLocalProducts(var WMOToegewezenProduct: Record ACKWMOToegewezenProduct): Boolean
     var
         VorigToegewezenProduct: Record ACKWMOToegewezenProduct;
         ACKInvalidPCCombination: Record ACKInvalidPCCombination;

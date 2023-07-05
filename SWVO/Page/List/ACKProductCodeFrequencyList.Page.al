@@ -24,6 +24,10 @@ page 50085 ACKProductCodeFrequencyList
                 {
                     LookupPageId = ACKProductCodeList;
                 }
+                field(ProductCodeAlias; Rec.ProductCodeAlias)
+                {
+                    Caption = 'Afkorting', Locked = true;
+                }
                 field(ProductFrequency; Rec.ProductFrequency)
                 {
                 }

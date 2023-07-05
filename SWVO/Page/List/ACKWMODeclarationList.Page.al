@@ -33,10 +33,10 @@ page 50111 ACKWMODeclarationList
                 field(Status; Rec.Status)
                 {
                 }
-                field(Year; Rec.Year)
+                field(StartDate; Rec.StartDate)
                 {
                 }
-                field(Month; Rec.Month)
+                field(EndDate; Rec.EndDate)
                 {
                 }
                 field(TotalAmount; Rec.TotalAmount)

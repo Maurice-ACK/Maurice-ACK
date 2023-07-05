@@ -21,12 +21,8 @@ page 50093 ACKQuickActionsCardPart
                     {
                         Caption = 'Cliënten', Locked = true;
                         RunObject = page "ACKClientList";
+                        RunPageMode = View;
                         Image = TileReport;
-
-                        trigger OnAction()
-                        begin
-
-                        end;
                     }
                     action("Hulpmiddelen")
                     {

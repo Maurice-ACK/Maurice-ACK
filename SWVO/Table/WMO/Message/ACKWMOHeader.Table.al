@@ -28,6 +28,7 @@ table 50004 ACKWMOHeader
             trigger OnValidate()
             var
                 RefWMOHeader: Record ACKWMOHeader;
+                VektisCodeRef: Enum ACKVektisCode;
                 ReferenceToSelfErr: Label 'Reference to self is not allowed.';
                 InvalidRelationErr: Label 'Reference header not found.';
             begin
@@ -39,10 +40,14 @@ table 50004 ACKWMOHeader
 
                 TestField(Rec.RefHeaderId);
 
-                if IsRetour() or (BerichtCode = ACKVektisCode::wmo325) then
-                    RefWMOHeader.SetRange(BerichtCode, GetToVektisCode())
-                else
-                    RefWMOHeader.SetRange(BerichtCode, GetRetourVektisCode());
+                if Rec.IsRetour() or (BerichtCode = ACKVektisCode::wmo325) then begin
+                    GetToVektisCode(VektisCodeRef, false);
+                    RefWMOHeader.SetRange(BerichtCode, VektisCodeRef);
+                end
+                else begin
+                    GetRetourVektisCode(VektisCodeRef, false);
+                    RefWMOHeader.SetRange(BerichtCode, VektisCodeRef);
+                end;
 
                 RefWMOHeader.SetRange(RefHeaderId, Rec.RefHeaderId);
                 if RefWMOHeader.IsEmpty() then begin
@@ -175,9 +180,13 @@ table 50004 ACKWMOHeader
         {
             Unique = true;
         }
+        key(RefHeaderId; RefHeaderId)
+        {
+            //Can't be unique because if it doesn't exists yet it is an empty guid.
+            Unique = false;
+        }
         key(DataCaptionFields; BerichtCode, Afzender, Ontvanger, Identificatie)
         {
-            Clustered = false;
         }
         key(Created; SystemCreatedAt)
         {
@@ -319,18 +328,22 @@ table 50004 ACKWMOHeader
         WMOHeaderBericht.SetFilter(SystemId, '<>%1', Rec.SystemId);
         WMOHeaderBericht.SetRange(BerichtCode, VektisCode);
 
-        if VektisCode = VektisCode::wmo323 then begin
-            WMOHeaderBericht.SetRange(Ontvanger, Rec.Afzender);
-            WMOHeaderBericht.SetRange(Identificatie, Rec.IdentificatieRetour);
-        end else
-            if VektisCode = VektisCode::wmo325 then begin
-                WMOHeaderBericht.SetRange(Afzender, Rec.Ontvanger);
-                WMOHeaderBericht.SetRange(IdentificatieRetour, Rec.Identificatie);
-            end
+        case VektisCode of
+            VektisCode::wmo323:
+                begin
+                    WMOHeaderBericht.SetRange(Ontvanger, Rec.Afzender);
+                    WMOHeaderBericht.SetRange(Identificatie, Rec.IdentificatieRetour);
+                end;
+            VektisCode::wmo325:
+                begin
+                    WMOHeaderBericht.SetRange(Afzender, Rec.Ontvanger);
+                    WMOHeaderBericht.SetRange(IdentificatieRetour, Rec.Identificatie);
+                end
             else begin
                 WMOHeaderBericht.SetRange(Afzender, Rec.Afzender);
                 WMOHeaderBericht.SetRange(Identificatie, Rec.Identificatie);
             end;
+        end;
 
         Found := WMOHeaderBericht.FindFirst();
 
@@ -351,7 +364,7 @@ table 50004 ACKWMOHeader
     var
         HeenVektisCode: Enum ACKVektisCode;
     begin
-        HeenVektisCode := GetToVektisCode();
+        GetToVektisCode(HeenVektisCode, ThrowError);
         Found := GetHeader(WMOHeaderHeen, HeenVektisCode, ThrowError);
     end;
 
@@ -365,15 +378,17 @@ table 50004 ACKWMOHeader
     var
         RetourVektisCode: Enum ACKVektisCode;
     begin
-        RetourVektisCode := GetRetourVektisCode();
+        GetRetourVektisCode(RetourVektisCode, ThrowError);
         Found := GetHeader(WMOHeaderRetour, RetourVektisCode, ThrowError);
     end;
 
     /// <summary>
     /// GetRetourVektisCode.
     /// </summary>
-    /// <returns>Return variable RetourVektisCode of type Enum ACKVektisCode.</returns>
-    procedure GetRetourVektisCode(): Enum ACKVektisCode
+    /// <param name="RetourVektisCode">VAR Enum ACKVektisCode.</param>
+    /// <param name="ThrowError">Boolean.</param>
+    /// <returns>Return variable Found of type Boolean.</returns>
+    procedure GetRetourVektisCode(var RetourVektisCode: Enum ACKVektisCode; ThrowError: Boolean) Found: Boolean
     var
         InvalidCodeErr: Label 'No retour vektis code exists for vektis code: %1', Comment = '%1 = ACKVektisCode';
     begin
@@ -386,19 +401,30 @@ table 50004 ACKWMOHeader
             ACKVektisCode::wmo319,
             ACKVektisCode::wmo401,
             ACKVektisCode::wmo403:
-                exit(ACKVektisCode.FromInteger(Rec.BerichtCode.AsInteger() + 1));
+                begin
+                    RetourVektisCode := ACKVektisCode.FromInteger(Rec.BerichtCode.AsInteger() + 1);
+                    exit(true);
+                end;
             ACKVektisCode::wmo323:
-                exit(ACKVektisCode::wmo325);
+                begin
+                    RetourVektisCode := ACKVektisCode::wmo325;
+                    exit(true);
+                end;
             else
-                Error(InvalidCodeErr, Rec.BerichtCode);
+                if ThrowError then
+                    Error(InvalidCodeErr, Rec.BerichtCode);
         end;
+
+        exit(false);
     end;
 
     /// <summary>
     /// GetToVektisCode.
     /// </summary>
-    /// <returns>Return value of type Enum ACKVektisCode.</returns>
-    procedure GetToVektisCode(): Enum ACKVektisCode
+    /// <param name="ToVektisCode">VAR Enum ACKVektisCode.</param>
+    /// <param name="ThrowError">Boolean.</param>
+    /// <returns>Return variable Found of type Boolean.</returns>
+    procedure GetToVektisCode(var ToVektisCode: Enum ACKVektisCode; ThrowError: Boolean) Found: Boolean
     var
         InvalidCodeErr: Label 'No forward vektis code exists for vektis code: %1', Comment = '%1 = ACKVektisCode';
     begin
@@ -411,12 +437,21 @@ table 50004 ACKWMOHeader
             ACKVektisCode::wmo320,
             ACKVektisCode::wmo402,
             ACKVektisCode::wmo404:
-                exit(ACKVektisCode.FromInteger(Rec.BerichtCode.AsInteger() - 1));
+                begin
+                    ToVektisCode := ACKVektisCode.FromInteger(Rec.BerichtCode.AsInteger() - 1);
+                    exit(true);
+                end;
             ACKVektisCode::wmo325:
-                exit(ACKVektisCode::wmo323);
+                begin
+                    ToVektisCode := ACKVektisCode::wmo323;
+                    exit(true);
+                end;
             else
-                Error(InvalidCodeErr, Rec.BerichtCode);
+                if ThrowError then
+                    Error(InvalidCodeErr, Rec.BerichtCode);
         end;
+
+        exit(false);
     end;
 
     /// <summary>

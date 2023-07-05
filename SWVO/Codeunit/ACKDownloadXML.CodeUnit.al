@@ -26,7 +26,6 @@ codeunit 50041 ACKDownloadWMOFile
             Message('Not found');
 
         ACKJsonExport.Export(WMOHeader).WriteTo(JsonText);
-        // Message(JsonText);
         XMLText := SWVOAPIHttpClient.GetXMLFromJson(Base64Convert.ToBase64(JsonText, TextEncoding::UTF8));
 
         DownloadXML(Referentienummer, XMLText);

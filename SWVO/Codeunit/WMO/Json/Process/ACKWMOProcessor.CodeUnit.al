@@ -138,7 +138,6 @@ codeunit 50015 ACKWMOProcessor
     var
         Customer: Record Customer;
         Vendor: Record Vendor;
-        MessageRetourCode: Record ACKWMOMessageRetourCode;
         RelationNr: Code[8];
         RefSystemId: Guid;
         InvalidUseOfMethodErr: Label 'Invalid use of method', Locked = true;
@@ -270,33 +269,31 @@ codeunit 50015 ACKWMOProcessor
         exit(false);
     end;
 
+
     /// <summary>
     /// TR081Check.
     /// </summary>
-    /// <param name="IndicationProductCode">Text[5].</param>
     /// <param name="ProductCode">Text[5].</param>
     /// <param name="Category">Code[2].</param>
     /// <param name="HeaderId">Guid.</param>
     /// <param name="TableRelationNo">Integer.</param>
     /// <param name="RefId">Guid.</param>
-    procedure TR081Check(IndicationProductCode: Text[5]; ProductCode: Text[5]; Category: Code[2]; HeaderId: Guid; TableRelationNo: Integer; RefId: Guid)
+    /// <returns>Return value of type Boolean.</returns>
+    procedure TR081Check(ProductCode: Text[5]; Category: Code[2]; HeaderId: Guid; TableRelationNo: Integer; RefId: Guid): Boolean
     var
         WMOProductCode: Record ACKProductCode;
     begin
-        if ProductCode <> '' then begin
-            //TR381
-            if WMOProductCode.Get(ProductCode) then begin
-                if WMOProductCode.CategoryID <> Category then
-                    MessageRetourCode.InsertRetourCode(TableRelationNo, RefId, HeaderId, ACKWMORule::TR381);
-            end else
+        //TR381
+        if WMOProductCode.Get(ProductCode) then begin
+            if WMOProductCode.CategoryID <> Category then begin
                 MessageRetourCode.InsertRetourCode(TableRelationNo, RefId, HeaderId, ACKWMORule::TR381);
-
-            // Productcode van het start product moet gelijk zijn aan productcode indicatie.
-            if IndicationProductCode <> ProductCode then begin
-                MessageRetourCode.InsertRetourCode(TableRelationNo, RefId, HeaderId, ACKWMORule::SW020);
-                exit;
-            end;
+                exit(false);
+            end
+        end else begin
+            MessageRetourCode.InsertRetourCode(TableRelationNo, RefId, HeaderId, ACKWMORule::TR381);
+            exit(false);
         end;
+        exit(true);
     end;
 
     /// <summary>

@@ -31,10 +31,10 @@ query 50022 ACKWMODeclarationQuery
             column(Status; Status)
             {
             }
-            column(Year; Year)
+            column(StartDate; StartDate)
             {
             }
-            column(Month; Month)
+            column(EndDate; EndDate)
             {
             }
             column(TotalAmount; TotalAmount)
@@ -60,46 +60,52 @@ query 50022 ACKWMODeclarationQuery
                 DataItemLink = DeclarationHeaderNo = ACKWMODeclarationHeader.DeclarationHeaderNo;
                 SqlJoinType = InnerJoin;
 
-                column(ID; ID)
+                column(LineID; ID)
                 {
                 }
-                column(IndicationID; IndicationID)
+                column(LineIndicationID; IndicationID)
                 {
                 }
-                column(Reference; Reference)
+                column(LineReference; Reference)
                 {
                 }
-                column(PreviousReference; PreviousReference)
+                column(LinePreviousReference; PreviousReference)
                 {
                 }
-                column(Amount; Amount)
+                column(LineAmount; Amount)
                 {
                 }
-                column(StartDate; StartDate)
+                column(LineStartDate; StartDate)
                 {
                 }
-                column(EndDate; EndDate)
+                column(LineEndDate; EndDate)
                 {
                 }
-                column(Volume; Volume)
+                column(LineYear; Year)
                 {
                 }
-                column(Unit; Unit)
+                column(LineMonth; Month)
                 {
                 }
-                column(ProductRate; ProductRate)
+                column(LineVolume; Volume)
                 {
                 }
-                column(ClientNo; ClientNo)
+                column(LineUnit; Unit)
                 {
                 }
-                column(AssignmentNo; AssignmentNo)
+                column(LineProductRate; ProductRate)
                 {
                 }
-                column(ProductCategoryId; ProductCategoryId)
+                column(LineClientNo; ClientNo)
                 {
                 }
-                column(ProductCode; ProductCode)
+                column(LineAssignmentNo; AssignmentNo)
+                {
+                }
+                column(LineProductCategoryId; ProductCategoryId)
+                {
+                }
+                column(LineProductCode; ProductCode)
                 {
                 }
                 column(LineStatus; Status)

@@ -87,8 +87,8 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
 
         WMOHeader305.Modify(true);
 
-        Commit();
-        WMOProcessor.CreateRetour(WMOHeader305);
+        //Commit();
+        //WMOProcessor.CreateRetour(WMOHeader305);
     end;
 
     /// <summary>
@@ -129,7 +129,14 @@ codeunit 50031 ACKWMOProcessor305 implements ACKWMOIProcessor
         end;
 
         //TR081
-        WMOProcessor.TR081Check(WMOIndication.ProductCode, WMOStartProduct.ProductCode, WMOStartProduct.ProductCategorie, WMOHeader305.SystemId, Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId);
+        if not WMOProcessor.TR081Check(WMOStartProduct.ProductCode, WMOStartProduct.ProductCategorie, WMOHeader305.SystemId, Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId) then
+            exit(false);
+
+        // Productcode van het start/stop product moet gelijk zijn aan productcode indicatie.
+        if WMOIndication.ProductCode <> WMOStartProduct.ProductCode then begin
+            MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStartProduct.SystemId, WMOHeader305.SystemId, ACKWMORule::SW020);
+            exit(false);
+        end;
 
         if WMOStartProduct.ToewijzingIngangsdatum <> 0D then
             //ToewijzingsIngangsdatum moet gelijk zijn aan de Ingangsdatum van het toegewezen product in het Toewijzingbericht. 

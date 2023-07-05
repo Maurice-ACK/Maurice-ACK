@@ -137,6 +137,34 @@ codeunit 50003 ACKHelper
     end;
 
     /// <summary>
+    /// FirstDayOfMonth.
+    /// </summary>
+    /// <param name="InputDate">Date.</param>
+    /// <returns>Return variable FirstDayDate of type Date.</returns>
+    procedure FirstDayOfMonth(InputDate: Date) FirstDayDate: Date
+    var
+        Year, Month : Integer;
+    begin
+        Year := Date2DMY(InputDate, 3);
+        Month := GetMonthByDate(InputDate).AsInteger();
+        FirstDayDate := DMY2DATE(01, Month, Year)
+    end;
+
+    /// <summary>
+    /// LastDayOfMonthDate.
+    /// </summary>
+    /// <param name="InputDate">Date.</param>
+    /// <returns>Return variable LastDayDate of type Date.</returns>
+    procedure LastDayOfMonthDate(InputDate: Date) LastDayDate: Date
+    var
+        Year, Month : Integer;
+    begin
+        Year := Date2DMY(InputDate, 3);
+        Month := GetMonthByDate(InputDate).AsInteger();
+        LastDayDate := LastDayOfMonthDate(Year, Month);
+    end;
+
+    /// <summary>
     /// LastDayOfMonthDate.
     /// </summary>
     /// <param name="Year">Integer.</param>

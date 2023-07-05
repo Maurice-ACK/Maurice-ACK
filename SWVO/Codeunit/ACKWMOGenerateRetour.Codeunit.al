@@ -24,10 +24,13 @@ codeunit 50023 ACKWMOGenerateRetour
             Error(EmptyHeaderErr, FromWMOHeader.TableCaption());
 
         //Check if the passed WMOHeader has a retour Vektis code
-        RetourVektisCode := FromWMOHeader.GetRetourVektisCode();
+        FromWMOHeader.GetRetourVektisCode(RetourVektisCode, true);
 
         //Check if retour message already exists before creating one.
-        if FromWMOHeader.GetRetourHeader(RetourHeader, false) then
+        FromWMOHeader.GetRetourHeader(RetourHeader, false);
+
+        RetourHeader.SetRange(RefHeaderId, FromWMOHeader.SystemId);
+        if RetourHeader.FindFirst() then
             Error(DuplicateRetourErr, RetourVektisCode, FromWMOHeader.Afzender, FromWMOHeader.Identificatie);
 
         Clear(RetourHeader);
@@ -82,6 +85,9 @@ codeunit 50023 ACKWMOGenerateRetour
         RetourHeader.BasisschemaXsdVersieRetour := FromWMOHeader.BerichtXsdVersie;
         RetourHeader.BerichtXsdVersieRetour := FromWMOHeader.BerichtXsdVersie;
         RetourHeader.Insert(true);
+
+        FromWMOHeader.RefHeaderId := RetourHeader.SystemId;
+
         //Retour codes
         CopyRetourCodes(Database::ACKWMOHeader, FromWMOHeader.SystemId, RetourHeader.SystemId);
 

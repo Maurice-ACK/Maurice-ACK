@@ -58,13 +58,13 @@ table 50064 ACKWMODeclarationHeader
         {
             Caption = 'Status', Locked = true;
         }
-        field(90; Year; Integer)
+        field(90; StartDate; Date)
         {
-            Caption = 'Year';
+            Caption = 'Start date';
         }
-        field(95; Month; Integer)
+        field(95; EndDate; Date)
         {
-            Caption = 'Month';
+            Caption = 'End date';
         }
         field(100; TotalAmount; Integer)
         {

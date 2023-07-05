@@ -7,37 +7,38 @@ pageextension 50000 ACKVendorCardExt extends "Vendor Card"
     {
         addlast(General)
         {
-            group(SWVO)
+            group(Wmo)
             {
+                Caption = 'Wmo', Locked = true;
+
                 field(ACKStartEndMonthDeclaration; Rec.ACKStartEndMonthDeclaration)
                 {
                     ApplicationArea = All;
                 }
+            }
+            group(SharepointPermissions)
+            {
+                Caption = 'Permissions';
 
-                group(Permissions)
+                field(PermiWMO; Rec.ACKPermiWMO)
                 {
-                    Caption = 'Permissions';
-
-                    field(PermiWMO; Rec.ACKPermiWMO)
-                    {
-                        ApplicationArea = All;
-                    }
-                    field(PermHomeless; Rec.ACKPermHomeless)
-                    {
-                        ApplicationArea = All;
-                    }
-                    field(PermResources; Rec.ACKPermResources)
-                    {
-                        ApplicationArea = All;
-                    }
-                    field(PermWMOTransport; Rec.ACKPermWMOTransport)
-                    {
-                        ApplicationArea = All;
-                    }
-                    field(PermOtherDocuments; Rec.ACKPermOtherDocuments)
-                    {
-                        ApplicationArea = All;
-                    }
+                    ApplicationArea = All;
+                }
+                field(PermHomeless; Rec.ACKPermHomeless)
+                {
+                    ApplicationArea = All;
+                }
+                field(PermResources; Rec.ACKPermResources)
+                {
+                    ApplicationArea = All;
+                }
+                field(PermWMOTransport; Rec.ACKPermWMOTransport)
+                {
+                    ApplicationArea = All;
+                }
+                field(PermOtherDocuments; Rec.ACKPermOtherDocuments)
+                {
+                    ApplicationArea = All;
                 }
             }
         }

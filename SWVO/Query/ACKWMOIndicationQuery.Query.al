@@ -67,6 +67,9 @@ query 50002 ACKWMOIndicationQuery
                 column(Budget; Budget)
                 {
                 }
+                column(RedenWijziging; RedenWijziging)
+                {
+                }
             }
         }
     }

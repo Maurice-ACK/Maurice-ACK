@@ -3,10 +3,10 @@
 /// </summary>
 page 50030 ACKHCProductCodeList
 {
-    Caption = 'Product codes';
+    Caption = 'Healthcare provider - Product codes';
     PageType = List;
     SourceTable = ACKHCProductCode;
-    UsageCategory = None;
+    UsageCategory = Lists;
     InsertAllowed = true;
     DeleteAllowed = true;
     ModifyAllowed = true;
@@ -20,9 +20,16 @@ page 50030 ACKHCProductCodeList
         {
             repeater(General)
             {
+                field(HealthcareProviderName; Rec.HealthcareProviderName)
+                {
+                }
                 field(ProductCode; Rec.ProductCode)
                 {
                     LookupPageId = ACKProductCodeList;
+                }
+                field(ProductCodeAlias; Rec.ProductCodeAlias)
+                {
+                    Caption = 'Afkorting', Locked = true;
                 }
                 field(ProductCodeDescription; Rec.ProductCodeDescription)
                 {

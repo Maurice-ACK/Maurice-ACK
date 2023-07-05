@@ -297,6 +297,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKHCProductCode - Field ProductCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2523334312 - Field 463963852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product code alias</source>
+          <target state="translated">Productcode alias</target>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKHCProductCode - Field ProductCodeAlias - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2523334312 - Field 3570570596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code description</source>
           <target state="translated">Productcode beschrijving</target>
@@ -861,6 +867,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeFrequency - Field ProductCode - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1467467613 - Field 463963852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product code alias</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeFrequency - Field ProductCodeAlias - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 460157775 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code rate</source>
           <target state="translated">Productcode tarief</target>
@@ -896,6 +908,12 @@
           <target state="translated">Productcode</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeRate - Field ProductCode - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 460157775 - Field 463963852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Product code alias</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKProductCodeRate - Field ProductCodeAlias - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 460157775 - Field 3570570596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Product code description</source>
@@ -1215,17 +1233,17 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field DeclarationHeaderNo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1002447805 - Field 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End date</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field EndDate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1002447805 - Field 3715275867 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Healthcare provider No.</source>
           <target state="translated">Zorgaanbieder AGB</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field HealthcareProviderNo - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1002447805 - Field 3465500804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Month</source>
-          <target state="translated">Maand</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field Month - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1002447805 - Field 2573735423 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Municipality No.</source>
@@ -1238,6 +1256,12 @@
           <target state="translated">Nr.-reeks</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field NoSeries - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1002447805 - Field 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start date</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field StartDate - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1002447805 - Field 588318770 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Total amount</source>
@@ -1256,12 +1280,6 @@
           <target state="translated">Totaalbedrag</target>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field TotalAmountCanceled - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="Table 1002447805 - Field 2832340769 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Year</source>
-          <target state="translated">Jaar</target>
-          <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Table ACKWMODeclarationHeader - Field Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 3535395222 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Wmo Declaration line</source>
@@ -1876,8 +1894,9 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKGenerateProductCodeRates - Control Year - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1855374290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Product codes</source>
-          <target state="translated">Productcodes</target>
+          <source>Healthcare provider - Product codes</source>
+          <target state="translated">Productcodes per zorgaanbieder</target>
+          <note from="XLIFF Sync" annotates="general" priority="1">Source text has changed. Please review the translation.</note>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Page ACKHCProductCodeList - Property Caption</note>
         </trans-unit>
@@ -3231,11 +3250,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ACKVendorCardExt - Action Subcontractors - Property Caption</note>
         </trans-unit>
-        <trans-unit id="PageExtension 3536882564 - Control 1501832164 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
+        <trans-unit id="PageExtension 3536882564 - Control 2263515539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4055858012">
           <source>Permissions</source>
-          <target state="translated">Permissies</target>
+          <target state="needs-translation"/>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ACKVendorCardExt - Control Permissions - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ACKVendorCardExt - Control SharepointPermissions - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2754253634 - Control 892714182 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4194195770">
           <source>Other documents list</source>

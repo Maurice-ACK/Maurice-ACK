@@ -21,6 +21,13 @@ table 50033 ACKProductCodeFrequency
             Caption = 'Frequentie', Locked = true;
             NotBlank = true;
         }
+        field(30; ProductCodeAlias; Text[30])
+        {
+            Caption = 'Product code alias';
+            FieldClass = FlowField;
+            CalcFormula = lookup(ACKProductCode.Alias where(ProductCode = field(ProductCode)));
+            Editable = false;
+        }
     }
     keys
     {

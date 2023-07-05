@@ -66,6 +66,14 @@ table 50065 ACKWMODeclarationLine
         {
             Caption = 'Einddatum', Locked = true;
         }
+        field(81; Year; Integer)
+        {
+            Caption = 'Jaar', Locked = true;
+        }
+        field(82; Month; Enum ACKMonthOfYear)
+        {
+            Caption = 'Maand', Locked = true;
+        }
         field(90; Volume; Integer)
         {
             Caption = 'Geleverd volume', Locked = true;

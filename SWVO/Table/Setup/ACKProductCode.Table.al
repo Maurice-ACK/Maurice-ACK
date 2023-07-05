@@ -50,6 +50,10 @@ table 50007 ACKProductCode
         {
             Caption = 'Type';
         }
+        field(60; Alias; Text[30])
+        {
+            Caption = 'Afkorting', Locked = true;
+        }
     }
     keys
     {

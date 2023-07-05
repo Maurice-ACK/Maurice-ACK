@@ -39,6 +39,13 @@ table 50009 ACKWMOIndication
                     Rec.MunicipalityNo := Customer."No.";
             end;
         }
+        field(35; MunicipalityName; Text[100])
+        {
+            Caption = 'Gemeente', Locked = true;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Name where("No." = field(MunicipalityNo)));
+            Editable = false;
+        }
         field(40; HealthcareProviderNo; Code[20])
         {
             Caption = 'Healthcare provider No.';
@@ -57,6 +64,13 @@ table 50009 ACKWMOIndication
                 if ACKHelper.VendorLookup(Vendor, true) = Action::LookupOK then
                     Rec.HealthcareProviderNo := Vendor."No.";
             end;
+        }
+        field(45; HealthcareProviderName; Text[500])
+        {
+            Caption = 'Zorgaanbieder', Locked = true;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Vendor.Name where("No." = field(HealthcareProviderNo)));
+            Editable = false;
         }
         field(50; AssignmentNo; Integer)
         {

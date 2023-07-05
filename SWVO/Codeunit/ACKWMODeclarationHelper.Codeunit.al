@@ -18,17 +18,17 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery: Query ACKWMODeclarationQuery;
     begin
         WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
-        WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
-        WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineClientNo, ClientNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineAssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.HealthcareProviderNo, HealthcareProviderNo);
-        WMODeclarationQuery.SetRange(Year, Year);
-        WMODeclarationQuery.SetRange(Month, Month);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineYear, Year);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineMonth, Month);
 
         WMODeclarationQuery.Open();
 
         while WMODeclarationQuery.Read() do
-            TotalAmount += WMODeclarationQuery.Amount;
+            TotalAmount += WMODeclarationQuery.LineAmount;
     end;
 
     /// <summary>
@@ -46,17 +46,17 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery: Query ACKWMODeclarationQuery;
     begin
         WMODeclarationQuery.SetFilter(WMODeclarationQuery.LineStatus, '>=%1', ACKWMODeclarationStatus::Approved.AsInteger());
-        WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
-        WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineClientNo, ClientNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineAssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.HealthcareProviderNo, HealthcareProviderNo);
-        WMODeclarationQuery.SetRange(Year, Year);
-        WMODeclarationQuery.SetRange(Month, Month);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineYear, Year);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineMonth, Month);
 
         WMODeclarationQuery.Open();
 
         while WMODeclarationQuery.Read() do
-            TotalAmount += WMODeclarationQuery.Amount;
+            TotalAmount += WMODeclarationQuery.LineAmount;
     end;
 
 
@@ -77,7 +77,7 @@ codeunit 50039 ACKWMODeclarationHelper
         WMODeclarationQuery.Open();
 
         while WMODeclarationQuery.Read() do
-            TotalAmount += WMODeclarationQuery.Amount;
+            TotalAmount += WMODeclarationQuery.LineAmount;
     end;
 
     /// <summary>
@@ -94,14 +94,14 @@ codeunit 50039 ACKWMODeclarationHelper
     begin
         WMODeclarationQuery.SetRange(WMODeclarationQuery.MunicipalityNo, MunicipalityNo);
         WMODeclarationQuery.SetRange(WMODeclarationQuery.HealthcareProviderNo, HealthcareProviderNo);
-        WMODeclarationQuery.SetRange(WMODeclarationQuery.ClientNo, ClientNo);
-        WMODeclarationQuery.SetRange(WMODeclarationQuery.AssignmentNo, AssignmentNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineClientNo, ClientNo);
+        WMODeclarationQuery.SetRange(WMODeclarationQuery.LineAssignmentNo, AssignmentNo);
         WMODeclarationQuery.SetFilter(WMODeclarationQuery.Status, '<>%1', ACKWMODeclarationStatus::Rejected.AsInteger());
 
         WMODeclarationQuery.Open();
 
         while WMODeclarationQuery.Read() do
-            TotalAmount += WMODeclarationQuery.Amount;
+            TotalAmount += WMODeclarationQuery.LineAmount;
     end;
 
     /// <summary>

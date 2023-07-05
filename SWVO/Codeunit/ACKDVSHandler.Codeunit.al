@@ -64,7 +64,6 @@ codeunit 50040 ACKDVSValidator
             XmlText := SWVOAPIHttpClient.GetXMLFromJson(Base64Convert.ToBase64(JsonText, TextEncoding::UTF8));
         end;
 
-        //Message(XmlText);
         Base64XML := Base64Convert.ToBase64(XmlText, TextEncoding::UTF8);
 
         exit(ValidateBase64Xml(Base64XML));

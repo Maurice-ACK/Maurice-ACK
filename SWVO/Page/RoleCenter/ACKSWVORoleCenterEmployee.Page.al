@@ -32,6 +32,19 @@ page 50045 ACKSWVORoleCenterEmployee
     {
         area(sections)
         {
+            group(Client)
+            {
+                Caption = 'Cliënt', Locked = true;
+                Image = HumanResources;
+
+                action(ACKClientList)
+                {
+                    Caption = 'Cliënten', Locked = true;
+                    Image = SalesPerson;
+                    RunObject = page ACKClientList;
+                    RunPageMode = View;
+                }
+            }
             group(Setup)
             {
                 Caption = 'Setup';

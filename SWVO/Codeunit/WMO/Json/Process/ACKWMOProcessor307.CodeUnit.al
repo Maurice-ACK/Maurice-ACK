@@ -100,7 +100,7 @@ codeunit 50033 ACKWMOProcessor307 implements ACKWMOIProcessor
     /// <param name="WMOClient">Record ACKWMOClient.</param>
     /// <param name="WMOStopProduct">Record ACKWMOStartStopProduct.</param>
     /// <returns>Return value of type Boolean.</returns>
-    procedure ValidateStopProduct(WMOClient: Record ACKWMOClient; WMOStopProduct: Record ACKWMOStartStopProduct)
+    procedure ValidateStopProduct(WMOClient: Record ACKWMOClient; WMOStopProduct: Record ACKWMOStartStopProduct): Boolean
     var
         WMOIndication: Record ACKWMOIndication;
         IndicationTempStop: Record ACKIndicationTempStop;
@@ -150,7 +150,14 @@ codeunit 50033 ACKWMOProcessor307 implements ACKWMOIProcessor
             end;
 
         //TR081
-        WMOProcessor.TR081Check(IndicationQuery.ProductCode, WMOStopProduct.ProductCode, WMOStopProduct.ProductCategorie, WMOHeader307.SystemId, Database::ACKWMOStartStopProduct, WMOStopProduct.SystemId);
+        if not WMOProcessor.TR081Check(WMOStopProduct.ProductCode, WMOStopProduct.ProductCategorie, WMOHeader307.SystemId, Database::ACKWMOStartStopProduct, WMOStopProduct.SystemId) then
+            exit(false);
+
+        // Productcode van het start/stop product moet gelijk zijn aan productcode indicatie.
+        if WMOIndication.ProductCode <> WMOStopProduct.ProductCode then begin
+            MessageRetourCode.InsertRetourCode(Database::ACKWMOStartStopProduct, WMOStopProduct.SystemId, WMOStopProduct.SystemId, ACKWMORule::SW020);
+            exit;
+        end;
 
         // Als er 1 actief dan mag je niet nog 1 inschieten.
         //Als er 1 afgesloten is, dan mag er geen nieuwe tijdelijke stop ingeschoten worden voordien.

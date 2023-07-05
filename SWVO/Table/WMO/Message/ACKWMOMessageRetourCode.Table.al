@@ -167,9 +167,10 @@ table 50006 ACKWMOMessageRetourCode
     // end;
 
 
-    procedure InsertRetourCode(_RelationTableNo: Integer; _RefId: Guid; _HeaderId: Guid; _RetourCode: Enum ACKRetourCode)
+    /// <returns>Return variable IsActive of type Boolean.</returns>
+    procedure InsertRetourCode(_RelationTableNo: Integer; _RefId: Guid; _HeaderId: Guid; _RetourCode: Enum ACKRetourCode) IsActive: Boolean
     begin
-        InsertRetourCode(_RelationTableNo, _RefId, _HeaderId, ACKWMORule::Empty, _RetourCode);
+        IsActive := InsertRetourCode(_RelationTableNo, _RefId, _HeaderId, ACKWMORule::Empty, _RetourCode);
     end;
 
     /// <summary>
@@ -179,9 +180,10 @@ table 50006 ACKWMOMessageRetourCode
     /// <param name="_RefId">Guid.</param>
     /// <param name="_HeaderId">Guid.</param>
     /// <param name="_Rule">Enum ACKWMORule.</param>
-    procedure InsertRetourCode(_RelationTableNo: Integer; _RefId: Guid; _HeaderId: Guid; _Rule: Enum ACKWMORule)
+    /// <returns>Return variable IsActive of type Boolean.</returns>
+    procedure InsertRetourCode(_RelationTableNo: Integer; _RefId: Guid; _HeaderId: Guid; _Rule: Enum ACKWMORule) IsActive: Boolean
     begin
-        InsertRetourCode(_RelationTableNo, _RefId, _HeaderId, _Rule, ACKRetourCode::Empty);
+        IsActive := InsertRetourCode(_RelationTableNo, _RefId, _HeaderId, _Rule, ACKRetourCode::Empty);
     end;
 
     /// <summary>
@@ -192,13 +194,16 @@ table 50006 ACKWMOMessageRetourCode
     /// <param name="_HeaderId">Guid.</param>
     /// <param name="_Rule">Enum ACKWMORule.</param>
     /// <param name="_RetourCode">Enum ACKRetourCode.</param>
-    procedure InsertRetourCode(_RelationTableNo: Integer; _RefId: Guid; _HeaderId: Guid; _Rule: Enum ACKWMORule; _RetourCode: Enum ACKRetourCode)
+    /// <returns>Return variable IsActive of type Boolean.</returns>
+    procedure InsertRetourCode(_RelationTableNo: Integer; _RefId: Guid; _HeaderId: Guid; _Rule: Enum ACKWMORule; _RetourCode: Enum ACKRetourCode) IsActive: Boolean
     var
         WMORule: Record ACKWMORule;
         ACKWMOMessageRetourCode: Record ACKWMOMessageRetourCode;
         RetourCodeText: Code[4];
         InvalidReferenceErr: Label 'Parameter _RefId cannot be empty', Locked = true;
     begin
+        IsActive := true;
+
         if IsNullGuid(_RefId) then
             Error(InvalidReferenceErr);
 
@@ -210,6 +215,7 @@ table 50006 ACKWMOMessageRetourCode
         if _Rule <> ACKWMORule::Empty then begin
             WMORule.Get(_Rule);
             RetourCodeText := WMORule.RetourCodeID;
+            IsActive := WMORule.IsActive;
         end;
 
         ACKWMOMessageRetourCode.SetRange(RelationTableNo, _RelationTableNo);

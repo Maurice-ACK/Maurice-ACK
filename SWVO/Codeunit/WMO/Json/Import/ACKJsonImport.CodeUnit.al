@@ -8,6 +8,7 @@ codeunit 50038 ACKJsonImport
         ACKJsonTools: codeunit ACKJsonTools;
         JsonObjectRoot: JsonObject;
         ReferentieNummer: Guid;
+        ACKHelper: Codeunit ACKHelper;
 
     trigger OnRun()
     begin
@@ -77,35 +78,60 @@ codeunit 50038 ACKJsonImport
     local procedure ImportJson()
     var
         JSONMapStart: Record ACKJSONMap;
+        WmoHeaderNew, WmoHeaderTo : Record ACKWMOHeader;
+        StUF: Record ACKStUF;
+        ACKGenerateStuf: Codeunit ACKGenerateStuf;
         RecordRefCurrent: RecordRef;
     begin
-        if IsNullGuid(ReferentieNummer) then
+        if IsNullGuid(ReferentieNummer) then begin
             ReferentieNummer := CreateGuid();
+            ACKHelper.AddEventLog(Database::ACKStUF, Severity::Verbose, StrSubstNo('New Guid Created: %1', ReferentieNummer));
+        end;
 
         JSONMessage.FindFirst();
 
         NextMap(JSONMapStart, JsonObjectRoot.AsToken(), RecordRefCurrent);
+
+        if GetWMOHeader(WmoHeaderNew) and WmoHeaderNew.IsRetour() then
+            if WmoHeaderNew.GetToHeader(WmoHeaderTo, false) then begin
+                WmoHeaderNew.RefHeaderId := WmoHeaderTo.SystemId;
+                WmoHeaderTo.RefHeaderId := WmoHeaderNew.SystemId;
+
+                WmoHeaderNew.Modify(true);
+                WmoHeaderTo.Modify(true);
+            end;
+
+        StUF.SetRange(Referentienummer, ReferentieNummer);
+        if StUF.IsEmpty() then begin
+            ACKHelper.AddEventLog(Database::ACKStUF, Severity::Verbose, 'Start generating stuf');
+            ACKGenerateStuf.Run(WmoHeaderNew);
+        end;
     end;
 
 
+    //Opens a new record or continues to insert values if still on the same level.
     local procedure ProcessMap(JSONMapCurrent: Record ACKJSONMap; JsonTokenCurrent: JsonToken; var RecordRefParent: RecordRef)
     var
         RecordRefCurrent: RecordRef;
     begin
         ValidateExpectedType(JSONMapCurrent.JSONType, JsonTokenCurrent);
 
+        //If the table no did not change then proceed using the same recordref.
         if RecordRefParent.Number() = JSONMapCurrent.TableNo then
             RecordRefCurrent := RecordRefParent
         else
+            //Save the parent record before continuing with a new record.
             if RecordRefParent.Number() > 0 then
                 InsertOrModifyRecordRef(RecordRefParent);
 
+        //Open a new record and set the relation to it's parent.
         if RecordRefCurrent.Number() = 0 then begin
             OpenRecordRef(RecordRefCurrent, JSONMapCurrent.TableNo);
             SetRelationFields(RecordRefParent, RecordRefCurrent, JSONMapCurrent.Path);
         end;
 
         case JSONMapCurrent.JSONType of
+            //If an object is found then start the loop with the procedure NextMap
             ACKJSONType::"Object":
                 NextMap(JSONMapCurrent, JsonTokenCurrent, RecordRefCurrent);
             ACKJSONType::"Array":
@@ -115,6 +141,7 @@ codeunit 50038 ACKJsonImport
         end;
     end;
 
+    //Finds the next mapping and loops through it's children. 
     local procedure NextMap(JSONMapParent: Record ACKJSONMap; JsonTokenParent: JsonToken; var RecordRefParent: RecordRef)
     var
         JSONMapChild: Record ACKJSONMap;
@@ -139,6 +166,7 @@ codeunit 50038 ACKJsonImport
             InsertOrModifyRecordRef(RecordRefParent);
     end;
 
+    //Loops through the array and saves the content.
     local procedure ProcessArray(JSONMapCurrent: Record ACKJSONMap; JsonArray: JsonArray; var RecordRefCurrent: RecordRef)
     var
         JSONMapFirstChild: Record ACKJSONMap;
@@ -160,12 +188,14 @@ codeunit 50038 ACKJsonImport
                 RecordRefCurrent.Field(NewChangedUnchangedProduct.FieldNo(NewChangedUnchangedProductType)).Validate(ACKNewChangedUnchangedProductType::New);
         end;
 
+        //Checks if there is atleast one entry.
         if not JsonArray.Get(0, JsonToken) then
             if JSONMapFirstChild.Required then
                 Error(EmptyRequiredArrayErr, JSONMapFirstChild.GetFullPath())
             else
                 exit;
 
+        //Loops the array and saves the value or processes the object if the array contains objects.
         foreach JsonToken in JsonArray do begin
             OpenRecordRef(RecordRefCopy, RecordRefCurrent.Number());
             RecordRefCopy.Copy(RecordRefCurrent);
@@ -181,6 +211,7 @@ codeunit 50038 ACKJsonImport
         end;
     end;
 
+    //Inserts or updates a record if it already exists.
     local procedure InsertOrModifyRecordRef(var RecordRef: RecordRef)
     begin
         if IsNullGuid(RecordRef.Field(RecordRef.SystemIdNo()).Value()) then
@@ -189,6 +220,7 @@ codeunit 50038 ACKJsonImport
             RecordRef.Modify(true)
     end;
 
+    //Returns current type from the json token
     local procedure GetJSONTypeFromJSONToken(JsonToken: JsonToken): Enum ACKJSONType
     begin
         if JsonToken.IsArray() then
@@ -199,6 +231,7 @@ codeunit 50038 ACKJsonImport
             exit(ACKJSONType::"Value");
     end;
 
+    //Validates that the current jsontoken matches the expected type in the json map.
     local procedure ValidateExpectedType(ExpectedJSONType: Enum ACKJSONType; JsonToken: JsonToken)
     var
         TokenJSONType: Enum ACKJSONType;
@@ -210,7 +243,7 @@ codeunit 50038 ACKJsonImport
             Error(ExpectedTypeErr, Format(ExpectedJSONType), Format(TokenJSONType));
     end;
 
-
+    //Checks if there is a relation between the child and the parent record, if found then it sets the relation
     local procedure SetRelationFields(ParentRecordRef: RecordRef; var ChildRecordRef: RecordRef; Path: Text)
     var
         WMOHeader: Record ACKWMOHeader;
@@ -326,7 +359,7 @@ codeunit 50038 ACKJsonImport
             RecordRef.Field(WMOHeader.FieldNo(Referentienummer)).Validate(ReferentieNummer);
     end;
 
-    local Procedure GetWMOHeader(var WMOHeader: Record ACKWMOHeader) Found: Boolean
+    Procedure GetWMOHeader(var WMOHeader: Record ACKWMOHeader) Found: Boolean
     begin
         WMOHeader.SetRange(Referentienummer, Referentienummer);
         Found := WMOHeader.FindFirst();

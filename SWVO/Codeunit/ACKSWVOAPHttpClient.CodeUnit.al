@@ -131,9 +131,8 @@ codeunit 50019 ACKSWVOAPHttpClient
         JsonObject.Add('contentType', 'XML');
         JsonObject.Add('base64String', Base64Text);
         JsonObject.WriteTo(ContentText);
-        Message(ContentText);
-        HttpContent.WriteFrom(ContentText);
 
+        HttpContent.WriteFrom(ContentText);
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
         ContentHeaders.Add('Content-Type', 'application/json; charset=utf-8');
@@ -270,7 +269,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         JsonObject.Add('base64String', Base64Text);
         JsonObject.WriteTo(ContentText);
         HttpContent.WriteFrom(ContentText);
-        Message(ContentText);
+
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
         ContentHeaders.Add('Content-Type', 'application/json');
@@ -368,6 +367,7 @@ codeunit 50019 ACKSWVOAPHttpClient
         JsonObject.Add('base64String', Base64Text);
         JsonObject.WriteTo(ContentText);
         HttpContent.WriteFrom(ContentText);
+
         HttpContent.GetHeaders(ContentHeaders);
         ContentHeaders.Clear();
         ContentHeaders.Add('Content-Type', 'application/json');

@@ -21,19 +21,18 @@ page 50054 ACKProductCodeAPI
             {
                 field(productCode; Rec.ProductCode)
                 {
-
                 }
                 field(categoryId; Rec.CategoryID)
                 {
-
+                }
+                field(alias; Rec.Alias)
+                {
                 }
                 field(description; Rec.Description)
                 {
-
                 }
                 field(isActive; Rec.IsActive)
                 {
-
                 }
             }
         }

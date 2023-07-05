@@ -7,7 +7,6 @@ codeunit 50029 ACKWMOProcessor325 implements ACKWMOIProcessor
         WMOHeader325, WMOHeader323 : Record ACKWMOHeader;
         WMODeclaratieAntwoord: Record ACKWMODeclaratieAntwoord;
         WMODeclaration: Record ACKWMODeclaratie;
-        ProductCodeRateMonth: Record ACKProductCodeRateMonth;
         MessageRetourCode: Record ACKWMOMessageRetourCode;
         WMOProcessor: codeunit ACKWMOProcessor;
         WMODeclarationHelper: Codeunit ACKWMODeclarationHelper;
@@ -116,10 +115,8 @@ codeunit 50029 ACKWMOProcessor325 implements ACKWMOIProcessor
     begin
         WMOProcessor.ValidateProcessStatus(WMOHeader325);
 
-        if Validate() then begin
-            ProductCodeRateMonth.GetFromDate(WMODeclaration.Begindatum);
+        if Validate() then
             SetStatusDeclaration();
-        end;
 
         WMOProcessor.Send(WMOHeader325);
         WMOHeader325.Modify(true);

@@ -47,7 +47,8 @@ page 50101 ACKWMOAPI
 
     local procedure ImportBase64Messages()
     var
-        JsonImportProcessorV2: Codeunit ACKJsonImport;
+        WMOHeader: Record ACKWMOHeader;
+        ACKJsonImport: Codeunit ACKJsonImport;
         Base64Convert: codeunit "Base64 Convert";
         MessageJsonObject: JsonObject;
         JsonToken: JsonToken;
@@ -68,7 +69,8 @@ page 50101 ACKWMOAPI
         MessageJsonObject.SelectToken('header.berichtSubversie', JsonToken);
         Subversie := JsonToken.AsValue().AsInteger();
 
-        JsonImportProcessorV2.Init(MessageJsonObject, Rec.BerichtCode, Versie, Subversie);
-        JsonImportProcessorV2.Run();
+        ACKJsonImport.Init(MessageJsonObject, Rec.BerichtCode, Versie, Subversie);
+        ACKJsonImport.Run();
+        ACKJsonImport.GetWMOHeader(Rec);
     end;
 }

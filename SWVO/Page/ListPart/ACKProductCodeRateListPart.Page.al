@@ -29,8 +29,13 @@ page 50012 ACKProductCodeRateListPart
                         Selected.SetTable(ACKWMOProductCode);
 
                         Rec.ProductCategoryId := ACKWMOProductCode.CategoryID;
+                        Rec.ProductCodeAlias := ACKWMOProductCode.Alias;
                         Rec.ProductCodeDescription := ACKWMOProductCode.Description;
                     end;
+                }
+                field(ProductCodeAlias; Rec.ProductCodeAlias)
+                {
+                    Caption = 'Afkorting', Locked = true;
                 }
                 field(ProductCategoryId; Rec.ProductCategoryId)
                 {

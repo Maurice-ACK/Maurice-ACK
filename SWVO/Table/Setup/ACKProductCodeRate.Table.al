@@ -61,6 +61,13 @@ table 50067 ACKProductCodeRate
             CalcFormula = lookup(ACKProductCode.Description where(ProductCode = field(ProductCode)));
             Editable = false;
         }
+        field(100; ProductCodeAlias; Text[30])
+        {
+            Caption = 'Product code alias';
+            FieldClass = FlowField;
+            CalcFormula = lookup(ACKProductCode.Alias where(ProductCode = field(ProductCode)));
+            Editable = false;
+        }
     }
     keys
     {

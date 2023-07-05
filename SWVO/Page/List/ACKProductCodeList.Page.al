@@ -20,6 +20,9 @@ page 50001 ACKProductCodeList
                 {
                     ShowMandatory = true;
                 }
+                field(Alias; Rec.Alias)
+                {
+                }
                 field(Description; Rec.Description)
                 {
                     ShowMandatory = true;
