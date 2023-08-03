@@ -109,7 +109,7 @@ table 50044 ACKStudentTransportClientTemp
 
     trigger OnModify()
     var
-        clientData: Record ACKStudentTransportClientData;
+        clientData: Record ACKSTTClientData;
 
     begin
         clientData.SetFilter(ClientNo, '=%1', Rec.ClientNo);

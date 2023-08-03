@@ -59,22 +59,22 @@ report 50000 ACKStudentTransportCustReport
 
 
             }
-            dataitem(ACKStudentTransportClientData; ACKStudentTransportClientData)
+            dataitem(ACKStudentTransportClientData; ACKSTTClientData)
             {
                 DataItemLink = ClientNo = field(ClientNo);
 
             }
-            trigger OnAfterGetRecord()
-            var
-                schoolQ: Query ACKSTTFilterSchool;
-            begin
-                birtdayText := Format(Birthdate);
+            // trigger OnAfterGetRecord()
+            // var
+            //     schoolQ: Query ACKSTTFilterSchool;
+            // begin
+            //     birtdayText := Format(Birthdate);
 
 
 
 
 
-            end;
+            // end;
 
             trigger OnPreDataItem()
             begin

@@ -164,6 +164,10 @@ table 50060 ACKJSONMap
             CalcFormula = lookup(ACKJSONMap.JSONType where(No = field(ParentNo)));
             Editable = false;
         }
+
+
+
+
     }
     keys
     {

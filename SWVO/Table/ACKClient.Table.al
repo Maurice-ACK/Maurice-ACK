@@ -74,7 +74,10 @@ table 50010 ACKClient
         }
         key(SSN; SSN)
         {
-            Unique = true;
+
+
+            Unique = false;
+
         }
     }
 

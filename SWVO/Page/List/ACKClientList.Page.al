@@ -87,12 +87,12 @@ page 50009 ACKClientList
                 actionref("Wmo Transport promoted"; "Wmo Transport")
                 {
                 }
-                actionref("Student Transport promoted"; "Student Transport")
-                {
-                }
-                actionref("Student Query promoted"; "Student Query")
-                {
-                }
+                // actionref("Student Transport promoted"; "Student Transport")
+                // {
+                // }
+                // actionref("Student Query promoted"; "Student Query")
+                // {
+                // }
             }
         }
         area(Navigation)
@@ -222,19 +222,19 @@ page 50009 ACKClientList
                     RunPageLink = ClientNo = FIELD(ClientNo);
                 }
 
-                action("Student Transport")
-                {
-                    Caption = 'Leerlingenvervoer', Locked = true;
-                    Image = GLJournal;
-                    RunObject = Page ACKStudentTransportClientListQ;
-                }
-                action("Student Query")
-                {
-                    Caption = 'Leerlingenvervoer', Locked = true;
-                    Visible = false;
-                    Image = Document;
-                    RunObject = Query ACKStudentTransportClQueryV2;
-                }
+                // action("Student Transport")
+                // {
+                //     Caption = 'Leerlingenvervoer', Locked = true;
+                //     Image = GLJournal;
+                //     RunObject = Page ACKStudentTransportClientListQ;
+                // }
+                // action("Student Query")
+                // {
+                //     Caption = 'Leerlingenvervoer', Locked = true;
+                //     Visible = false;
+                //     Image = Document;
+                //     RunObject = Query ACKStudentTransportClQueryV2;
+                // }
             }
         }
         area(Creation)

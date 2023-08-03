@@ -9,10 +9,14 @@ codeunit 50038 ACKJsonImport
         JsonObjectRoot: JsonObject;
         ReferentieNummer: Guid;
         ACKHelper: Codeunit ACKHelper;
+        IsWMO: Boolean;
 
     trigger OnRun()
     begin
-        ImportJson();
+        if IsWMO then
+            ImportWMOJson()
+        else
+            ImportJson();
     end;
 
     /// <summary>
@@ -43,7 +47,7 @@ codeunit 50038 ACKJsonImport
         ReferentieNummer := _StUF.Referentienummer;
         Evaluate(Versie, _StUF.FunctieVersie);
         Evaluate(SubVersie, _StUF.FunctieSubversie);
-        Init(JsonObjectLoc, _StUF.Functie, Versie, SubVersie);
+        Init(JsonObjectLoc, _StUF.Functie, Versie, SubVersie, true);
     end;
 
     /// <summary>
@@ -53,8 +57,9 @@ codeunit 50038 ACKJsonImport
     /// <param name="VektisCode">Enum ACKVektisCode.</param>
     /// <param name="Versie">Code[4].</param>
     /// <param name="Subversie">Code[4].</param>
-    procedure Init(_JsonObjectRoot: JsonObject; VektisCode: Enum ACKVektisCode; Versie: Integer; Subversie: Integer)
+    procedure Init(_JsonObjectRoot: JsonObject; VektisCode: Enum ACKVektisCode; Versie: Integer; Subversie: Integer; _IsWMO: Boolean)
     begin
+        IsWMO := _IsWMO;
         JsonObjectRoot := _JsonObjectRoot;
 
         JSONMessage.SetRange(VektisCode, VektisCode);
@@ -75,7 +80,7 @@ codeunit 50038 ACKJsonImport
         JsonObjectRoot := _JsonObjectRoot;
     end;
 
-    local procedure ImportJson()
+    local procedure ImportWMOJson()
     var
         JSONMapStart: Record ACKJSONMap;
         WmoHeaderNew, WmoHeaderTo : Record ACKWMOHeader;
@@ -108,6 +113,16 @@ codeunit 50038 ACKJsonImport
         end;
     end;
 
+    local procedure ImportJson()
+    var
+        JSONMapStart: Record ACKJSONMap;
+        RecordRefCurrent: RecordRef;
+    begin
+        JSONMessage.FindFirst();
+
+        NextMap(JSONMapStart, JsonObjectRoot.AsToken(), RecordRefCurrent);
+    end;
+
 
     //Opens a new record or continues to insert values if still on the same level.
     local procedure ProcessMap(JSONMapCurrent: Record ACKJSONMap; JsonTokenCurrent: JsonToken; var RecordRefParent: RecordRef)
@@ -128,7 +143,10 @@ codeunit 50038 ACKJsonImport
         if RecordRefCurrent.Number() = 0 then begin
             OpenRecordRef(RecordRefCurrent, JSONMapCurrent.TableNo);
             SetRelationFields(RecordRefParent, RecordRefCurrent, JSONMapCurrent.Path);
+            setJsonRelations(RecordRefParent, RecordRefCurrent, JSONMapCurrent.Path, JSONMapCurrent.No);
         end;
+
+
 
         case JSONMapCurrent.JSONType of
             //If an object is found then start the loop with the procedure NextMap
@@ -260,11 +278,30 @@ codeunit 50038 ACKJsonImport
         WMOMessageRetourCode: Record ACKWMOMessageRetourCode;
         ParentRecordRefCopy: RecordRef;
         ParentSystemId: Guid;
+
+        //
+        i: Integer;
+        varKeyRef: KeyRef;
+        Text000: Label 'KeyIndex: %1   KeyRef: %2';
+        testRec: RecordRef;
+        Name: text;
     begin
         //Create a copy so we don't change the state of the parameter.
         if ParentRecordRef.Number() > 0 then begin
             ParentRecordRefCopy.Open(ParentRecordRef.Number());
             ParentRecordRefCopy.Copy(ParentRecordRef);
+
+            for i := 1 to ChildRecordRef.KeyCount do begin
+                varKeyRef := ChildRecordRef.KeyIndex(i);
+                testRec := varKeyRef.Record();
+
+                Name := ParentRecordRef.Name;
+                Name := testRec.Name;
+
+
+                if (ParentRecordRef.Name = testRec.Name) then
+                    i := i;
+            end;
         end;
 
         if (ChildRecordRef.Number() = Database::ACKWMOClient) or
@@ -321,6 +358,29 @@ codeunit 50038 ACKJsonImport
                     ChildRecordRef.GetTable(WMOMessageRetourCode);
                 end;
         end
+    end;
+
+    local procedure setJsonRelations(ParentRecordRef: RecordRef; var ChildRecordRef: RecordRef; Path: Text; CurrentJsonMapNo: Code[20])
+    var
+        JSONMap: Record ACKJSONMap;
+        JSONObjectRelation: Record ACKJSONMapObjectRelations;
+        ParentField: FieldRef;
+        ObjectField: FieldRef;
+        RecRef: RecordRef;
+    begin
+
+        JSONObjectRelation.SetRange(ObjectNo, CurrentJsonMapNo);
+
+        if JSONObjectRelation.FindSet() then
+            repeat
+                ParentField := ParentRecordRef.Field(JSONObjectRelation.ParentField);
+
+                ObjectField := ChildRecordRef.Field(JSONObjectRelation.ObjectField);
+
+                ObjectField.Value := ParentField.Value;
+                ObjectField.TestField();
+            until JSONObjectRelation.Next() = 0;
+
     end;
 
     // local procedure CreateStUFFoutbericht(BerichtCode: Enum ACKStUFBerichtCode; Foutcode: Text[10]; Omschrijving: Text[250]; Plek: Option client,server)

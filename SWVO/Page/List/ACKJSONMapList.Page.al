@@ -65,6 +65,7 @@ page 50102 ACKJSONMapList
                 field(FieldCaption; Rec.FieldCaption)
                 {
                 }
+
                 field(SystemCreatedAt; Rec.SystemCreatedAt)
                 {
                 }
@@ -79,6 +80,9 @@ page 50102 ACKJSONMapList
         area(Promoted)
         {
             actionref("Child mapping Promoted"; "Child mapping")
+            {
+            }
+            actionref("Parent mapping Promoted"; "Parent relations")
             {
             }
         }
@@ -101,6 +105,41 @@ page 50102 ACKJSONMapList
                     JSONMapList.SetTableView(JSONMap);
                     JSONMapList.SetRecord(JSONMap);
                     JSONMapList.Run();
+                end;
+            }
+
+            action("Parent relations")
+            {
+                Caption = 'Parent relations', Locked = true;
+                Image = Relationship;
+                Enabled = (Rec.JSONType <> ACKJSONType::"Value") and (Rec.ParentNo <> '');
+
+                trigger OnAction()
+                var
+                    JSONMap: Record ACKJSONMap;
+                    JSONRelations: Record ACKJSONMapObjectRelations;
+                    RelationPage: Page ACKJSONMapParentRelation;
+
+                begin
+
+
+                    JSONRelations.SetRange(ObjectNo, Rec.No);
+                    JSONRelations.SetRange(ParenteNo, Rec.ParentNo);
+
+                    RelationPage.SetTableView(JSONRelations);
+
+
+                    RelationPage.Run();
+                end;
+            }
+            action("Get path")
+            {
+                Caption = 'Get path', Locked = true;
+                Image = Relationship;
+
+                trigger OnAction()
+                begin
+                    Message(rec.GetFullPath());
                 end;
             }
         }

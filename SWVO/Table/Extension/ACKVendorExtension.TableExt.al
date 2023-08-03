@@ -37,5 +37,10 @@ tableextension 50001 ACKVendorExtension extends Vendor
             Caption = 'Other documents';
             DataClassification = SystemMetadata;
         }
+        field(50007; ACKStudentStransport; Boolean)
+        {
+            Caption = 'Other documents';
+            DataClassification = SystemMetadata;
+        }
     }
 }

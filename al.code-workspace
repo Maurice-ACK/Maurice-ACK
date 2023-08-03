@@ -10,5 +10,7 @@
       "path": "SWVO.Test"
     }
   ],
-  "settings": {}
+  "settings": {
+    "powershell.cwd": "c:\\repos\\bc-Git\\SWVO-BC\\SWVO"
+  }
 }

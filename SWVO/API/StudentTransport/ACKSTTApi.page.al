@@ -1,51 +1,48 @@
-/// <summary>
-/// Page ACKWMOAPI
-/// </summary>
-page 50101 ACKWMOAPI
+page 50044 ACKSTTApi
 {
     PageType = API;
-    APIGroup = 'wmo';
+    Caption = 'TestApi';
     APIPublisher = 'swvo';
+    APIGroup = 'studentTransport';
     APIVersion = 'v1.0';
-    Caption = 'Wmo API', Locked = true;
-    EntityCaption = 'wmo', Locked = true;
-    EntitySetCaption = 'wmo', Locked = true;
-    EntityName = 'wmo';
-    EntitySetName = 'wmo';
+    EntityName = 'api';
+    EntitySetName = 'api';
+    SourceTable = ACKSTTApiCalls;
     DelayedInsert = true;
-    SourceTable = ACKWMOHeader;
-    Permissions = tabledata ACKWMOHeader = RIMD;
 
     layout
     {
-        area(content)
+        area(Content)
         {
-            repeater(General)
+            repeater(GroupName)
             {
-                field(berichtCode; Rec.BerichtCode)
+                field(berichtCode; Rec.berichtCode)
                 {
+                    Caption = 'fieldCaption';
+
                 }
-                field(base64StringJson; Base64StringJson)
+                field(base64StringJson; base64StringJson)
                 {
+
                 }
             }
         }
     }
 
-    var
-        Base64StringJson: Text;
-
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    var
+        OutS: OutStream;
+        BodyText: Text;
     begin
-        ImportBase64Messages();
-        exit(false);
+
+        BodyText := ImportBase64Messages();
+
+        rec.Body.CreateOutStream(OutS, TextEncoding::UTF8);
+        OutS.WriteText(BodyText);
     end;
 
-    trigger OnAfterGetCurrRecord()
-    begin
-    end;
 
-    local procedure ImportBase64Messages()
+    local procedure ImportBase64Messages(): Text
     var
         WMOHeader: Record ACKWMOHeader;
         ACKJsonImport: Codeunit ACKJsonImport;
@@ -69,8 +66,14 @@ page 50101 ACKWMOAPI
         MessageJsonObject.SelectToken('header.berichtSubversie', JsonToken);
         Subversie := JsonToken.AsValue().AsInteger();
 
-        ACKJsonImport.Init(MessageJsonObject, Rec.BerichtCode, Versie, Subversie, true);
+        ACKJsonImport.Init(MessageJsonObject, Rec.BerichtCode, Versie, Subversie, false);
         ACKJsonImport.Run();
-        ACKJsonImport.GetWMOHeader(Rec);
+        // ACKJsonImport.GetWMOHeader(Rec);
+        MessageJsonObject.WriteTo(Message);
+        exit(Message);
     end;
+
+
+    var
+        base64StringJson: text;
 }

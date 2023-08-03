@@ -381,7 +381,7 @@ codeunit 50001 ACKStudentApiFormatter
             tableIdList.Add('customerIndication', Database::ACKStudentTransportCustIndicat);
             tableIdList.Add('indication', Database::ACKStudentTransportIndication);
             tableIdList.Add('card', Database::ACKStudentTransportCard);
-            tableIdList.Add('customerCLient', Database::ACKStudentTransportClientData);
+            tableIdList.Add('customerCLient', Database::ACKSTTClientData);
 
         end;
         if (tablePrimKeyList.Count < 1) then begin

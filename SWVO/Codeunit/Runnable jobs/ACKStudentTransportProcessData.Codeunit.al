@@ -11,7 +11,7 @@ codeunit 50034 ACKStudentTransportProcessData
         Customers: Record ACKStudentTransportCustomer;
         Client: Record ACKClient;
         ClientSearch: Record ACKClient;
-        ClientDataLink: Record ACKStudentTransportClientData;
+        ClientDataLink: Record ACKSTTClientData;
         error: Record ACKStudentTransportInsertError;
 
 
@@ -53,8 +53,8 @@ codeunit 50034 ACKStudentTransportProcessData
 
                 addAddressToClient(Client.ClientNo, Customers);
                 ClientDataLink.ClientNo := Client.ClientNo;
-                ClientDataLink.CustomerID := Customers.CustomerId;
-                ClientDataLink.custRecordId := Customers.custRecordId;
+                // ClientDataLink.CustomerID := Customers.CustomerId;
+                // ClientDataLink.custRecordId := Customers.custRecordId;
                 ClientDataLink.Insert();
 
                 System.Clear(Client);
@@ -75,7 +75,7 @@ codeunit 50034 ACKStudentTransportProcessData
 
 
         addressRec.ClientNo := clientNo;
-        addressRec.Purpose := ACKWMOAdresSoort::Mybility;
+        addressRec.Purpose := ACKWMOAdresSoort::StudentTransport;
         addressRec.PostCode := customer.ZipCode;
         addressRec.HouseNumber := TextToInt(customer.StreetNr);
         addressRec.HouseNumberAddition := customer.StreetNrAddition;
@@ -102,7 +102,7 @@ codeunit 50034 ACKStudentTransportProcessData
 
     begin
         address.SetFilter(ClientNo, '=%1', clientN);
-        address.SetFilter(Purpose, '=%1', ACKWMOAdresSoort::Mybility);
+        address.SetFilter(Purpose, '=%1', ACKWMOAdresSoort::StudentTransport);
         address.setfilter(ValidTo, '<=%1', 0D);
 
         if address.FindSet() then

@@ -485,7 +485,7 @@ codeunit 50003 ACKHelper
             JsonObject.SelectToken('header.berichtSubversie', JsonToken);
             BerichtSubversie := JsonToken.AsValue().AsInteger();
 
-            ACKJsonImportProcessorV2.Init(JsonObject, VektisCode, BerichtVersie, BerichtSubversie);
+            ACKJsonImportProcessorV2.Init(JsonObject, VektisCode, BerichtVersie, BerichtSubversie, true);
             ACKJsonImportProcessorV2.Run();
         end;
     end;

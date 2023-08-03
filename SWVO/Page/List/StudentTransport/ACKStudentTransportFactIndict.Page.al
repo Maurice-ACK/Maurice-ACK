@@ -76,44 +76,44 @@ page 50064 ACKStudentTransportFactIndict
 
 
 
-    trigger OnOpenPage()
-    var
-        queryInd: Query ACKStudentTransportIndictionQ;
-    begin
-        if queryInd.Open() then begin
+    // trigger OnOpenPage()
+    // var
+    //     queryInd: Query ACKStudentTransportIndictionQ;
+    // begin
+    //     if queryInd.Open() then begin
 
-            while queryInd.Read() do begin
-
-
-                Rec.Init();
-                Rec.ClientNo := queryInd.ClientNo;
-                Rec.AdditionalValue := queryInd.AdditionalValue;
-                Rec.CustomerId := queryInd.CustomerId;
-                Rec.Indication := queryInd.IndicationId;
-                Rec.MutationDate := queryInd.MutationDate;
-                Rec.creationDate := queryInd.CreationDate;
-                // Rec.Description := queryInd.Description;
-                Rec.CardId := queryInd.CardId;
-                Rec.Caterogy := queryInd.Category;
-                Rec.CardStatusId := queryInd.CardStatusId;
-                Rec.scheduleCount := queryInd.countIndex;
-                Rec.CardNumber := queryInd.CardNumber;
-                rec.status := queryInd.customerStatus;
-                rec.indicationId := queryInd.indicationId;
-                rec.descriptionInd := queryInd.descriptionInd;
-                rec.MutationDate := queryInd.MutationDate;
-
-                rec.serviceId := queryInd.serviceId;
-                rec.locationId := queryInd.locationId;
-                rec.contractId := queryInd.contractId;
-
-                Rec.Insert();
-            end;
-            queryInd.Close();
-        end;
+    //         while queryInd.Read() do begin
 
 
-    end;
+    //             Rec.Init();
+    //             Rec.ClientNo := queryInd.ClientNo;
+    //             Rec.AdditionalValue := queryInd.AdditionalValue;
+    //             Rec.CustomerId := queryInd.CustomerId;
+    //             Rec.Indication := queryInd.IndicationId;
+    //             Rec.MutationDate := queryInd.MutationDate;
+    //             Rec.creationDate := queryInd.CreationDate;
+    //             // Rec.Description := queryInd.Description;
+    //             Rec.CardId := queryInd.CardId;
+    //             Rec.Caterogy := queryInd.Category;
+    //             Rec.CardStatusId := queryInd.CardStatusId;
+    //             Rec.scheduleCount := queryInd.countIndex;
+    //             Rec.CardNumber := queryInd.CardNumber;
+    //             rec.status := queryInd.customerStatus;
+    //             rec.indicationId := queryInd.indicationId;
+    //             rec.descriptionInd := queryInd.descriptionInd;
+    //             rec.MutationDate := queryInd.MutationDate;
+
+    //             rec.serviceId := queryInd.serviceId;
+    //             rec.locationId := queryInd.locationId;
+    //             rec.contractId := queryInd.contractId;
+
+    //             Rec.Insert();
+    //         end;
+    //         queryInd.Close();
+    //     end;
+
+
+    // end;
 
 
 }

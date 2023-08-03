@@ -91,4 +91,10 @@ enum 50000 ACKVektisCode implements ACKWMOIProcessor
         Caption = '325', Locked = true;
         Implementation = ACKWMOIProcessor = ACKWMOProcessor325;
     }
+    value(486; StudentTransport)
+    {
+        Caption = 'StudentTransport', Locked = true;
+        Implementation = ACKWMOIProcessor = ACKWMOProcessor325;
+    }
+
 }

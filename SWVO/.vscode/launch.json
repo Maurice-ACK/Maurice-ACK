@@ -1,32 +1,32 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "Cloud Test Sync",
-      "request": "launch",
-      "type": "al",
-      "environmentType": "Sandbox",
-      "environmentName": "Test",
-      "authentication": "AAD",
-      "breakOnError": true,
-      "launchBrowser": true,
-      "enableLongRunningSqlStatements": true,
-      "enableSqlInformationDebugger": true,
-      "schemaUpdateMode": "ForceSync"
-    },
-    {
-      "name": "Cloud Acceptatie Sync",
-      "request": "launch",
-      "type": "al",
-      "environmentType": "Sandbox",
-      "environmentName": "Acceptatie",
-      "authentication": "AAD",
-      "breakOnError": true,
-      "launchBrowser": true,
-      "enableLongRunningSqlStatements": true,
-      "enableSqlInformationDebugger": true,
-      "schemaUpdateMode": "ForceSync"
-    },
+    // {
+    //   "name": "Cloud Test Sync",
+    //   "request": "launch",
+    //   "type": "al",
+    //   "environmentType": "Sandbox",
+    //   "environmentName": "Test",
+    //   "authentication": "AAD",
+    //   "breakOnError": true,
+    //   "launchBrowser": true,
+    //   "enableLongRunningSqlStatements": true,
+    //   "enableSqlInformationDebugger": true,
+    //   "schemaUpdateMode": "ForceSync"
+    // },
+    // {
+    //   "name": "Cloud Acceptatie Sync",
+    //   "request": "launch",
+    //   "type": "al",
+    //   "environmentType": "Sandbox",
+    //   "environmentName": "Acceptatie",
+    //   "authentication": "AAD",
+    //   "breakOnError": true,
+    //   "launchBrowser": true,
+    //   "enableLongRunningSqlStatements": true,
+    //   "enableSqlInformationDebugger": true,
+    //   "schemaUpdateMode": "ForceSync"
+    // },
     {
       "type": "al",
       "request": "launch",
@@ -35,7 +35,20 @@
       "serverInstance": "BC",
       "port": 7049,
       "tenant": "default",
-      "authentication": "UserPassword"
+      "authentication": "UserPassword",
+      "schemaUpdateMode": "ForceSync",
+
+    },
+    {
+      "type": "al",
+      "request": "attach",
+      "name": "Local Sandbox (swvo) attach",
+      "server": "http://swvo",
+      "serverInstance": "BC",
+      "port": 7049,
+      "tenant": "default",
+      "authentication": "UserPassword",
+
     }
   ]
 }

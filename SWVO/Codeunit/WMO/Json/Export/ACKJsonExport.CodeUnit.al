@@ -8,6 +8,7 @@ codeunit 50021 ACKJsonExport
         WMOHeader: Record ACKWMOHeader;
         ACKJsonTools: codeunit ACKJsonTools;
         JsonTokenRoot: JsonToken;
+        Filters: Dictionary of [Text, Text];
 
     /// <summary>
     /// Export.
@@ -39,10 +40,30 @@ codeunit 50021 ACKJsonExport
 
         JsonTokenRoot := JsonObject.AsToken();
 
-        NextMap(JSONMapStart, JsonTokenRoot, RecordRef);
+        NextMap(JSONMapStart, JsonTokenRoot, RecordRef, '');
     end;
 
-    local procedure NextMap(JSONMapParent: Record ACKJSONMap; var JsonTokenParent: JsonToken; RecordRefParent: RecordRef)
+    procedure Export(MessageCode: Text; VektisCode: Enum ACKVektisCode; Versie: Integer; SubVersie: Integer; var _Filters: Dictionary of [Text, Text]) JsonObject: JsonObject
+    var
+        JSONMapStart: Record ACKJSONMap;
+        RecordRef: RecordRef;
+    begin
+        Filters := _Filters;
+        JSONMessage.SetRange(MessageCode, MessageCode);
+        JSONMessage.SetRange(VektisCode, VektisCode);
+        JSONMessage.SetRange(Versie);
+        JSONMessage.SetRange(Subversie);
+
+        JSONMessage.FindFirst();
+
+        JSONMapStart.SetRange(MessageCode, JSONMessage.MessageCode);
+        JSONMapStart.SetRange(ParentNo, '');
+        JsonTokenRoot := JsonObject.AsToken();
+
+        NextMap(JSONMapStart, JsonTokenRoot, RecordRef, '');
+    end;
+
+    local procedure NextMap(JSONMapParent: Record ACKJSONMap; var JsonTokenParent: JsonToken; RecordRefParent: RecordRef; path: text)
     var
         JSONMapChild: Record ACKJSONMap;
     begin
@@ -53,11 +74,11 @@ codeunit 50021 ACKJsonExport
 
         if JSONMapChild.FindSet(true) then
             repeat
-                ProcessMap(JSONMapChild, JsonTokenParent, RecordRefParent);
+                ProcessMap(JSONMapChild, JsonTokenParent, RecordRefParent, path);
             until JSONMapChild.Next() = 0;
     end;
 
-    local procedure ProcessMap(JSONMap: Record ACKJSONMap; JsonTokenParent: JsonToken; RecordRefParent: RecordRef)
+    local procedure ProcessMap(JSONMap: Record ACKJSONMap; JsonTokenParent: JsonToken; RecordRefParent: RecordReF; path: text)
     var
         RecordRef: RecordRef;
         FieldRef: FieldRef;
@@ -71,9 +92,18 @@ codeunit 50021 ACKJsonExport
         if RecordRef.Number() = 0 then
             RecordRef.Open(JSONMap.TableNo);
 
-        if RecordRefParent.Number() <> RecordRef.Number() then begin
-            GetChild(RecordRefParent, RecordRef, JSONMap.Path);
+        if (JSONMap.JSONType = ACKJSONType::Object) or (JSONMap.JSONType = ACKJSONType::Array) then
+            SetRecordFilters(RecordRef, RecordRefParent, JSONMap.No, JsonTokenParent);
 
+        if (RecordRefParent.Number() <> 0) and (RecordRefParent.Number() <> RecordRef.Number()) then begin
+            GetChild(RecordRefParent, RecordRef, JSONMap.Path);
+            //SetRecordFilters(RecordRef, RecordRefParent, JSONMap.No, JsonTokenParent);
+            if not RecordRef.FindSet(false) then
+                exit;
+        end;
+
+        if (RecordRefParent.Number() = 0) then begin
+            //SetRecordFilters(RecordRef, RecordRefParent, JSONMap.No, JsonTokenParent);
             if not RecordRef.FindSet(false) then
                 exit;
         end;
@@ -83,13 +113,13 @@ codeunit 50021 ACKJsonExport
                 begin
                     JsonToken := JsonArrayNew.AsToken();
                     repeat
-                        NextMap(JSONMap, JsonToken, RecordRef);
+                        NextMap(JSONMap, JsonToken, RecordRef, path);
                     until RecordRef.Next() = 0;
                 end;
             ACKJSONType::"Object":
                 begin
                     JsonToken := JsonObjectNew.AsToken();
-                    NextMap(JSONMap, JsonToken, RecordRef);
+                    NextMap(JSONMap, JsonToken, RecordRef, '');
                 end;
             ACKJSONType::"Value":
                 begin
@@ -104,6 +134,56 @@ codeunit 50021 ACKJsonExport
         else
             if not JSONMap.SkipEmptyOrDefault then
                 AddToParent(JsonTokenParent, JsonToken, JSONMap.Path)
+    end;
+
+    local procedure SetRecordFilters(var RecordRef: RecordRef; var RecordRefParent: RecordRef; CurrentObjectNo: code[20]; CurrentJsonToken: JsonToken)
+    var
+        ObjectRelations: Record ACKJSONMapObjectRelations;
+        JSONMap: Record ACKJSONMap;
+        RecField: Record Field;
+        FieldRef: FieldRef;
+        FieldRefParent: FieldRef;
+        ObjecttPath, text : text;
+
+    begin
+        ObjectRelations.SetRange(ObjectNo, CurrentObjectNo);
+        if ObjectRelations.FindSet() then
+            repeat
+                FieldRef := RecordRef.Field(ObjectRelations.ObjectField);
+                FieldRefParent := RecordRefParent.Field(ObjectRelations.ParentField);
+                FieldRef.SetRange(FieldRefParent.Value);
+
+            until ObjectRelations.Next() = 0;
+
+        JSONMap.SetRange(ParentNo, CurrentObjectNo);
+
+
+        if JSONMap.FindSet() then
+            repeat
+                ObjecttPath := JSONMap.GetFullPath();
+                if (Filters.ContainsKey(ObjecttPath)) then begin
+                    FieldRef := RecordRef.Field(JSONMap.FieldNo);
+                    FieldRef.SetFilter(Filters.Get(ObjecttPath));
+                end;
+
+
+
+            until JSONMap.Next() = 0;
+        text := JSONMap.GetFullPath();
+
+        // text := CurrentJsonToken.Path();
+        // RecField.Reset();
+        // RecField.SetRange(TableNo, RecordRef.Number);
+
+        // if (Filters.Count > 0) and RecField.FindSet() then
+        //     repeat
+        //         if Filters.ContainsKey(RecField.FieldName) then begin
+        //             FieldRef := RecordRef.Field(RecField."No.");
+        //             FieldRef.SetFilter(Filters.Get(RecField.FieldName));
+        //             Filters.Remove(RecField.FieldName);
+        //         end;
+        //     until RecField.Next() = 0;
+
     end;
 
     local procedure IsJsonTokenEmpty(JsonToken: JsonToken): Boolean

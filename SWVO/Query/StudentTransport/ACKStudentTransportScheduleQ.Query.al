@@ -1,37 +1,37 @@
-query 50009 ACKStudentTransportScheduleQ
-{
-    Caption = 'StudentTransportScheduleQ';
-    QueryType = Normal;
-    QueryCategory = 'StudentTransport Query';
+// query 50009 ACKStudentTransportScheduleQ
+// {
+//     Caption = 'StudentTransportScheduleQ';
+//     QueryType = Normal;
+//     QueryCategory = 'StudentTransport Query';
 
-    elements
-    {
+//     elements
+//     {
 
-        dataitem(ACKClient; ACKClient)
-        {
-            column(ClientNo; ClientNo) { }
-            dataitem(ACKStudentTransportClientData; ACKStudentTransportClientData)
-            {
-                DataItemLink = ClientNo = ACKClient.ClientNo;
-                SqlJoinType = InnerJoin;
+//         dataitem(ACKClient; ACKClient)
+//         {
+//             column(ClientNo; ClientNo) { }
+//             dataitem(ACKStudentTransportClientData; ACKSTTClientData)
+//             {
+//                 DataItemLink = ClientNo = ACKClient.ClientNo;
+//                 SqlJoinType = InnerJoin;
 
-                column(CustomerID; CustomerID) { }
+//                 column(CustomerID; CustomerID) { }
 
-                dataitem(ACKStudentTransportSchedule; ACKStudentTransportSchedule)
-                {
-                    DataItemLink = CustomerId = ACKStudentTransportClientData.CustomerId;
+//                 dataitem(ACKStudentTransportSchedule; ACKStudentTransportSchedule)
+//                 {
+//                     DataItemLink = CustomerId = ACKStudentTransportClientData.CustomerId;
 
-                    column(routelist; routelist) { }
-                    column(Remarks; Remarks) { }
-                }
-            }
+//                     column(routelist; routelist) { }
+//                     column(Remarks; Remarks) { }
+//                 }
+//             }
 
 
-        }
-    }
+//         }
+//     }
 
-    trigger OnBeforeOpen()
-    begin
+//     trigger OnBeforeOpen()
+//     begin
 
-    end;
-}
+//     end;
+// }

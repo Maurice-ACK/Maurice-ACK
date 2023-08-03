@@ -26,8 +26,8 @@ enum 50040 ACKWMOAdresSoort
     {
         Caption = 'Tijdelijk verblijfadres', Locked = true;
     }
-    value(5; Mybility)
+    value(5; StudentTransport)
     {
-        Caption = 'Mybility', Locked = true;
+        Caption = 'StudentTransport', Locked = true;
     }
 }

@@ -114,7 +114,7 @@ table 50030 ACKStudentTransportCustomer
         schedule: Record ACKStudentTransportSchedule;
         custIndication: record ACKStudentTransportCustIndicat;
         card: Record ACKStudentTransportCard;
-        client: Record ACKStudentTransportClientData;
+        client: Record ACKSTTClientData;
     begin
         //remove schedule from customer
         schedule.SetCurrentKey(CustomerId);
@@ -129,7 +129,7 @@ table 50030 ACKStudentTransportCustomer
         card.SetRange(CustomerId, Rec.CustomerId);
         card.DeleteAll(true);
 
-        client.SetRange(CustomerID, rec.CustomerId);
+        // client.SetRange(CustomerID, rec.CustomerId);
         if client.FindFirst() then
             onRecordRemove(client.ClientNo);
     end;
@@ -140,7 +140,7 @@ table 50030 ACKStudentTransportCustomer
 
     begin
         address.SetFilter(ClientNo, '=%1', clientN);
-        address.SetFilter(Purpose, '=%1', ACKWMOAdresSoort::Mybility);
+        address.SetFilter(Purpose, '=%1', ACKWMOAdresSoort::StudentTransport);
         address.setfilter(ValidTo, '<=%1', 0D);
 
 

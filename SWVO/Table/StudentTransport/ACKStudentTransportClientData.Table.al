@@ -4,8 +4,7 @@
 table 50045 ACKStudentTransportClientData
 {
     Caption = 'Leerling', Locked = true;
-    LookupPageId = ACKClientData;
-    DrillDownPageId = ACKClientData;
+
     DataClassification = CustomerContent;
 
     fields
